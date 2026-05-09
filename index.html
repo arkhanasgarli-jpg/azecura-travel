@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="AzeCura Travel — Exklusive Heilreisen nach Aserbaidschan. Naftalan-Therapie für Rheuma, Psoriasis & Gelenkschmerzen.">
   <title>AzeCura Travel — Heilreisen nach Aserbaidschan</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXCJH5RSP9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VXCJH5RSP9');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -79,13 +87,13 @@
     .mobile-menu a:hover { color:var(--gold); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 60% 70% at 30% 50%, rgba(13,43,62,0.8) 0%,transparent 70%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.06) 0%,transparent 60%), radial-gradient(ellipse 80% 60% at 50% 100%, rgba(10,21,37,0.9) 0%,transparent 60%); }
+    .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center top; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,12,24,0.8) 0%, rgba(6,12,24,0.55) 45%, rgba(6,12,24,0.85) 100%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.07) 0%,transparent 60%); }
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px); background-size:60px 60px; }
     .hero-particles { position:absolute; inset:0; overflow:hidden; }
     .particle { position:absolute; width:2px; height:2px; background:var(--gold); border-radius:50%; opacity:0; animation:floatUp linear infinite; }
     @keyframes floatUp { 0%{transform:translateY(100vh) scale(0);opacity:0;} 10%{opacity:0.6;} 90%{opacity:0.3;} 100%{transform:translateY(-20px) scale(1);opacity:0;} }
-    .hero-content { position:relative; z-index:10; text-align:center; padding:120px 24px 80px; max-width:900px; }
+    .hero-content { position:relative; z-index:10; text-align:center; padding:120px 24px 130px; max-width:900px; }
     .hero-badge { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); padding:8px 20px; border-radius:100px; font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:36px; background:rgba(201,168,76,0.05); animation:fadeDown 1s ease 0.2s both; }
     .hero-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 2s ease infinite; }
     @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
@@ -94,7 +102,7 @@
     .hero-subtitle { font-size:1.1rem; color:var(--cream-muted); max-width:620px; margin:0 auto 44px; line-height:1.8; font-weight:300; animation:fadeDown 1s ease 0.6s both; }
     .hero-ctas { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeDown 1s ease 0.8s both; }
     @keyframes fadeDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
-    .hero-scroll { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation:fadeIn 1s ease 1.2s both; }
+    .hero-scroll { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation:fadeIn 1s ease 1.2s both; z-index:5; }
     @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
     .hero-scroll span { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--cream-muted); }
     .hero-scroll-line { width:1px; height:50px; background:linear-gradient(to bottom,var(--gold),transparent); animation:scrollLine 2s ease infinite; }
@@ -119,6 +127,15 @@
     .feature-card h3 { font-family:var(--ff-serif); font-size:1.35rem; font-weight:600; color:var(--white); margin-bottom:12px; }
     .feature-card p { color:var(--cream-muted); font-size:0.93rem; line-height:1.8; }
 
+    /* PHOTO STRIP */
+    .photo-strip { display:grid; grid-template-columns:repeat(3,1fr); height:320px; }
+    .photo-strip-item { position:relative; overflow:hidden; }
+    .photo-strip-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+    .photo-strip-item:hover img { transform:scale(1.05); }
+    .photo-strip-item::after { content:''; position:absolute; inset:0; background:rgba(6,12,24,0.35); transition:background 0.4s ease; }
+    .photo-strip-item:hover::after { background:rgba(6,12,24,0.15); }
+    .photo-strip-caption { position:absolute; bottom:20px; left:20px; z-index:2; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(237,232,223,0.8); }
+
     /* NAFTALAN */
     .naftalan { padding:120px 0; background:var(--bg-deep); overflow:hidden; position:relative; }
     .naftalan-wm { position:absolute; right:-80px; top:50%; transform:translateY(-50%) rotate(90deg); font-family:var(--ff-serif); font-size:8rem; font-weight:700; color:rgba(201,168,76,0.025); letter-spacing:20px; user-select:none; white-space:nowrap; }
@@ -129,13 +146,13 @@
     .trust-badge svg { color:var(--gold); flex-shrink:0; }
     .trust-badge span { font-size:0.9rem; font-weight:500; color:var(--cream); letter-spacing:0.5px; }
     .naftalan-visual { display:flex; align-items:center; justify-content:center; }
-    .naftalan-circle { width:360px; height:360px; border-radius:50%; background:radial-gradient(circle at 40% 40%,#1A3A5C,#0A1525); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; position:relative; }
-    .naftalan-circle::before { content:''; position:absolute; inset:-20px; border-radius:50%; border:1px solid rgba(201,168,76,0.12); animation:rotateSlow 20s linear infinite; }
-    .naftalan-circle::after { content:''; position:absolute; inset:-40px; border-radius:50%; border:1px dashed rgba(201,168,76,0.07); animation:rotateSlow 30s linear infinite reverse; }
-    @keyframes rotateSlow { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
-    .naftalan-inner { text-align:center; z-index:1; }
-    .naftalan-year { font-family:var(--ff-serif); font-size:5rem; font-weight:700; color:var(--gold); line-height:1; display:block; }
-    .naftalan-inner p { font-size:0.78rem; letter-spacing:3px; text-transform:uppercase; color:var(--cream-muted); margin-top:8px; }
+    .naftalan-photo-frame { position:relative; width:100%; max-width:460px; }
+    .naftalan-photo-frame::before { content:''; position:absolute; inset:-14px; border:1px solid rgba(201,168,76,0.35); z-index:0; pointer-events:none; }
+    .naftalan-photo-frame::after { content:''; position:absolute; inset:-28px; border:1px dashed rgba(201,168,76,0.12); z-index:0; pointer-events:none; }
+    .naftalan-photo { width:100%; height:480px; object-fit:cover; display:block; position:relative; z-index:1; }
+    .naftalan-photo-badge { position:absolute; bottom:28px; left:28px; right:28px; background:rgba(6,12,24,0.88); border:1px solid rgba(201,168,76,0.35); padding:22px 24px; z-index:2; text-align:center; backdrop-filter:blur(8px); }
+    .naftalan-year { font-family:var(--ff-serif); font-size:3.5rem; font-weight:700; color:var(--gold); line-height:1; display:block; }
+    .naftalan-photo-badge p { font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--cream-muted); margin-top:6px; }
 
     /* LEISTUNGEN */
     .leistungen { padding:120px 0; background:var(--bg-dark); }
@@ -313,7 +330,6 @@
     </div>
   </div>
   <div class="hero-scroll">
-    <span>Entdecken</span>
     <div class="hero-scroll-line"></div>
   </div>
 </section>
@@ -360,6 +376,22 @@
   </div>
 </section>
 
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1744704015980-9842c2314c43?auto=format&fit=crop&w=800&q=80" alt="Baku — Aserbaidschan" loading="lazy">
+    <span class="photo-strip-caption">Baku, Aserbaidschan</span>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1621856291734-ed7e47df4f9e?auto=format&fit=crop&w=800&q=80" alt="Natur — Aserbaidschan" loading="lazy">
+    <span class="photo-strip-caption">Natur & Landschaft</span>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1644413638617-02369c89c156?auto=format&fit=crop&w=800&q=80" alt="Thermal Spa" loading="lazy">
+    <span class="photo-strip-caption">Heiltherapie</span>
+  </div>
+</div>
+
 <!-- NAFTALAN -->
 <section class="naftalan" id="naftalan">
   <span class="naftalan-wm">NAFTALAN</span>
@@ -387,12 +419,13 @@
         </div>
       </div>
       <div class="naftalan-visual reveal reveal-delay-2">
-        <div class="naftalan-circle">
-          <div class="naftalan-inner">
+        <div class="naftalan-photo-frame">
+          <img src="https://images.unsplash.com/photo-1578738197377-cb5b05c87285?auto=format&fit=crop&w=800&q=80" alt="Heilende Therapie — Naftalan" class="naftalan-photo">
+          <div class="naftalan-photo-badge">
             <span class="naftalan-year">12.</span>
             <p>Jahrhundert</p>
-            <div class="gold-divider center" style="margin:14px auto;"></div>
-            <p style="font-size:0.7rem;letter-spacing:2px;">SEIT JAHRHUNDERTEN BEWÄHRT</p>
+            <div class="gold-divider center" style="margin:12px auto;"></div>
+            <p>Seit Jahrhunderten bewährt</p>
           </div>
         </div>
       </div>
@@ -580,17 +613,19 @@
         <div class="form-title">Kostenlose Erstberatung</div>
         <div class="form-subtitle">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</div>
         <form id="bookingForm">
+          <input type="hidden" name="_subject" value="Neue Buchungsanfrage — AzeCura Travel">
+          <input type="hidden" name="_language" value="de">
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Vorname</label><input type="text" class="form-input" placeholder="Ihr Vorname" required></div>
-            <div class="form-group"><label class="form-label">Nachname</label><input type="text" class="form-input" placeholder="Ihr Nachname" required></div>
+            <div class="form-group"><label class="form-label">Vorname</label><input type="text" name="vorname" class="form-input" placeholder="Ihr Vorname" required></div>
+            <div class="form-group"><label class="form-label">Nachname</label><input type="text" name="nachname" class="form-input" placeholder="Ihr Nachname" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">E-Mail</label><input type="email" class="form-input" placeholder="ihre@email.de" required></div>
-            <div class="form-group"><label class="form-label">Telefon</label><input type="tel" class="form-input" placeholder="+49 ..."></div>
+            <div class="form-group"><label class="form-label">E-Mail</label><input type="email" name="email" class="form-input" placeholder="ihre@email.de" required></div>
+            <div class="form-group"><label class="form-label">Telefon</label><input type="tel" name="telefon" class="form-input" placeholder="+49 ..."></div>
           </div>
           <div class="form-group">
             <label class="form-label">Gewünschtes Paket</label>
-            <select class="form-select">
+            <select name="paket" class="form-select">
               <option value="">Bitte wählen...</option>
               <option>Ersteinschätzung (Kostenlos)</option>
               <option>Heilende Öltherapie — € 1.990</option>
@@ -598,7 +633,13 @@
               <option>Komplextherapie — € 3.290</option>
             </select>
           </div>
-          <div class="form-group"><label class="form-label">Ihre Nachricht</label><textarea class="form-textarea" placeholder="Beschreiben Sie kurz Ihre gesundheitliche Situation..."></textarea></div>
+          <div class="form-group"><label class="form-label">Ihre Nachricht</label><textarea name="nachricht" class="form-textarea" placeholder="Beschreiben Sie kurz Ihre gesundheitliche Situation..."></textarea></div>
+          <div id="form-success" style="display:none;background:rgba(45,106,63,0.15);border:1px solid #2d6a3f;padding:16px 20px;margin-bottom:18px;font-size:0.9rem;color:#7ec89a;line-height:1.6;">
+            ✓ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns innerhalb von 24 Stunden.
+          </div>
+          <div id="form-error" style="display:none;background:rgba(180,50,50,0.12);border:1px solid rgba(180,50,50,0.4);padding:16px 20px;margin-bottom:18px;font-size:0.9rem;color:#e88;line-height:1.6;">
+            ✗ Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an arkhan.asgarli@gmail.com
+          </div>
           <button type="submit" class="form-submit">Anfrage senden</button>
         </form>
       </div>
@@ -645,9 +686,8 @@
     <div class="footer-bottom">
       <div class="footer-copy">© 2025 AzeCura Travel · Alle Rechte vorbehalten</div>
       <div class="footer-legal">
-        <a href="#">Datenschutz</a>
-        <a href="#">Impressum</a>
-        <a href="#">AGB</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/impressum.html">Impressum</a>
       </div>
     </div>
   </div>
@@ -693,18 +733,35 @@
   },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Form
-  document.getElementById('bookingForm').addEventListener('submit',function(e){
+  // Form — Formspree AJAX
+  document.getElementById('bookingForm').addEventListener('submit',async function(e){
     e.preventDefault();
     const btn=this.querySelector('.form-submit');
-    btn.textContent='Nachricht gesendet ✓';
-    btn.style.background='#2d6a3f';
-    btn.style.color='#fff';
-    setTimeout(()=>{
+    const successEl=document.getElementById('form-success');
+    const errorEl=document.getElementById('form-error');
+    successEl.style.display='none';
+    errorEl.style.display='none';
+    btn.textContent='Wird gesendet…';
+    btn.disabled=true;
+    const data=new FormData(this);
+    try {
+      const res=await fetch('https://formspree.io/f/xjglaqgz',{
+        method:'POST',
+        body:data,
+        headers:{Accept:'application/json'}
+      });
+      if(res.ok){
+        successEl.style.display='block';
+        this.reset();
+        btn.textContent='Anfrage senden';
+      } else {
+        throw new Error('server error');
+      }
+    } catch(err){
+      errorEl.style.display='block';
       btn.textContent='Anfrage senden';
-      btn.style.background='';btn.style.color='';
-      this.reset();
-    },4000);
+    }
+    btn.disabled=false;
   });
 </script>
 </body>
