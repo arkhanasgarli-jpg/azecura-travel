@@ -34,7 +34,7 @@
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg-deep); color: var(--cream); font-family: var(--ff-sans); font-weight:400; line-height:1.7; overflow-x:hidden; }
+    body { background: var(--bg-deep); color: var(--cream); font-family: var(--ff-sans); font-weight:400; line-height:1.7; overflow-x:hidden; overscroll-behavior:none; }
     a { text-decoration:none; color:inherit; }
     button { cursor:pointer; border:none; background:none; font-family:inherit; }
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
@@ -62,7 +62,7 @@
     .reveal-delay-4 { transition-delay:0.4s; }
 
     /* NAV */
-    .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 0; transition:var(--transition); }
+    .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 0; transition:var(--transition); will-change:transform; }
     .nav.scrolled { background:rgba(6,12,24,0.95); backdrop-filter:blur(20px); padding:14px 0; border-bottom:1px solid var(--border); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; }
     .nav-logo { display:flex; align-items:center; gap:10px; }
@@ -76,7 +76,7 @@
     .nav-cta { padding:10px 22px !important; border:1px solid var(--gold) !important; color:var(--gold) !important; border-radius:2px; }
     .nav-cta:hover { background:var(--gold) !important; color:var(--bg-deep) !important; }
     .nav-cta::after { display:none !important; }
-    .hamburger { display:none; flex-direction:column; gap:5px; padding:8px; background:rgba(6,12,24,0.45); border-radius:6px; backdrop-filter:blur(4px); }
+    .hamburger { display:none; flex-direction:column; gap:5px; padding:8px; background:rgba(6,12,24,0.55); border-radius:6px; }
     .hamburger span { display:block; width:24px; height:1.5px; background:var(--cream); transition:var(--transition); }
     .hamburger.active span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity:0; }
@@ -248,6 +248,7 @@
       .naftalan-circle{width:280px;height:280px;}
     }
     @media(max-width:768px){
+      .nav.scrolled{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(6,12,24,0.98);}
       .nav-links{display:none;}
       .hamburger{display:flex;}
       .feature-cards{grid-template-columns:1fr;gap:2px;}
@@ -272,7 +273,7 @@
     }
 
     /* WhatsApp Floating Button */
-    .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;will-change:transform;}
     .wa-bubble{background:white;border-radius:12px;padding:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);font-size:0.88rem;max-width:220px;color:#333;line-height:1.4;position:relative;display:none;animation:waBubbleFade 0.3s ease;}
     .wa-bubble strong{display:block;color:#1B4D3E;margin-bottom:3px;}
     .wa-bubble .close-bubble{position:absolute;top:6px;right:10px;cursor:pointer;color:#aaa;font-size:1rem;line-height:1;background:none;border:none;font-family:inherit;}
