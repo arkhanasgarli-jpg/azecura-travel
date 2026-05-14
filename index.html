@@ -76,7 +76,7 @@
     .nav-cta { padding:10px 22px !important; border:1px solid var(--gold) !important; color:var(--gold) !important; border-radius:2px; }
     .nav-cta:hover { background:var(--gold) !important; color:var(--bg-deep) !important; }
     .nav-cta::after { display:none !important; }
-    .hamburger { display:none; flex-direction:column; gap:5px; padding:4px; }
+    .hamburger { display:none; flex-direction:column; gap:5px; padding:8px; background:rgba(6,12,24,0.45); border-radius:6px; backdrop-filter:blur(4px); }
     .hamburger span { display:block; width:24px; height:1.5px; background:var(--cream); transition:var(--transition); }
     .hamburger.active span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity:0; }
@@ -87,7 +87,7 @@
     .mobile-menu a:hover { color:var(--gold); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center top; }
+    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center top; }
     .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,12,24,0.8) 0%, rgba(6,12,24,0.55) 45%, rgba(6,12,24,0.85) 100%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.07) 0%,transparent 60%); }
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px); background-size:60px 60px; }
     .hero-particles { position:absolute; inset:0; overflow:hidden; }
@@ -279,7 +279,7 @@
     .wa-btn{width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(37,211,102,0.4);cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
     .wa-btn:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(37,211,102,0.5);}
     .wa-btn svg{width:32px;height:32px;fill:white;}
-    .wa-pulse{position:absolute;width:60px;height:60px;background:rgba(37,211,102,0.3);border-radius:50%;animation:waPulse 2s infinite;}
+    .wa-pulse{position:absolute;width:60px;height:60px;background:rgba(37,211,102,0.3);border-radius:50%;animation:waPulse 2s infinite;pointer-events:none;}
     @keyframes waPulse{0%{transform:scale(1);opacity:0.7;}70%{transform:scale(1.5);opacity:0;}100%{transform:scale(1.5);opacity:0;}}
     @keyframes waBubbleFade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
   </style>
@@ -741,6 +741,13 @@
     mob.classList.remove('open');
     document.body.style.overflow='';
   }));
+  document.addEventListener('click',(e)=>{
+    if(mob.classList.contains('open')&&!mob.contains(e.target)&&!ham.contains(e.target)){
+      ham.classList.remove('active');
+      mob.classList.remove('open');
+      document.body.style.overflow='';
+    }
+  });
 
   // Reveal
   const obs=new IntersectionObserver(entries=>{
