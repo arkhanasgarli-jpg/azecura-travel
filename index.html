@@ -87,12 +87,13 @@
     .mobile-menu a:hover { color:var(--gold); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('images/hotel/photo_2026-05-17_18-29-51.jpg'); background-size:cover; background-position:center; }
-    @keyframes kbSlide { 0%{transform:scale(1);opacity:0;} 4%{opacity:1;} 33%{opacity:1;} 37%{opacity:0;} 100%{transform:scale(1.06) translate(-1%,-0.5%);opacity:0;} }
-    .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; animation:kbSlide 24s ease-in-out infinite; opacity:0; will-change:transform,opacity; -webkit-backface-visibility:hidden; }
-    .hero-slide:nth-child(1) { background-image:url('images/hotel/photo_2026-05-17_18-29-51.jpg'); animation-delay:0s; }
-    .hero-slide:nth-child(2) { background-image:url('images/hotel/photo_2026-05-17_18-29-47.jpg'); animation-delay:8s; }
-    .hero-slide:nth-child(3) { background-image:url('images/hotel/photo_2026-05-17_18-29-44.jpg'); animation-delay:16s; }
+    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:120%; background-position:center top; animation:heroZoom 25s ease-out forwards; }
+    @keyframes heroZoom { 0%{background-size:120%;} 100%{background-size:108%;} }
+    .hero-shimmer { position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(105deg, transparent 30%, rgba(201,168,76,0.08) 50%, transparent 70%); animation:heroSweep 10s ease-in-out infinite; }
+    @keyframes heroSweep { 0%,100%{transform:translateX(-150%);} 50%{transform:translateX(150%);} }
+    .hero-vline { position:absolute; right:80px; top:15%; width:1px; height:0; background:linear-gradient(to bottom, var(--gold), transparent); animation:heroVLine 2.5s ease 1.5s forwards; z-index:2; pointer-events:none; }
+    @keyframes heroVLine { to{height:55%;} }
+    @media(max-width:768px){ .hero-vline{display:none;} }
     .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,12,24,0.8) 0%, rgba(6,12,24,0.55) 45%, rgba(6,12,24,0.85) 100%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.07) 0%,transparent 60%); }
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px); background-size:60px 60px; }
     .hero-particles { position:absolute; inset:0; overflow:hidden; }
@@ -134,7 +135,7 @@
 
     /* PHOTO STRIP */
     .photo-strip { display:grid; grid-template-columns:repeat(3,1fr); height:320px; overflow:hidden; }
-    .photo-strip-item { position:relative; overflow:hidden; cursor:pointer; }
+    .photo-strip-item { position:relative; overflow:hidden; cursor:pointer; transition:opacity 0.5s ease; }
     .strip-cta { text-align:center; padding:20px 0; background:var(--bg-dark); }
     .btn-strip-gallery { background:transparent; border:1px solid rgba(201,168,76,0.5); color:var(--gold); padding:10px 30px; font-family:var(--ff-sans); font-size:0.8rem; letter-spacing:2.5px; text-transform:uppercase; cursor:pointer; transition:all 0.25s; }
     .btn-strip-gallery:hover { background:rgba(201,168,76,0.1); border-color:var(--gold); }
@@ -349,6 +350,7 @@
         <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#erfahrungen">Erfahrungen</a></li>
+        <li><a href="#" id="navGalerie">Galerie</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#kontakt" class="nav-cta">Jetzt buchen</a></li>
@@ -365,6 +367,7 @@
   <a href="#ueber-uns" class="mob-link">Über uns</a>
   <a href="#leistungen" class="mob-link">Leistungen</a>
   <a href="#erfahrungen" class="mob-link">Erfahrungen</a>
+  <a href="#" id="navGalerieMob" class="mob-link">Galerie</a>
   <a href="#kontakt" class="mob-link">Kontakt</a>
   <a href="blog.html" class="mob-link">Blog</a>
   <a href="#kontakt" class="btn btn-gold">Jetzt buchen</a>
@@ -372,9 +375,8 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
+  <div class="hero-shimmer"></div>
+  <div class="hero-vline"></div>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-particles" id="particles"></div>
@@ -487,7 +489,7 @@
       </div>
       <div class="naftalan-visual reveal reveal-delay-2">
         <div class="naftalan-photo-frame">
-          <img src="https://images.unsplash.com/photo-1578738197377-cb5b05c87285?auto=format&fit=crop&w=800&q=80" alt="Heilende Therapie — Naftalan" class="naftalan-photo">
+          <img src="images/hotel 2/6.-Naftalan.jpg" alt="Naftalan Heilbad — Aserbaidschan" class="naftalan-photo">
           <div class="naftalan-photo-badge">
             <span class="naftalan-year">12.</span>
             <p>Jahrhundert</p>
@@ -889,6 +891,8 @@
     function prev(){cur=(cur-1+photos.length)%photos.length;lbImg.src=photos[cur];lbImg.alt=alts[cur];}
     document.querySelectorAll('.photo-strip-item').forEach(el=>el.addEventListener('click',()=>open(parseInt(el.dataset.idx))));
     const btnAll=document.getElementById('btnAllPhotos');if(btnAll)btnAll.addEventListener('click',()=>open(0));
+    const navG=document.getElementById('navGalerie');if(navG)navG.addEventListener('click',e=>{e.preventDefault();open(0);});
+    const navGM=document.getElementById('navGalerieMob');if(navGM)navGM.addEventListener('click',e=>{e.preventDefault();open(0);});
     document.getElementById('lb-close').addEventListener('click',close);
     document.getElementById('lb-prev').addEventListener('click',e=>{e.stopPropagation();prev();});
     document.getElementById('lb-next').addEventListener('click',e=>{e.stopPropagation();next();});
@@ -897,6 +901,31 @@
     let tx=0;
     lb.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;},{passive:true});
     lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?next():prev();}});
+  })();
+
+  // Photo Strip Rotation
+  (function(){
+    const sets=[
+      {photos:['images/hotel/photo_2026-05-17_18-29-51.jpg','images/hotel/photo_2026-05-17_18-29-47.jpg','images/hotel/photo_2026-05-17_18-29-44.jpg'],captions:['Doppelzimmer · Balkon','Suite · Wohnzimmer','Marmor-Bad'],alts:['Hotel Kəpəz — Doppelzimmer','Hotel Kəpəz — Suite','Hotel Kəpəz — Marmor-Bad']},
+      {photos:['images/hotel 2/2.-Naftalan.jpg','images/hotel 2/3.-Naftalan.jpg','images/hotel 2/4.-Naftalan.jpg'],captions:['Naftalan-Vollbad','Heilöl-Becken','Balneo-Therapie'],alts:['Naftalan Heilbad','Naftalan Ölbad','Naftalan Therapie']},
+      {photos:['images/hotel 2/Phonopharesis.jpg','images/hotel 2/Paraffin Therapy.jpg','images/hotel 2/lymphatic-drainage-treatment.jpg'],captions:['Phonophorese · Ultraschall','Paraffin · Wärmetherapie','Lymphdrainage'],alts:['Phonophorese Behandlung','Paraffin Therapie','Lymphdrainage']},
+      {photos:['images/hotel 2/Darsonval Therapy.jpg','images/hotel 2/5.-Naftalan.jpg','images/hotel 2/6.-Naftalan.jpg'],captions:['Darsonval · Hochfrequenz','Naftalan-Kur','Naftalan · 12. Jh.'],alts:['Darsonval Therapie','Naftalan Heilquelle','Naftalan Bäder']}
+    ];
+    let cur=0;
+    function rotate(){
+      cur=(cur+1)%sets.length;
+      const s=sets[cur];
+      document.querySelectorAll('.photo-strip-item').forEach(function(el,i){
+        el.style.opacity='0';
+        setTimeout(function(){
+          el.querySelector('img').src=s.photos[i];
+          el.querySelector('img').alt=s.alts[i];
+          el.querySelector('.photo-strip-caption').textContent=s.captions[i];
+          el.style.opacity='1';
+        },400);
+      });
+    }
+    setInterval(rotate,5500);
   })();
 
   // Video-Modal
