@@ -62,7 +62,7 @@
     .reveal-delay-4 { transition-delay:0.4s; }
 
     /* NAV */
-    .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 0; transition:var(--transition); will-change:transform; }
+    .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 0; transition:var(--transition); will-change:transform; -webkit-backface-visibility:hidden; backface-visibility:hidden; }
     .nav.scrolled { background:rgba(6,12,24,0.95); backdrop-filter:blur(20px); padding:14px 0; border-bottom:1px solid var(--border); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; }
     .nav-logo { display:flex; align-items:center; gap:10px; }
@@ -81,8 +81,8 @@
     .hamburger.active span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity:0; }
     .hamburger.active span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-    .mobile-menu { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--bg-deep); z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px; opacity:0; pointer-events:none; transition:opacity 0.4s ease; }
-    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--bg-deep); z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px; visibility:hidden; opacity:0; pointer-events:none; transition:opacity 0.4s ease, visibility 0s 0.4s; }
+    .mobile-menu.open { visibility:visible; opacity:1; pointer-events:all; transition:opacity 0.4s ease, visibility 0s 0s; }
     .mobile-menu a { font-family:var(--ff-serif); font-size:2rem; font-weight:500; color:var(--cream); transition:color 0.2s; }
     .mobile-menu a:hover { color:var(--gold); }
 
@@ -273,7 +273,7 @@
     }
 
     /* WhatsApp Floating Button */
-    .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;will-change:transform;}
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
     .wa-bubble{background:white;border-radius:12px;padding:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);font-size:0.88rem;max-width:220px;color:#333;line-height:1.4;position:relative;display:none;animation:waBubbleFade 0.3s ease;}
     .wa-bubble strong{display:block;color:#1B4D3E;margin-bottom:3px;}
     .wa-bubble .close-bubble{position:absolute;top:6px;right:10px;cursor:pointer;color:#aaa;font-size:1rem;line-height:1;background:none;border:none;font-family:inherit;}
@@ -727,26 +727,38 @@
 
   // Nav scroll
   const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>60);ticking=false;});ticking=true;}
+  },{passive:true});
 
-  // Mobile menu
+  // Mobile menu — iOS-safe body lock (overflow:hidden resets scroll on iOS)
   const ham=document.getElementById('hamburger');
   const mob=document.getElementById('mobileMenu');
+  function lockBody(){
+    const sy=window.scrollY;
+    document.body.style.cssText='position:fixed;width:100%;top:-'+sy+'px;overflow-y:scroll;';
+  }
+  function unlockBody(){
+    const top=Math.abs(parseInt(document.body.style.top||'0'));
+    document.body.style.cssText='';
+    window.scrollTo({top,behavior:'instant'});
+  }
   ham.addEventListener('click',()=>{
     ham.classList.toggle('active');
     mob.classList.toggle('open');
-    document.body.style.overflow=mob.classList.contains('open')?'hidden':'';
+    mob.classList.contains('open')?lockBody():unlockBody();
   });
   document.querySelectorAll('.mob-link,.mobile-menu .btn').forEach(l=>l.addEventListener('click',()=>{
     ham.classList.remove('active');
     mob.classList.remove('open');
-    document.body.style.overflow='';
+    unlockBody();
   }));
   document.addEventListener('click',(e)=>{
     if(mob.classList.contains('open')&&!mob.contains(e.target)&&!ham.contains(e.target)){
       ham.classList.remove('active');
       mob.classList.remove('open');
-      document.body.style.overflow='';
+      unlockBody();
     }
   });
 
