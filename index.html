@@ -87,8 +87,8 @@
     .mobile-menu a:hover { color:var(--gold); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:120%; background-position:center top; animation:heroZoom 25s ease-out forwards; }
-    @keyframes heroZoom { 0%{background-size:120%;} 100%{background-size:108%;} }
+    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:110%; background-position:center 70%; animation:heroZoom 25s ease-out forwards; }
+    @keyframes heroZoom { 0%{background-size:110%;background-position:center 70%;} 100%{background-size:100%;background-position:center 65%;} }
     .hero-shimmer { position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(105deg, transparent 30%, rgba(201,168,76,0.08) 50%, transparent 70%); animation:heroSweep 10s ease-in-out infinite; }
     @keyframes heroSweep { 0%,100%{transform:translateX(-150%);} 50%{transform:translateX(150%);} }
     .hero-vline { position:absolute; right:80px; top:15%; width:1px; height:0; background:linear-gradient(to bottom, var(--gold), transparent); animation:heroVLine 2.5s ease 1.5s forwards; z-index:2; pointer-events:none; }
