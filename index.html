@@ -89,12 +89,11 @@
     /* HERO */
     .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#060C18; }
     @keyframes heroSlide { 0%{opacity:0;transform:scale(1.03);} 4%{opacity:1;transform:scale(1.03);} 16%{opacity:1;transform:scale(1.0);} 20%{opacity:0;transform:scale(1.0);} 100%{opacity:0;} }
-    .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; animation:heroSlide 25s ease-in-out infinite; opacity:0; will-change:opacity,transform; -webkit-backface-visibility:hidden; }
+    .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; animation:heroSlide 20s ease-in-out infinite; opacity:0; will-change:opacity,transform; -webkit-backface-visibility:hidden; }
     .hero-slide:nth-child(1) { background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-position:center 70%; animation-delay:0s; }
     .hero-slide:nth-child(2) { background-image:url('images/aserbaidschan/4.-Gobustan-mud-volcano-near-Baku-Azerbaijan.jpg'); background-position:center 20%; animation-delay:5s; }
     .hero-slide:nth-child(3) { background-image:url('images/aserbaidschan/hero@2x.jpg'); animation-delay:10s; }
     .hero-slide:nth-child(4) { background-image:url('images/aserbaidschan/rtikbtppv3e1v0pnug2f.webp'); animation-delay:15s; }
-    .hero-slide:nth-child(5) { background-image:url('https://images.unsplash.com/photo-1743703647976-2fb7929f0f6f?auto=format&fit=crop&w=1920&q=80'); animation-delay:20s; }
     .hero-shimmer { position:absolute; inset:0; z-index:3; pointer-events:none; background:linear-gradient(105deg, transparent 30%, rgba(201,168,76,0.07) 50%, transparent 70%); animation:heroSweep 10s ease-in-out infinite; }
     @keyframes heroSweep { 0%,100%{transform:translateX(-150%);} 50%{transform:translateX(150%);} }
     .hero-vline { position:absolute; right:80px; top:15%; width:1px; height:0; background:linear-gradient(to bottom, var(--gold), transparent); animation:heroVLine 2.5s ease 1.5s forwards; z-index:3; pointer-events:none; }
@@ -381,7 +380,6 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-slide"></div>
   <div class="hero-slide"></div>
   <div class="hero-slide"></div>
   <div class="hero-slide"></div>
