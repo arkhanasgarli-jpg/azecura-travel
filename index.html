@@ -34,7 +34,7 @@
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg-deep); color: var(--cream); font-family: var(--ff-sans); font-weight:400; line-height:1.7; overflow-x:hidden; overscroll-behavior:none; }
+    body { background: var(--bg-deep); color: var(--cream); font-family: var(--ff-sans); font-weight:400; line-height:1.7; overflow-x:clip; overscroll-behavior:none; }
     a { text-decoration:none; color:inherit; }
     button { cursor:pointer; border:none; background:none; font-family:inherit; }
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
@@ -732,17 +732,17 @@
     if(!ticking){requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>60);ticking=false;});ticking=true;}
   },{passive:true});
 
-  // Mobile menu — iOS-safe body lock (overflow:hidden resets scroll on iOS)
+  // Mobile menu — platform-aware body lock
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   const ham=document.getElementById('hamburger');
   const mob=document.getElementById('mobileMenu');
   function lockBody(){
-    const sy=window.scrollY;
-    document.body.style.cssText='position:fixed;width:100%;top:-'+sy+'px;overflow-y:scroll;';
+    if(isIOS){const sy=window.scrollY;document.body.style.cssText='position:fixed;width:100%;top:-'+sy+'px;overflow-y:scroll;';}
+    else{document.body.style.overflow='hidden';}
   }
   function unlockBody(){
-    const top=Math.abs(parseInt(document.body.style.top||'0'));
-    document.body.style.cssText='';
-    window.scrollTo({top,behavior:'instant'});
+    if(isIOS){const top=Math.abs(parseInt(document.body.style.top||'0'));document.body.style.cssText='';window.scrollTo(0,top);}
+    else{document.body.style.overflow='';}
   }
   ham.addEventListener('click',()=>{
     ham.classList.toggle('active');
