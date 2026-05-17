@@ -205,6 +205,21 @@
     .pkg-modal-actions { display:flex; gap:12px; margin-top:28px; }
     .pkg-modal-actions .btn { flex:1; text-align:center; justify-content:center; }
     @media(max-width:600px){ .pkg-modal{padding:40px 20px 28px;} .pkg-modal-actions{flex-direction:column;} .pkg-modal-ttl{font-size:1.5rem;} }
+    /* BEHANDLUNGSSPEKTRUM */
+    .behandlungen { padding:100px 0; background:var(--bg-dark); }
+    .behandlungen-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:56px; }
+    .behand-card { background:var(--bg-surface); padding:40px 32px 36px; position:relative; overflow:hidden; transition:var(--transition); cursor:pointer; display:flex; flex-direction:column; }
+    .behand-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transition:transform var(--transition); }
+    .behand-card:hover::before { transform:scaleX(1); }
+    .behand-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(201,168,76,0.08); }
+    .behand-icon { width:40px; height:40px; color:var(--gold); margin-bottom:20px; flex-shrink:0; }
+    .behand-title { font-family:var(--ff-serif); font-size:1.15rem; font-weight:600; color:var(--white); margin-bottom:6px; }
+    .behand-sub { font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    .behand-desc { color:var(--cream-muted); font-size:0.87rem; line-height:1.8; flex:1; margin-bottom:24px; }
+    .behand-more { font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:inline-flex; align-items:center; gap:8px; transition:gap 0.2s; }
+    .behand-card:hover .behand-more { gap:12px; }
+    @media(max-width:900px){ .behandlungen-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:560px){ .behandlungen-grid{grid-template-columns:1fr;} }
 
     /* ABLAUF */
     .ablauf { padding:120px 0; background:var(--bg-deep); }
@@ -603,6 +618,80 @@
   </div>
 </section>
 
+<!-- BEHANDLUNGSSPEKTRUM -->
+<section class="behandlungen section-sep" id="behandlungen">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Hotel Kəpəz · Naftalan</span>
+      <h2 class="section-title">Unser <em>Behandlungsspektrum</em></h2>
+      <p class="section-desc">Vor jeder Kur steht eine ärztliche Untersuchung — erst dann wird Ihr persönliches Programm aus dem folgenden Spektrum zusammengestellt.</p>
+    </div>
+    <div class="behandlungen-grid">
+
+      <div class="behand-card reveal reveal-delay-1" data-modal="ther1">
+        <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C9 6 6 9 6 13a6 6 0 0012 0c0-4-3-7-6-11z"/><path d="M9 17c0 1.5 1.3 2.5 3 2.5s3-1 3-2.5"/>
+        </svg>
+        <div class="behand-title">Naftalan-Therapie</div>
+        <div class="behand-sub">Das Herzstück der Kur</div>
+        <div class="behand-desc">Das einzigartige Naftalan-Öl existiert in therapeutischer Reinheit weltweit nur hier in Aserbaidschan — und wirkt wie kein anderes Naturheilmittel der Balneologie.</div>
+        <span class="behand-more">Mehr erfahren →</span>
+      </div>
+
+      <div class="behand-card reveal reveal-delay-2" data-modal="ther2">
+        <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        <div class="behand-title">Elektrotherapie</div>
+        <div class="behand-sub">Gezielte Impulse auf Zellebene</div>
+        <div class="behand-desc">Von Amplipuls bis Darsonvalisation: Elektrische Ströme, präzise dosiert, aktivieren Nerven, Muskulatur und Durchblutung — ohne Eingriff, ohne Schmerzen.</div>
+        <span class="behand-more">Mehr erfahren →</span>
+      </div>
+
+      <div class="behand-card reveal reveal-delay-3" data-modal="ther3">
+        <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        <div class="behand-title">Magnettherapie &amp; Laser</div>
+        <div class="behand-sub">Sanfte Energie — tiefe Wirkung</div>
+        <div class="behand-desc">Gepulste Magnetfelder und Laserimpulse dringen tief ins Gewebe — sie reduzieren Entzündungen, beschleunigen Regeneration und brauchen dafür keinen einzigen Hautschnitt.</div>
+        <span class="behand-more">Mehr erfahren →</span>
+      </div>
+
+      <div class="behand-card reveal reveal-delay-1" data-modal="ther4">
+        <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <div class="behand-title">Wärme- &amp; Schlammtherapie</div>
+        <div class="behand-sub">Bewährt seit Jahrhunderten</div>
+        <div class="behand-desc">Paraffin, Heilschlamm (Palçıq) und Lichttherapie geben Wärme langsam und gleichmäßig ab — bis tief in Gelenke und Muskeln, wo sie am meisten gebraucht wird.</div>
+        <span class="behand-more">Mehr erfahren →</span>
+      </div>
+
+      <div class="behand-card reveal reveal-delay-2" data-modal="ther5">
+        <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+        </svg>
+        <div class="behand-title">Massage &amp; Bewegungstherapie</div>
+        <div class="behand-sub">Mobilität zurückgewinnen</div>
+        <div class="behand-desc">Professionelle Massagetechniken lösen, was verkrampft ist. Gezielte Bewegungsübungen reaktivieren, was eingeschränkt war — nachhaltig, nicht nur kurzfristig.</div>
+        <span class="behand-more">Mehr erfahren →</span>
+      </div>
+
+      <div class="behand-card reveal reveal-delay-3" data-modal="ther6">
+        <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/>
+        </svg>
+        <div class="behand-title">Ergänzende Verfahren</div>
+        <div class="behand-sub">Das ganzheitliche Bild</div>
+        <div class="behand-desc">Inhalationen, Ultraschall, Jod-Brom-Bäder und Sauerstoff-Cocktails — ergänzende Therapien, die das Kurprogramm zu einem ganzheitlichen Erlebnis machen.</div>
+        <span class="behand-more">Mehr erfahren →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ABLAUF -->
 <section class="ablauf" id="ablauf">
   <div class="container">
@@ -845,6 +934,167 @@
     </div>
   </div>
 </footer>
+
+<!-- THERAPY MODALS -->
+<div class="pkg-overlay" id="ther1">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Das Alleinstellungsmerkmal</div>
+    <div class="pkg-modal-ttl">Naftalan-Therapie</div>
+    <div class="pkg-modal-dur">Täglich · 8–10 Minuten pro Anwendung</div>
+    <div class="pkg-modal-desc">Naftalan-Öl ist in seiner therapeutischen Form weltweit nur in Aserbaidschan verfügbar. Seine einzigartige Zusammensetzung aus polyzyklischen Naphthensäuren macht es zu einem der wirksamsten natürlichen Entzündungshemmer der modernen Balneologie.</div>
+    <div class="pkg-modal-sh">Anwendungsformen</div>
+    <ul class="pkg-modal-ul">
+      <li><strong style="color:var(--white)">Naftalan-Vollbad</strong> — Der Klassiker: 8–10 Minuten im Ölbad, täglich. Wärme und Wirkstoffe durchdringen die Haut und wirken systemisch.</li>
+      <li><strong style="color:var(--white)">Sitzbad</strong> — Gezielte Anwendung bei Becken-, Hüft- und Unterbauchbeschwerden.</li>
+      <li><strong style="color:var(--white)">Kammerbad</strong> — Isolierte Behandlung einzelner Gliedmaßen (Arm oder Bein) für lokale Beschwerden.</li>
+      <li><strong style="color:var(--white)">Lokale Einreibungen</strong> — Direkte Anwendung auf einzelne Gelenke oder Hautareale.</li>
+    </ul>
+    <div class="pkg-modal-sh">Wirkungsbereiche</div>
+    <ul class="pkg-modal-ul">
+      <li>Arthritis, Arthrose, entzündliche Gelenkerkrankungen</li>
+      <li>Psoriasis, Neurodermitis und chronische Hauterkrankungen</li>
+      <li>Neuralgien und Neuritiden</li>
+      <li>Durchblutungsförderung und Immunstimulation</li>
+    </ul>
+    <div class="pkg-modal-note">Die Anwendung erfordert eine ärztliche Voruntersuchung. Nicht für jeden Patienten geeignet — Kontraindikationen werden vor Ort geprüft.</div>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="ther2">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Gezielte Impulse auf Zellebene</div>
+    <div class="pkg-modal-ttl">Elektrotherapie</div>
+    <div class="pkg-modal-dur">Schmerzfrei · Ohne Eingriff · Präzise dosiert</div>
+    <div class="pkg-modal-desc">Elektrische Ströme, richtig angewendet, können tief in Nerven, Muskeln und Gewebe einwirken — ohne Medikamente, ohne Eingriff. Im Hotel Kəpəz stehen mehrere Verfahren zur Verfügung, die je nach Diagnose kombiniert werden.</div>
+    <div class="pkg-modal-sh">Verfügbare Verfahren</div>
+    <ul class="pkg-modal-ul">
+      <li><strong style="color:var(--white)">Amplipuls</strong> — Sinusoid-modulierte Ströme lindern Schmerzen und aktivieren geschwächte Muskulatur.</li>
+      <li><strong style="color:var(--white)">Darsonvalisation</strong> — Hochfrequenzströme fördern die Durchblutung, stärken die Haut und lindern lokale Neuralgien.</li>
+      <li><strong style="color:var(--white)">Elektrophorese</strong> — Wirkstoffe werden mithilfe elektrischer Felder gezielt durch die Haut ins Gewebe eingebracht.</li>
+      <li><strong style="color:var(--white)">Kurzwellentherapie</strong> — Tiefenwärme für Gelenke und Muskulatur durch hochfrequente elektromagnetische Felder.</li>
+      <li><strong style="color:var(--white)">Lasertherapie</strong> — Low-Level-Laser fördert Geweberegeneration und Wundheilung auf Zellebene.</li>
+    </ul>
+    <div class="pkg-modal-sh">Typische Indikationen</div>
+    <ul class="pkg-modal-ul">
+      <li>Chronische Schmerzen des Bewegungsapparats</li>
+      <li>Muskelschwäche und Rehabilitationsphasen</li>
+      <li>Nervenentzündungen und funktionelle Beschwerden</li>
+    </ul>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="ther3">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Sanfte Energie — Tiefe Wirkung</div>
+    <div class="pkg-modal-ttl">Magnettherapie &amp; Lasertherapie</div>
+    <div class="pkg-modal-dur">Berührungslos · Keine Nebenwirkungen · Schmerzfrei</div>
+    <div class="pkg-modal-desc">Zwei Verfahren, die ohne direkten Kontakt wirken: Magnetfelder und Laserimpulse dringen ins Gewebe, ohne es zu belasten. Ideal bei empfindlichen Patienten und chronischen Entzündungsprozessen.</div>
+    <div class="pkg-modal-sh">Magnettherapie</div>
+    <ul class="pkg-modal-ul">
+      <li>Gepulste Magnetfelder aktivieren elektrochemische Prozesse auf Zellebene</li>
+      <li>Reduktion von Entzündungsmarkern ohne medikamentöse Eingriffe</li>
+      <li>Fördert Knorpel- und Knochenstoffwechsel bei degenerativen Erkrankungen</li>
+      <li>Beruhigt überaktive Nervenbahnen bei Neuralgien</li>
+    </ul>
+    <div class="pkg-modal-sh">Lasertherapie (Low-Level)</div>
+    <ul class="pkg-modal-ul">
+      <li>Gezielte Lichtimpulse stimulieren die Mitochondrien-Aktivität in Zellen</li>
+      <li>Beschleunigt Gewebeheilung bei Sehnen-, Gelenk- und Hautbeschwerden</li>
+      <li>Schmerzdämpfend durch Beeinflussung lokaler Nervenfasern</li>
+    </ul>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="ther4">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Bewährt seit Jahrhunderten</div>
+    <div class="pkg-modal-ttl">Wärme- &amp; Schlammtherapie</div>
+    <div class="pkg-modal-dur">Paraffin · Palçıq-Schlamm · Lichttherapie</div>
+    <div class="pkg-modal-desc">Wärme ist eine der ältesten Formen der Heilmedizin — und eine der wirksamsten. Im Hotel Kəpəz wird sie auf mehrere Arten eingesetzt, je nach Beschwerdebild und individueller Verträglichkeit.</div>
+    <div class="pkg-modal-sh">Anwendungsformen</div>
+    <ul class="pkg-modal-ul">
+      <li><strong style="color:var(--white)">Paraffintherapie</strong> — Warmes Paraffin umhüllt Hände, Füße oder Gelenke und gibt Wärme langsam und gleichmäßig ab. Lockert Gelenkkapseln, lindert Steifigkeit.</li>
+      <li><strong style="color:var(--white)">Schlammbäder (Palçıq)</strong> — Mineralreicher Heilschlamm wirkt entzündungshemmend, stimuliert Durchblutung und wärmt tief in die Muskulatur.</li>
+      <li><strong style="color:var(--white)">Sollux-Lichttherapie</strong> — Infrarotlicht für gezielte Tiefenwärme an lokalisierten Beschwerderegionen.</li>
+      <li><strong style="color:var(--white)">Lichtbäder</strong> — Ganzheitliche Wärmebehandlung zur Stoffwechselaktivierung und Entspannung.</li>
+    </ul>
+    <div class="pkg-modal-sh">Wirkungsbereiche</div>
+    <ul class="pkg-modal-ul">
+      <li>Chronische Gelenksteifigkeit und Arthrose</li>
+      <li>Muskelverspannungen und Rückenbeschwerden</li>
+      <li>Durchblutungsstörungen der Extremitäten</li>
+    </ul>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="ther5">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Mobilität zurückgewinnen</div>
+    <div class="pkg-modal-ttl">Massage &amp; Bewegungstherapie</div>
+    <div class="pkg-modal-dur">Klassisch · Therapeutisch · Nachhaltig</div>
+    <div class="pkg-modal-desc">Was Kälte und Inaktivität eingefroren haben, lösen erfahrene Hände und gezielte Bewegung wieder auf. Die manuelle Therapie im Hotel Kəpəz arbeitet nicht gegen Symptome — sie adressiert die Ursachen eingeschränkter Mobilität.</div>
+    <div class="pkg-modal-sh">Angebotene Verfahren</div>
+    <ul class="pkg-modal-ul">
+      <li><strong style="color:var(--white)">Klassische Massage</strong> — Manuelle Techniken zur Muskelentspannung, Durchblutungsförderung und Schmerzlinderung. Angepasst an Beschwerdebild und Empfindlichkeit.</li>
+      <li><strong style="color:var(--white)">Physiotherapie</strong> — Gezielte therapeutische Übungen zur Kräftigung, Dehnung und Stabilisierung betroffener Muskel- und Gelenksysteme.</li>
+      <li><strong style="color:var(--white)">Bewegungstherapie</strong> — Strukturierte Bewegungsprogramme, die auf die Wiederherstellung alltäglicher Mobilität ausgerichtet sind — nicht auf kurzfristige Erleichterung.</li>
+    </ul>
+    <div class="pkg-modal-sh">Wirkungsbereiche</div>
+    <ul class="pkg-modal-ul">
+      <li>Rücken- und Gelenkbeschwerden aller Schweregrade</li>
+      <li>Post-operative Rehabilitation und Wiederherstellung</li>
+      <li>Muskelschwäche und Haltungsschäden</li>
+    </ul>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="ther6">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Das ganzheitliche Bild</div>
+    <div class="pkg-modal-ttl">Ergänzende Verfahren</div>
+    <div class="pkg-modal-dur">Inhalation · Ultraschall · Jod-Brom · Sauerstoff</div>
+    <div class="pkg-modal-desc">Ein vollständiges Kurprogramm schaut über das einzelne Symptom hinaus. Diese Verfahren ergänzen die Haupttherapien und adressieren Körpersysteme, die häufig übersehen werden — von den Atemwegen bis zum Nervensystem.</div>
+    <div class="pkg-modal-sh">Ergänzende Therapien</div>
+    <ul class="pkg-modal-ul">
+      <li><strong style="color:var(--white)">Inhalationen</strong> — Befeuchtete Wirkstoffe erreichen tief in Atemwege und Schleimhäute — besonders wertvoll bei Begleitbeschwerden der oberen Atemwege.</li>
+      <li><strong style="color:var(--white)">Ultraschalltherapie</strong> — Mechanische Mikromassage auf Zellebene. Fördert Stoffwechsel, löst Verklebungen und wirkt tief in Weichteile und Gelenke.</li>
+      <li><strong style="color:var(--white)">Jod-Brom-Bäder</strong> — Mineralreiche Wannenbäder mit beruhigender Wirkung auf Nervensystem, Haut und Kreislauf.</li>
+      <li><strong style="color:var(--white)">Sauerstoff-Cocktails</strong> — Angereicherte Getränke zur Zellversorgung und Unterstützung des Regenerationsprozesses von innen.</li>
+      <li><strong style="color:var(--white)">Ozontherapie &amp; Akupunktur</strong> — Je nach Diagnose und ärztlicher Empfehlung als gezielte Ergänzung einsetzbar.</li>
+    </ul>
+    <div class="pkg-modal-note">Die Auswahl der ergänzenden Verfahren erfolgt individuell nach ärztlicher Untersuchung und richtet sich nach Ihrem persönlichen Beschwerdebild.</div>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
 
 <!-- PACKAGE MODALS -->
 <div class="pkg-overlay" id="pkg1">
@@ -1106,7 +1356,7 @@
   (function(){
     function openPkg(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
     function closePkg(ov){ov.classList.remove('open');document.body.style.overflow='';}
-    document.querySelectorAll('.pricing-card').forEach(card=>{
+    document.querySelectorAll('[data-modal]').forEach(card=>{
       card.addEventListener('click',function(e){
         if(e.target.closest('.btn'))return;
         openPkg(card.dataset.modal);
