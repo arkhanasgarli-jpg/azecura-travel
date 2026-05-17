@@ -171,7 +171,7 @@
     /* LEISTUNGEN */
     .leistungen { padding:120px 0; background:var(--bg-dark); }
     .pricing-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:56px; }
-    .pricing-card { background:var(--bg-surface); border:1px solid var(--border); padding:40px 28px; position:relative; transition:var(--transition); display:flex; flex-direction:column; overflow:hidden; }
+    .pricing-card { background:var(--bg-surface); border:1px solid var(--border); padding:40px 28px; position:relative; transition:var(--transition); display:flex; flex-direction:column; overflow:hidden; cursor:pointer; }
     .pricing-card:hover { border-color:var(--gold); transform:translateY(-8px); box-shadow:0 20px 60px rgba(201,168,76,0.1); }
     .pricing-card.popular { border-color:var(--gold); }
     .popular-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--bg-deep); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:4px 16px; white-space:nowrap; }
@@ -186,6 +186,25 @@
     .pricing-features li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--cream-muted); margin-bottom:10px; line-height:1.5; }
     .pricing-features li::before { content:'✦'; color:var(--gold); font-size:8px; margin-top:5px; flex-shrink:0; }
     .pricing-card .btn { text-align:center; justify-content:center; }
+    /* Package Modals */
+    .pkg-overlay { position:fixed; inset:0; background:rgba(6,12,24,0.92); z-index:1000; display:flex; align-items:flex-start; justify-content:center; padding:40px 24px; opacity:0; visibility:hidden; transition:opacity 0.3s ease,visibility 0s 0.3s; overflow-y:auto; }
+    .pkg-overlay.open { opacity:1; visibility:visible; transition:opacity 0.3s ease; }
+    .pkg-modal { background:var(--bg-surface); border:1px solid var(--border); max-width:620px; width:100%; position:relative; padding:52px 40px 40px; margin:auto; }
+    .pkg-close { position:absolute; top:14px; right:18px; background:none; border:none; color:var(--cream-muted); font-size:1.6rem; cursor:pointer; line-height:1; padding:4px 10px; transition:color 0.2s; }
+    .pkg-close:hover { color:var(--gold); }
+    .pkg-modal-lbl { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+    .pkg-modal-ttl { font-family:var(--ff-serif); font-size:2rem; font-weight:700; color:var(--white); margin-bottom:4px; }
+    .pkg-modal-dur { color:var(--cream-muted); font-size:0.85rem; margin-bottom:10px; }
+    .pkg-modal-prc { font-family:var(--ff-serif); font-size:1.8rem; color:var(--gold); margin-bottom:24px; }
+    .pkg-modal-desc { color:var(--cream-muted); font-size:0.92rem; line-height:1.8; margin-bottom:28px; padding-bottom:24px; border-bottom:1px solid var(--border); }
+    .pkg-modal-sh { font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:600; }
+    .pkg-modal-ul { list-style:none; margin-bottom:24px; }
+    .pkg-modal-ul li { color:var(--cream-muted); font-size:0.88rem; line-height:1.65; padding-left:18px; position:relative; margin-bottom:8px; }
+    .pkg-modal-ul li::before { content:'✦'; color:var(--gold); font-size:7px; position:absolute; left:0; top:6px; }
+    .pkg-modal-note { color:var(--cream-muted); font-size:0.8rem; line-height:1.7; padding:14px 16px; border:1px solid var(--border); margin-bottom:8px; }
+    .pkg-modal-actions { display:flex; gap:12px; margin-top:28px; }
+    .pkg-modal-actions .btn { flex:1; text-align:center; justify-content:center; }
+    @media(max-width:600px){ .pkg-modal{padding:40px 20px 28px;} .pkg-modal-actions{flex-direction:column;} .pkg-modal-ttl{font-size:1.5rem;} }
 
     /* ABLAUF */
     .ablauf { padding:120px 0; background:var(--bg-deep); }
@@ -521,7 +540,7 @@
       <p class="section-desc">Alle Pakete beinhalten medizinische Begleitung, Flughafentransfer sowie Unterkunft im Kəpəz Hotel.</p>
     </div>
     <div class="pricing-grid">
-      <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-card reveal reveal-delay-1" data-modal="pkg1">
         <div class="pricing-name">Ersteinschätzung</div>
         <div class="pricing-duration">Persönliche Beratung · 60 min</div>
         <div class="pricing-price free">Kostenlos</div>
@@ -534,7 +553,7 @@
         </ul>
         <a href="#kontakt" class="btn btn-outline">Termin vereinbaren</a>
       </div>
-      <div class="pricing-card reveal reveal-delay-2">
+      <div class="pricing-card reveal reveal-delay-2" data-modal="pkg2">
         <div class="pricing-name">Heilende Öltherapie</div>
         <div class="pricing-duration">7 Tage · inkl. Unterkunft</div>
         <div class="pricing-price">€ 1.990</div>
@@ -544,11 +563,11 @@
           <li>Medizinische Eingangsuntersuchung</li>
           <li>Unterkunft im Doppelzimmer</li>
           <li>Flughafentransfer hin &amp; zurück</li>
-          <li>Deutsch sprechende Begleitung</li>
+          <li>Begleitung auf Englisch &amp; Russisch</li>
         </ul>
         <a href="#kontakt" class="btn btn-outline">Jetzt buchen</a>
       </div>
-      <div class="pricing-card reveal reveal-delay-3">
+      <div class="pricing-card reveal reveal-delay-3" data-modal="pkg3">
         <div class="pricing-name">Naftalan Behandlung</div>
         <div class="pricing-duration">10 Tage · Intensivtherapie</div>
         <div class="pricing-price">€ 2.490</div>
@@ -563,7 +582,7 @@
         </ul>
         <a href="#kontakt" class="btn btn-outline">Jetzt buchen</a>
       </div>
-      <div class="pricing-card popular reveal reveal-delay-4">
+      <div class="pricing-card popular reveal reveal-delay-4" data-modal="pkg4">
         <div class="popular-badge">Meistgewählt</div>
         <div class="pricing-name">Komplextherapie</div>
         <div class="pricing-duration">14 Tage · Rundum-Betreuung</div>
@@ -827,6 +846,134 @@
   </div>
 </footer>
 
+<!-- PACKAGE MODALS -->
+<div class="pkg-overlay" id="pkg1">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Kostenlose Beratung</div>
+    <div class="pkg-modal-ttl">Ersteinschätzung</div>
+    <div class="pkg-modal-dur">Persönliche Beratung · ca. 60 Minuten · per Telefon oder Video-Call</div>
+    <div class="pkg-modal-prc">Kostenlos</div>
+    <div class="pkg-modal-desc">Das Beratungsgespräch ist der erste Schritt auf Ihrem Weg zur Heilung. Wir nehmen uns Zeit für Ihre individuelle Situation — unverbindlich und kostenfrei.</div>
+    <div class="pkg-modal-sh">Im Gespräch besprechen wir</div>
+    <ul class="pkg-modal-ul">
+      <li>Ihre aktuellen Beschwerden und Erkrankungen</li>
+      <li>Vorerkrankungen, Operationen und aktuelle Medikamente</li>
+      <li>Wirkungsweise der Naftalan-Therapie &amp; was Sie erwartet</li>
+      <li>Welches Paket am besten zu Ihrer Situation passt</li>
+      <li>Anreise, Hotel, Ablauf und organisatorische Fragen</li>
+      <li>Kosten, Termine und nächste Schritte</li>
+    </ul>
+    <div class="pkg-modal-sh">Hinweise</div>
+    <div class="pkg-modal-note">Sprachen: Englisch &amp; Russisch · Keine Verpflichtung — rein informativ</div>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Termin vereinbaren</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="pkg2">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Einstiegspaket</div>
+    <div class="pkg-modal-ttl">Heilende Öltherapie</div>
+    <div class="pkg-modal-dur">7 Tage · inkl. Unterkunft · Doppelzimmer</div>
+    <div class="pkg-modal-prc">€ 1.990</div>
+    <div class="pkg-modal-desc">Ihr idealer Einstieg in die heilende Kraft des Naftalan-Öls. In 7 Tagen erleben Sie täglich ein Naftalan-Vollbad in einer entspannten, medizinisch begleiteten Atmosphäre.</div>
+    <div class="pkg-modal-sh">Leistungen</div>
+    <ul class="pkg-modal-ul">
+      <li>7 Naftalan-Vollbäder (je ca. 8 Minuten, täglich)</li>
+      <li>Medizinische Eingangsuntersuchung durch Facharzt</li>
+      <li>Unterkunft im Doppelzimmer (Hotel Kəpəz, Naftalan)</li>
+      <li>Frühstück &amp; Abendessen täglich inklusive</li>
+      <li>Flughafentransfer (Baku GYD) hin &amp; zurück</li>
+      <li>Begleitung auf Englisch &amp; Russisch</li>
+    </ul>
+    <div class="pkg-modal-sh">Ideal für</div>
+    <ul class="pkg-modal-ul">
+      <li>Erste Erfahrung mit der Naftalan-Therapie</li>
+      <li>Leichte bis mittlere Gelenk- und Rückenbeschwerden</li>
+      <li>Erholung und präventive Gesundheitspflege</li>
+    </ul>
+    <div class="pkg-modal-sh">Nicht im Preis enthalten</div>
+    <div class="pkg-modal-note">Flüge · Mittagessen · Persönliche Ausgaben</div>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Jetzt buchen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="pkg3">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Intensivtherapie</div>
+    <div class="pkg-modal-ttl">Naftalan Behandlung</div>
+    <div class="pkg-modal-dur">10 Tage · Intensivtherapie · Einzelzimmer</div>
+    <div class="pkg-modal-prc">€ 2.490</div>
+    <div class="pkg-modal-desc">Das Intensivprogramm für nachhaltige Beschwerdelinderung. 10 Tage strukturierte Therapie mit täglicher medizinischer Begleitung und einem einzigartigen Baku-Ausflug.</div>
+    <div class="pkg-modal-sh">Leistungen</div>
+    <ul class="pkg-modal-ul">
+      <li>10 Naftalan-Vollbäder (täglich, je ca. 8 Minuten)</li>
+      <li>Tägliche Massage oder Physiotherapie</li>
+      <li>Medizinische Begleitung durch Facharzt während des gesamten Aufenthalts</li>
+      <li>Unterkunft im Einzelzimmer mit eigenem Bad</li>
+      <li>Alle Mahlzeiten täglich inklusive (Frühstück, Mittag, Abend)</li>
+      <li>Flughafentransfer hin &amp; zurück</li>
+      <li>Halbtagesausflug in die Baku Altstadt (Icherisheher)</li>
+      <li>Begleitung auf Englisch &amp; Russisch</li>
+    </ul>
+    <div class="pkg-modal-sh">Ideal für</div>
+    <ul class="pkg-modal-ul">
+      <li>Arthritis, Arthrose, Psoriasis</li>
+      <li>Chronische Rücken- und Gelenkbeschwerden</li>
+      <li>Patienten mit Bedarf an intensiverer Therapie</li>
+    </ul>
+    <div class="pkg-modal-sh">Nicht im Preis enthalten</div>
+    <div class="pkg-modal-note">Flüge · Persönliche Ausgaben</div>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Jetzt buchen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<div class="pkg-overlay" id="pkg4">
+  <div class="pkg-modal">
+    <button class="pkg-close" aria-label="Schließen">&times;</button>
+    <div class="pkg-modal-lbl">Meistgewählt</div>
+    <div class="pkg-modal-ttl">Komplextherapie</div>
+    <div class="pkg-modal-dur">14 Tage · Rundum-Betreuung · Premium Einzelzimmer</div>
+    <div class="pkg-modal-prc">€ 3.290</div>
+    <div class="pkg-modal-desc">Das Rundum-Sorglos-Paket für maximale Regeneration. 14 Tage intensivste medizinische Betreuung kombiniert mit mehreren Therapieformen und exklusiven Erlebnissen.</div>
+    <div class="pkg-modal-sh">Leistungen</div>
+    <ul class="pkg-modal-ul">
+      <li>14 Naftalan-Vollbäder (täglich, je ca. 8 Minuten)</li>
+      <li>Komplettes Behandlungsprogramm: Massage, Physiotherapie, Phonophorese, Paraffintherapie, Lymphdrainage</li>
+      <li>Premium Einzelzimmer im Hotel Kəpəz</li>
+      <li>Alle Mahlzeiten täglich inklusive (Frühstück, Mittag, Abend)</li>
+      <li>Persönliche Pflegerin täglich an Ihrer Seite</li>
+      <li>Mehrere Exkursionen: Baku Altstadt, Gobustan, lokale Märkte</li>
+      <li>Flughafentransfer hin &amp; zurück</li>
+      <li>Nachsorge-Gespräch nach Rückkehr (per Video-Call)</li>
+      <li>Begleitung auf Englisch &amp; Russisch</li>
+    </ul>
+    <div class="pkg-modal-sh">Ideal für</div>
+    <ul class="pkg-modal-ul">
+      <li>Schwerwiegende chronische Erkrankungen</li>
+      <li>Patienten die umfassende, persönliche Betreuung benötigen</li>
+      <li>Maximale Regeneration und langfristige Beschwerdelinderung</li>
+    </ul>
+    <div class="pkg-modal-sh">Nicht im Preis enthalten</div>
+    <div class="pkg-modal-note">Flüge · Persönliche Ausgaben</div>
+    <div class="pkg-modal-actions">
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Jetzt buchen</a>
+      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // Particles
   (function(){
@@ -953,6 +1100,29 @@
     document.getElementById('vm-close').addEventListener('click',close);
     modal.addEventListener('click',e=>{if(e.target===modal)close();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close();});
+  })();
+
+  // Package detail modals
+  (function(){
+    function openPkg(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+    function closePkg(ov){ov.classList.remove('open');document.body.style.overflow='';}
+    document.querySelectorAll('.pricing-card').forEach(card=>{
+      card.addEventListener('click',function(e){
+        if(e.target.closest('.btn'))return;
+        openPkg(card.dataset.modal);
+      });
+    });
+    document.querySelectorAll('.pkg-overlay').forEach(ov=>{
+      ov.querySelector('.pkg-close').addEventListener('click',()=>closePkg(ov));
+      const cb=ov.querySelector('.pkg-close-btn');
+      if(cb)cb.addEventListener('click',()=>closePkg(ov));
+      ov.addEventListener('click',e=>{if(e.target===ov)closePkg(ov);});
+      const book=ov.querySelector('.pkg-modal-book');
+      if(book)book.addEventListener('click',()=>closePkg(ov));
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape')document.querySelectorAll('.pkg-overlay.open').forEach(ov=>closePkg(ov));
+    });
   })();
 
   // Form — Formspree AJAX
