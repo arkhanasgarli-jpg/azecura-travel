@@ -88,7 +88,11 @@
 
     /* HERO */
     .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('images/hotel/photo_2026-05-17_18-29-51.jpg'); background-size:cover; background-position:center; }
-    .hero-video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0; pointer-events:none; }
+    @keyframes kbSlide { 0%{transform:scale(1);opacity:0;} 4%{opacity:1;} 33%{opacity:1;} 37%{opacity:0;} 100%{transform:scale(1.06) translate(-1%,-0.5%);opacity:0;} }
+    .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; animation:kbSlide 24s ease-in-out infinite; opacity:0; will-change:transform,opacity; -webkit-backface-visibility:hidden; }
+    .hero-slide:nth-child(1) { background-image:url('images/hotel/photo_2026-05-17_18-29-51.jpg'); animation-delay:0s; }
+    .hero-slide:nth-child(2) { background-image:url('images/hotel/photo_2026-05-17_18-29-47.jpg'); animation-delay:8s; }
+    .hero-slide:nth-child(3) { background-image:url('images/hotel/photo_2026-05-17_18-29-44.jpg'); animation-delay:16s; }
     .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,12,24,0.8) 0%, rgba(6,12,24,0.55) 45%, rgba(6,12,24,0.85) 100%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.07) 0%,transparent 60%); }
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px); background-size:60px 60px; }
     .hero-particles { position:absolute; inset:0; overflow:hidden; }
@@ -130,7 +134,10 @@
 
     /* PHOTO STRIP */
     .photo-strip { display:grid; grid-template-columns:repeat(3,1fr); height:320px; overflow:hidden; }
-    .photo-strip-item { position:relative; overflow:hidden; }
+    .photo-strip-item { position:relative; overflow:hidden; cursor:pointer; }
+    .strip-cta { text-align:center; padding:20px 0; background:var(--bg-dark); }
+    .btn-strip-gallery { background:transparent; border:1px solid rgba(201,168,76,0.5); color:var(--gold); padding:10px 30px; font-family:var(--ff-sans); font-size:0.8rem; letter-spacing:2.5px; text-transform:uppercase; cursor:pointer; transition:all 0.25s; }
+    .btn-strip-gallery:hover { background:rgba(201,168,76,0.1); border-color:var(--gold); }
     .photo-strip-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
     .photo-strip-item:hover img { transform:scale(1.05); }
     .photo-strip-item::after { content:''; position:absolute; inset:0; background:rgba(6,12,24,0.35); transition:background 0.4s ease; }
@@ -197,18 +204,6 @@
     .author-name { font-weight:600; color:var(--white); font-size:0.93rem; }
     .author-condition { font-size:0.76rem; color:var(--cream-muted); margin-top:2px; }
 
-    /* GALLERY */
-    .gallery-section { background:var(--bg-deep); padding:100px 0; }
-    .gallery-sub { text-align:center; color:var(--cream-muted); max-width:500px; margin:0 auto 3rem; font-family:var(--ff-sans); font-size:1rem; line-height:1.7; }
-    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; max-width:1200px; margin:0 auto; }
-    .gal-item { overflow:hidden; height:260px; position:relative; cursor:pointer; }
-    .gal-item.gal-tall { grid-row:span 2; height:auto; }
-    .gal-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; display:block; }
-    .gal-item:hover img { transform:scale(1.04); }
-    .gal-item::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.3s; pointer-events:none; }
-    .gal-item:hover::after { background:rgba(0,0,0,0.45); }
-    .gal-label { position:absolute; bottom:0; left:0; right:0; padding:0.8rem 1rem; color:#fff; font-family:var(--ff-sans); font-size:0.82rem; letter-spacing:0.5px; background:linear-gradient(0deg,rgba(27,77,62,0.9) 0%,transparent 100%); opacity:0; transform:translateY(6px); transition:opacity 0.3s,transform 0.3s; z-index:1; pointer-events:none; }
-    .gal-item:hover .gal-label { opacity:1; transform:translateY(0); }
 
     /* VIDEO SECTION */
     .video-section { background:var(--bg-dark); padding:100px 0; }
@@ -315,19 +310,12 @@
       .form-row{grid-template-columns:1fr;}
       .footer-main{grid-template-columns:1fr;gap:32px;}
       .footer-bottom{flex-direction:column;text-align:center;}
-      .ueber-uns,.naftalan,.leistungen,.ablauf,.erfahrungen,.kontakt,.gallery-section,.video-section{padding:80px 0;}
-      .gallery-grid{grid-template-columns:repeat(2,1fr);}
-      .gal-item.gal-tall{grid-row:span 1;height:260px;}
+      .ueber-uns,.naftalan,.leistungen,.ablauf,.erfahrungen,.kontakt,.video-section{padding:80px 0;}
       .video-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
-    }
-    @media(max-width:600px){
-      .gallery-grid{grid-template-columns:1fr;gap:4px;}
-      .gal-item{height:240px;}
     }
     @media(max-width:480px){
       .hero-ctas{flex-direction:column;align-items:center;}
       .btn{width:100%;justify-content:center;}
-      .hero-video{display:none;}
     }
 
     /* WhatsApp Floating Button */
@@ -361,7 +349,6 @@
         <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#erfahrungen">Erfahrungen</a></li>
-        <li><a href="#galerie">Galerie</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#kontakt" class="nav-cta">Jetzt buchen</a></li>
@@ -378,7 +365,6 @@
   <a href="#ueber-uns" class="mob-link">Über uns</a>
   <a href="#leistungen" class="mob-link">Leistungen</a>
   <a href="#erfahrungen" class="mob-link">Erfahrungen</a>
-  <a href="#galerie" class="mob-link">Galerie</a>
   <a href="#kontakt" class="mob-link">Kontakt</a>
   <a href="blog.html" class="mob-link">Blog</a>
   <a href="#kontakt" class="btn btn-gold">Jetzt buchen</a>
@@ -386,9 +372,9 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-    <source src="media/video_2026-05-17_18-33-45.mp4" type="video/mp4">
-  </video>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-particles" id="particles"></div>
@@ -456,18 +442,21 @@
 
 <!-- PHOTO STRIP -->
 <div class="photo-strip">
-  <div class="photo-strip-item">
+  <div class="photo-strip-item" data-idx="5">
     <img src="images/hotel/photo_2026-05-17_18-29-51.jpg" alt="Hotelzimmer Kəpəz Naftalan — Doppelzimmer mit Balkon" loading="lazy">
     <span class="photo-strip-caption">Doppelzimmer · Balkon</span>
   </div>
-  <div class="photo-strip-item">
+  <div class="photo-strip-item" data-idx="4">
     <img src="images/hotel/photo_2026-05-17_18-29-47.jpg" alt="Hotel Kəpəz — Suite mit Wohnzimmer und Balkon" loading="lazy">
     <span class="photo-strip-caption">Suite · Wohnzimmer</span>
   </div>
-  <div class="photo-strip-item">
+  <div class="photo-strip-item" data-idx="3">
     <img src="images/hotel/photo_2026-05-17_18-29-44.jpg" alt="Hotel Kəpəz — Modernes Marmor-Badezimmer" loading="lazy">
     <span class="photo-strip-caption">Marmor-Bad</span>
   </div>
+</div>
+<div class="strip-cta">
+  <button id="btnAllPhotos" class="btn-strip-gallery">Alle Fotos ansehen &rarr;</button>
 </div>
 
 <!-- NAFTALAN -->
@@ -653,60 +642,6 @@
           <div><div class="author-name">Maria S.</div><div class="author-condition">Psoriasis · Heilende Öltherapie</div></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALERIE -->
-<section id="galerie" class="gallery-section section-sep">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">Einblicke</span>
-      <h2 class="section-title">Das Hotel <em>Kəpəz</em></h2>
-      <div class="gold-divider center"></div>
-      <p class="gallery-sub">Atmosphäre und Komfort in Naftalan — erleben Sie es selbst.</p>
-    </div>
-  </div>
-  <div class="gallery-grid">
-    <div class="gal-item gal-tall" data-idx="0">
-      <img src="images/hotel/photo_2026-05-17_18-29-31.jpg" alt="Hotel Kəpəz — Zweibettzimmer im Sonnenlicht" loading="lazy">
-      <span class="gal-label">Zweibettzimmer · Sonnenlicht</span>
-    </div>
-    <div class="gal-item" data-idx="1">
-      <img src="images/hotel/photo_2026-05-17_18-29-38.jpg" alt="Hotel Kəpəz — Doppelzimmer mit Schreibtisch" loading="lazy">
-      <span class="gal-label">Doppelzimmer · Schreibtisch</span>
-    </div>
-    <div class="gal-item" data-idx="2">
-      <img src="images/hotel/photo_2026-05-17_18-29-41.jpg" alt="Hotel Kəpəz — Hotelzimmer mit TV" loading="lazy">
-      <span class="gal-label">Hotelzimmer · TV &amp; Kronleuchter</span>
-    </div>
-    <div class="gal-item gal-tall" data-idx="3">
-      <img src="images/hotel/photo_2026-05-17_18-29-44.jpg" alt="Hotel Kəpəz — Marmor-Badezimmer mit Glasdusche" loading="lazy">
-      <span class="gal-label">Marmor-Bad · Glasdusche</span>
-    </div>
-    <div class="gal-item" data-idx="4">
-      <img src="images/hotel/photo_2026-05-17_18-29-47.jpg" alt="Hotel Kəpəz — Suite mit Wohnbereich und Balkon" loading="lazy">
-      <span class="gal-label">Suite · Wohnzimmer · Balkon</span>
-    </div>
-    <div class="gal-item" data-idx="5">
-      <img src="images/hotel/photo_2026-05-17_18-29-51.jpg" alt="Hotel Kəpəz — Doppelzimmer mit Balkontür" loading="lazy">
-      <span class="gal-label">Doppelzimmer · Balkon · Tageslicht</span>
-    </div>
-    <div class="gal-item gal-tall" data-idx="6">
-      <img src="images/hotel/photo_2026-05-17_18-29-54.jpg" alt="Hotel Kəpəz — Badezimmer mit Badewanne" loading="lazy">
-      <span class="gal-label">Badezimmer · Badewanne</span>
-    </div>
-    <div class="gal-item" data-idx="7">
-      <img src="images/hotel/photo_2026-05-17_18-29-56.jpg" alt="Hotel Kəpəz — Zweibettzimmer mit natürlichem Licht" loading="lazy">
-      <span class="gal-label">Zweibettzimmer · Natürliches Licht</span>
-    </div>
-    <div class="gal-item" data-idx="8">
-      <img src="images/hotel/photo_2026-05-17_18-30-00.jpg" alt="Hotel Kəpəz — Zimmer mit TV und Schreibtisch" loading="lazy">
-      <span class="gal-label">Zimmer · TV &amp; Schreibtisch</span>
-    </div>
-    <div class="gal-item" data-idx="9">
-      <img src="images/hotel/photo_2026-05-17_18-30-03.jpg" alt="Hotel Kəpəz — Eingangsbereich mit eleganten Türen" loading="lazy">
-      <span class="gal-label">Hoteleingang · Elegante Türen</span>
     </div>
   </div>
 </section>
@@ -952,7 +887,8 @@
     function close(){lb.classList.remove('open');document.body.style.overflow='';}
     function next(){cur=(cur+1)%photos.length;lbImg.src=photos[cur];lbImg.alt=alts[cur];}
     function prev(){cur=(cur-1+photos.length)%photos.length;lbImg.src=photos[cur];lbImg.alt=alts[cur];}
-    document.querySelectorAll('.gal-item').forEach(el=>el.addEventListener('click',()=>open(parseInt(el.dataset.idx))));
+    document.querySelectorAll('.photo-strip-item').forEach(el=>el.addEventListener('click',()=>open(parseInt(el.dataset.idx))));
+    const btnAll=document.getElementById('btnAllPhotos');if(btnAll)btnAll.addEventListener('click',()=>open(0));
     document.getElementById('lb-close').addEventListener('click',close);
     document.getElementById('lb-prev').addEventListener('click',e=>{e.stopPropagation();prev();});
     document.getElementById('lb-next').addEventListener('click',e=>{e.stopPropagation();next();});
