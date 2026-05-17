@@ -358,6 +358,16 @@
       .btn{width:100%;justify-content:center;}
     }
 
+    /* LANGUAGE SWITCHER */
+    .nav-lang { display:flex; align-items:center; gap:5px; margin-left:16px; }
+    .lang-btn { font-family:var(--ff-sans); font-size:10.5px; font-weight:600; letter-spacing:1.5px; color:var(--cream-muted); background:none; border:none; cursor:pointer; padding:3px 5px; transition:color 0.2s; line-height:1; }
+    .lang-btn.active, .lang-btn:hover { color:var(--gold); }
+    .lang-sep { color:rgba(201,168,76,0.3); font-size:10px; pointer-events:none; user-select:none; }
+    .mob-lang { display:flex; gap:20px; margin-top:4px; }
+    .mob-lang .lang-btn { font-size:1.3rem; color:var(--cream-muted); }
+    .mob-lang .lang-btn.active { color:var(--gold); }
+    @media(max-width:768px){ .nav-lang{display:none;} }
+
     /* WhatsApp Floating Button */
     .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
     .wa-bubble{background:white;border-radius:12px;padding:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);font-size:0.88rem;max-width:220px;color:#333;line-height:1.4;position:relative;display:none;animation:waBubbleFade 0.3s ease;}
@@ -386,13 +396,20 @@
         <span class="nav-logo-text">AzeCura <span>Travel</span></span>
       </a>
       <ul class="nav-links">
-        <li><a href="#ueber-uns">Über uns</a></li>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#erfahrungen">Erfahrungen</a></li>
-        <li><a href="#" id="navGalerie">Galerie</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#kontakt" class="nav-cta">Jetzt buchen</a></li>
+        <li><a href="#ueber-uns" data-i18n="nav_about">Über uns</a></li>
+        <li><a href="#leistungen" data-i18n="nav_services">Leistungen</a></li>
+        <li><a href="#erfahrungen" data-i18n="nav_reviews">Erfahrungen</a></li>
+        <li><a href="#" id="navGalerie" data-i18n="nav_gallery">Galerie</a></li>
+        <li><a href="#kontakt" data-i18n="nav_contact">Kontakt</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+        <li class="nav-lang">
+          <button class="lang-btn active" data-lang="de">DE</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </li>
+        <li><a href="#kontakt" class="nav-cta" data-i18n="nav_book">Jetzt buchen</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menü">
         <span></span><span></span><span></span>
@@ -403,13 +420,18 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#ueber-uns" class="mob-link">Über uns</a>
-  <a href="#leistungen" class="mob-link">Leistungen</a>
-  <a href="#erfahrungen" class="mob-link">Erfahrungen</a>
-  <a href="#" id="navGalerieMob" class="mob-link">Galerie</a>
-  <a href="#kontakt" class="mob-link">Kontakt</a>
-  <a href="blog.html" class="mob-link">Blog</a>
-  <a href="#kontakt" class="btn btn-gold">Jetzt buchen</a>
+  <a href="#ueber-uns" class="mob-link" data-i18n="nav_about">Über uns</a>
+  <a href="#leistungen" class="mob-link" data-i18n="nav_services">Leistungen</a>
+  <a href="#erfahrungen" class="mob-link" data-i18n="nav_reviews">Erfahrungen</a>
+  <a href="#" id="navGalerieMob" class="mob-link" data-i18n="nav_gallery">Galerie</a>
+  <a href="#kontakt" class="mob-link" data-i18n="nav_contact">Kontakt</a>
+  <a href="blog.html" class="mob-link" data-i18n="nav_blog">Blog</a>
+  <a href="#kontakt" class="btn btn-gold" data-i18n="nav_book">Jetzt buchen</a>
+  <div class="mob-lang">
+    <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ru">RU</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -424,18 +446,18 @@
   <div class="hero-grid"></div>
   <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
-    <div class="hero-badge">Exklusive Heilreisen · Aserbaidschan</div>
+    <div class="hero-badge" data-i18n="hero_badge">Exklusive Heilreisen · Aserbaidschan</div>
     <h1 class="hero-title">
-      Heilung auf<br>
-      <span class="gold-line">höchstem Niveau</span>
+      <span data-i18n="hero_title1">Heilung auf</span><br>
+      <span class="gold-line" data-i18n="hero_title2">höchstem Niveau</span>
     </h1>
-    <p class="hero-subtitle">Exklusive Gesundheitsreisen nach Aserbaidschan — die einzigartige Naftalan-Therapie für Rheuma, Psoriasis &amp; Gelenkschmerzen. Medizinisch begleitet. Persönlich betreut.</p>
+    <p class="hero-subtitle" data-i18n="hero_subtitle">Exklusive Gesundheitsreisen nach Aserbaidschan — die einzigartige Naftalan-Therapie für Rheuma, Psoriasis &amp; Gelenkschmerzen. Medizinisch begleitet. Persönlich betreut.</p>
     <div class="hero-ctas">
       <a href="#kontakt" class="btn btn-gold">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Jetzt buchen
+        <span data-i18n="hero_cta1">Jetzt buchen</span>
       </a>
-      <a href="#ueber-uns" class="btn btn-outline">Mehr erfahren</a>
+      <a href="#ueber-uns" class="btn btn-outline" data-i18n="hero_cta2">Mehr erfahren</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -447,10 +469,10 @@
 <section class="ueber-uns section-sep" id="ueber-uns">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Unsere Mission</span>
-      <h2 class="section-title">Warum <em>AzeCura Travel</em>?</h2>
+      <span class="section-label" data-i18n="about_label">Unsere Mission</span>
+      <h2 class="section-title" data-i18n="about_title">Warum <em>AzeCura Travel</em>?</h2>
       <div class="gold-divider center"></div>
-      <p class="mission-intro">Wir verbinden die Heilkraft des einzigartigen Naftalanöls mit modernster medizinischer Betreuung und exklusivem Reisekomfort. Unser Ziel ist Ihre vollständige Genesung — in einer Umgebung, die Würde, Komfort und persönliche Zuwendung in den Mittelpunkt stellt.</p>
+      <p class="mission-intro" data-i18n="about_intro">Wir verbinden die Heilkraft des einzigartigen Naftalanöls mit modernster medizinischer Betreuung und exklusivem Reisekomfort. Unser Ziel ist Ihre vollständige Genesung — in einer Umgebung, die Würde, Komfort und persönliche Zuwendung in den Mittelpunkt stellt.</p>
     </div>
     <div class="feature-cards">
       <div class="feature-card reveal reveal-delay-1">
@@ -459,8 +481,8 @@
           <path d="M24 4L44 14V24C44 34 35 42 24 46C13 42 4 34 4 24V14Z"/>
           <path d="M16 24L21 29L32 19" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <h3>Medizinische Expertise</h3>
-        <p>Jede Reise wird von erfahrenen Medizinern begleitet. Wir kooperieren eng mit dem renommierten Kəpəz Gesundheitszentrum in Naftalan.</p>
+        <h3 data-i18n="f1_title">Medizinische Expertise</h3>
+        <p data-i18n="f1_desc">Jede Reise wird von erfahrenen Medizinern begleitet. Wir kooperieren eng mit dem renommierten Kəpəz Gesundheitszentrum in Naftalan.</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
         <span class="feature-num">02</span>
@@ -468,8 +490,8 @@
           <circle cx="24" cy="14" r="9"/>
           <path d="M6 44C6 34 14 26 24 26C34 26 42 34 42 44"/>
         </svg>
-        <h3>Persönliche Betreuung</h3>
-        <p>Ihr persönlicher Reisebegleiter steht Ihnen vom ersten Gespräch bis zur Heimkehr zur Seite — auf Deutsch, Russisch und Aserbaidschanisch.</p>
+        <h3 data-i18n="f2_title">Persönliche Betreuung</h3>
+        <p data-i18n="f2_desc">Ihr persönlicher Reisebegleiter steht Ihnen vom ersten Gespräch bis zur Heimkehr zur Seite — auf Deutsch, Russisch und Aserbaidschanisch.</p>
       </div>
       <div class="feature-card reveal reveal-delay-3">
         <span class="feature-num">03</span>
@@ -478,8 +500,8 @@
           <path d="M14 18V13C14 9 18 5 24 5C30 5 34 9 34 13V18"/>
           <circle cx="24" cy="31" r="4"/>
         </svg>
-        <h3>Exklusive Unterkunft</h3>
-        <p>Sie wohnen im eleganten Kəpəz Hotel — direkt verbunden mit dem Behandlungszentrum. Höchste Standards für Ihren Komfort.</p>
+        <h3 data-i18n="f3_title">Exklusive Unterkunft</h3>
+        <p data-i18n="f3_desc">Sie wohnen im eleganten Kəpəz Hotel — direkt verbunden mit dem Behandlungszentrum. Höchste Standards für Ihren Komfort.</p>
       </div>
     </div>
   </div>
@@ -489,19 +511,19 @@
 <div class="photo-strip">
   <div class="photo-strip-item" data-idx="5">
     <img src="images/hotel/photo_2026-05-17_18-29-51.jpg" alt="Hotelzimmer Kəpəz Naftalan — Doppelzimmer mit Balkon" loading="lazy">
-    <span class="photo-strip-caption">Doppelzimmer · Balkon</span>
+    <span class="photo-strip-caption" data-i18n="strip_cap1">Doppelzimmer · Balkon</span>
   </div>
   <div class="photo-strip-item" data-idx="4">
     <img src="images/hotel/photo_2026-05-17_18-29-47.jpg" alt="Hotel Kəpəz — Suite mit Wohnzimmer und Balkon" loading="lazy">
-    <span class="photo-strip-caption">Suite · Wohnzimmer</span>
+    <span class="photo-strip-caption" data-i18n="strip_cap2">Suite · Wohnzimmer</span>
   </div>
   <div class="photo-strip-item" data-idx="3">
     <img src="images/hotel/photo_2026-05-17_18-29-44.jpg" alt="Hotel Kəpəz — Modernes Marmor-Badezimmer" loading="lazy">
-    <span class="photo-strip-caption">Marmor-Bad</span>
+    <span class="photo-strip-caption" data-i18n="strip_cap3">Marmor-Bad</span>
   </div>
 </div>
 <div class="strip-cta">
-  <button id="btnAllPhotos" class="btn-strip-gallery">Alle Fotos ansehen &rarr;</button>
+  <button id="btnAllPhotos" class="btn-strip-gallery" data-i18n="strip_btn">Alle Fotos ansehen →</button>
 </div>
 
 <!-- NAFTALAN -->
@@ -510,23 +532,23 @@
   <div class="container">
     <div class="naftalan-grid">
       <div class="reveal">
-        <span class="section-label">Das Wundermittel</span>
-        <h2 class="section-title">Die Kraft des <em>Naftalanöls</em></h2>
+        <span class="section-label" data-i18n="naft_label">Das Wundermittel</span>
+        <h2 class="section-title" data-i18n="naft_title">Die Kraft des <em>Naftalanöls</em></h2>
         <div class="gold-divider"></div>
-        <p class="section-desc">Naftalanöl ist ein weltweit einzigartiger Naturschatz — ein spezielles Erdöl, das ausschließlich in der Stadt Naftalan in Aserbaidschan vorkommt. Seine außergewöhnliche chemische Zusammensetzung macht es zu einem der kraftvollsten natürlichen Heilmittel der Welt.</p>
-        <p class="section-desc" style="margin-top:14px;">Seit dem 12. Jahrhundert nutzen Menschen aus aller Welt die heilende Wirkung des Naftalanöls bei entzündlichen Erkrankungen, Gelenkbeschwerden und Hautkrankheiten.</p>
+        <p class="section-desc" data-i18n="naft_desc1">Naftalanöl ist ein weltweit einzigartiger Naturschatz — ein spezielles Erdöl, das ausschließlich in der Stadt Naftalan in Aserbaidschan vorkommt. Seine außergewöhnliche chemische Zusammensetzung macht es zu einem der kraftvollsten natürlichen Heilmittel der Welt.</p>
+        <p class="section-desc" style="margin-top:14px;" data-i18n="naft_desc2">Seit dem 12. Jahrhundert nutzen Menschen aus aller Welt die heilende Wirkung des Naftalanöls bei entzündlichen Erkrankungen, Gelenkbeschwerden und Hautkrankheiten.</p>
         <div class="naftalan-badges">
           <div class="trust-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span>Seit Jahrhunderten bewährt</span>
+            <span data-i18n="naft_badge1">Seit Jahrhunderten bewährt</span>
           </div>
           <div class="trust-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
-            <span>Wissenschaftlich anerkannt</span>
+            <span data-i18n="naft_badge2">Wissenschaftlich anerkannt</span>
           </div>
           <div class="trust-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            <span>Nur in Naftalan verfügbar</span>
+            <span data-i18n="naft_badge3">Nur in Naftalan verfügbar</span>
           </div>
         </div>
       </div>
@@ -535,9 +557,9 @@
           <img src="images/hotel 2/6.-Naftalan.jpg" alt="Naftalan Heilbad — Aserbaidschan" class="naftalan-photo">
           <div class="naftalan-photo-badge">
             <span class="naftalan-year">12.</span>
-            <p>Jahrhundert</p>
+            <p data-i18n="naft_century_sub">Jahrhundert</p>
             <div class="gold-divider center" style="margin:12px auto;"></div>
-            <p>Seit Jahrhunderten bewährt</p>
+            <p data-i18n="naft_century_note">Seit Jahrhunderten bewährt</p>
           </div>
         </div>
       </div>
@@ -549,70 +571,70 @@
 <section class="leistungen section-sep" id="leistungen">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Unsere Pakete</span>
-      <h2 class="section-title">Leistungen &amp; <em>Preise</em></h2>
+      <span class="section-label" data-i18n="pkg_label">Unsere Pakete</span>
+      <h2 class="section-title" data-i18n="pkg_title">Leistungen &amp; <em>Preise</em></h2>
       <div class="gold-divider center"></div>
-      <p class="section-desc">Alle Pakete beinhalten medizinische Begleitung, Flughafentransfer sowie Unterkunft im Kəpəz Hotel.</p>
+      <p class="section-desc" data-i18n="pkg_desc">Alle Pakete beinhalten medizinische Begleitung, Flughafentransfer sowie Unterkunft im Kəpəz Hotel.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card reveal reveal-delay-1" data-modal="pkg1">
-        <div class="pricing-name">Ersteinschätzung</div>
-        <div class="pricing-duration">Persönliche Beratung · 60 min</div>
-        <div class="pricing-price free">Kostenlos</div>
+        <div class="pricing-name" data-i18n="pkg1_name">Ersteinschätzung</div>
+        <div class="pricing-duration" data-i18n="pkg1_dur">Persönliche Beratung · 60 min</div>
+        <div class="pricing-price free" data-i18n="pkg1_price">Kostenlos</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li>Individuelle Gesundheitsberatung</li>
-          <li>Empfehlung des passenden Pakets</li>
-          <li>Antworten auf alle Fragen</li>
-          <li>Per Telefon oder Video-Call</li>
+          <li data-i18n="pkg1_f1">Individuelle Gesundheitsberatung</li>
+          <li data-i18n="pkg1_f2">Empfehlung des passenden Pakets</li>
+          <li data-i18n="pkg1_f3">Antworten auf alle Fragen</li>
+          <li data-i18n="pkg1_f4">Per Telefon oder Video-Call</li>
         </ul>
-        <a href="#kontakt" class="btn btn-outline">Termin vereinbaren</a>
+        <a href="#kontakt" class="btn btn-outline" data-i18n="pkg1_btn">Termin vereinbaren</a>
       </div>
       <div class="pricing-card reveal reveal-delay-2" data-modal="pkg2">
-        <div class="pricing-name">Heilende Öltherapie</div>
-        <div class="pricing-duration">7 Tage · inkl. Unterkunft</div>
-        <div class="pricing-price">€ 1.990</div>
+        <div class="pricing-name" data-i18n="pkg2_name">Heilende Öltherapie</div>
+        <div class="pricing-duration" data-i18n="pkg2_dur">7 Tage · inkl. Unterkunft</div>
+        <div class="pricing-price" data-i18n="pkg2_price">€ 1.990</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li>7 Naftalan-Vollbäder</li>
-          <li>Medizinische Eingangsuntersuchung</li>
-          <li>Unterkunft im Doppelzimmer</li>
-          <li>Flughafentransfer hin &amp; zurück</li>
-          <li>Begleitung auf Englisch &amp; Russisch</li>
+          <li data-i18n="pkg2_f1">7 Naftalan-Vollbäder</li>
+          <li data-i18n="pkg2_f2">Medizinische Eingangsuntersuchung</li>
+          <li data-i18n="pkg2_f3">Unterkunft im Doppelzimmer</li>
+          <li data-i18n="pkg2_f4">Flughafentransfer hin &amp; zurück</li>
+          <li data-i18n="pkg2_f5">Begleitung auf Englisch &amp; Russisch</li>
         </ul>
-        <a href="#kontakt" class="btn btn-outline">Jetzt buchen</a>
+        <a href="#kontakt" class="btn btn-outline" data-i18n="pkg_book">Jetzt buchen</a>
       </div>
       <div class="pricing-card reveal reveal-delay-3" data-modal="pkg3">
-        <div class="pricing-name">Naftalan Behandlung</div>
-        <div class="pricing-duration">10 Tage · Intensivtherapie</div>
-        <div class="pricing-price">€ 2.490</div>
+        <div class="pricing-name" data-i18n="pkg3_name">Naftalan Behandlung</div>
+        <div class="pricing-duration" data-i18n="pkg3_dur">10 Tage · Intensivtherapie</div>
+        <div class="pricing-price" data-i18n="pkg3_price">€ 2.490</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li>10 Naftalan-Vollbäder</li>
-          <li>Massage &amp; Physiotherapie</li>
-          <li>Medizinische Tagesbegleitung</li>
-          <li>Unterkunft im Einzelzimmer</li>
-          <li>Flughafentransfer hin &amp; zurück</li>
-          <li>Ausflug in die Altstadt Baku</li>
+          <li data-i18n="pkg3_f1">10 Naftalan-Vollbäder</li>
+          <li data-i18n="pkg3_f2">Massage &amp; Physiotherapie</li>
+          <li data-i18n="pkg3_f3">Medizinische Tagesbegleitung</li>
+          <li data-i18n="pkg3_f4">Unterkunft im Einzelzimmer</li>
+          <li data-i18n="pkg3_f5">Flughafentransfer hin &amp; zurück</li>
+          <li data-i18n="pkg3_f6">Ausflug in die Altstadt Baku</li>
         </ul>
-        <a href="#kontakt" class="btn btn-outline">Jetzt buchen</a>
+        <a href="#kontakt" class="btn btn-outline" data-i18n="pkg_book">Jetzt buchen</a>
       </div>
       <div class="pricing-card popular reveal reveal-delay-4" data-modal="pkg4">
-        <div class="popular-badge">Meistgewählt</div>
-        <div class="pricing-name">Komplextherapie</div>
-        <div class="pricing-duration">14 Tage · Rundum-Betreuung</div>
-        <div class="pricing-price">€ 3.290</div>
+        <div class="popular-badge" data-i18n="popular_badge">Meistgewählt</div>
+        <div class="pricing-name" data-i18n="pkg4_name">Komplextherapie</div>
+        <div class="pricing-duration" data-i18n="pkg4_dur">14 Tage · Rundum-Betreuung</div>
+        <div class="pricing-price" data-i18n="pkg4_price">€ 3.290</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li>14 Naftalan-Vollbäder</li>
-          <li>Komplettes Behandlungsprogramm</li>
-          <li>Premium Einzelzimmer</li>
-          <li>Alle Mahlzeiten inklusive</li>
-          <li>Persönliche Pflegerin täglich</li>
-          <li>Exkursionen &amp; Stadttouren</li>
-          <li>Nachsorge-Gespräch nach Rückkehr</li>
+          <li data-i18n="pkg4_f1">14 Naftalan-Vollbäder</li>
+          <li data-i18n="pkg4_f2">Komplettes Behandlungsprogramm</li>
+          <li data-i18n="pkg4_f3">Premium Einzelzimmer</li>
+          <li data-i18n="pkg4_f4">Alle Mahlzeiten inklusive</li>
+          <li data-i18n="pkg4_f5">Persönliche Pflegerin täglich</li>
+          <li data-i18n="pkg4_f6">Exkursionen &amp; Stadttouren</li>
+          <li data-i18n="pkg4_f7">Nachsorge-Gespräch nach Rückkehr</li>
         </ul>
-        <a href="#kontakt" class="btn btn-gold">Jetzt buchen</a>
+        <a href="#kontakt" class="btn btn-gold" data-i18n="pkg_book">Jetzt buchen</a>
       </div>
     </div>
   </div>
@@ -622,9 +644,9 @@
 <section class="behandlungen section-sep" id="behandlungen">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Hotel Kəpəz · Naftalan</span>
-      <h2 class="section-title">Unser <em>Behandlungsspektrum</em></h2>
-      <p class="section-desc">Vor jeder Kur steht eine ärztliche Untersuchung — erst dann wird Ihr persönliches Programm aus dem folgenden Spektrum zusammengestellt.</p>
+      <span class="section-label" data-i18n="treat_label">Hotel Kəpəz · Naftalan</span>
+      <h2 class="section-title" data-i18n="treat_title">Unser <em>Behandlungsspektrum</em></h2>
+      <p class="section-desc" data-i18n="treat_desc">Vor jeder Kur steht eine ärztliche Untersuchung — erst dann wird Ihr persönliches Programm aus dem folgenden Spektrum zusammengestellt.</p>
     </div>
     <div class="behandlungen-grid">
 
@@ -632,60 +654,60 @@
         <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2C9 6 6 9 6 13a6 6 0 0012 0c0-4-3-7-6-11z"/><path d="M9 17c0 1.5 1.3 2.5 3 2.5s3-1 3-2.5"/>
         </svg>
-        <div class="behand-title">Naftalan-Therapie</div>
-        <div class="behand-sub">Das Herzstück der Kur</div>
-        <div class="behand-desc">Das einzigartige Naftalan-Öl existiert in therapeutischer Reinheit weltweit nur hier in Aserbaidschan — und wirkt wie kein anderes Naturheilmittel der Balneologie.</div>
-        <span class="behand-more">Mehr erfahren →</span>
+        <div class="behand-title" data-i18n="th1_title">Naftalan-Therapie</div>
+        <div class="behand-sub" data-i18n="th1_sub">Das Herzstück der Kur</div>
+        <div class="behand-desc" data-i18n="th1_desc">Das einzigartige Naftalan-Öl existiert in therapeutischer Reinheit weltweit nur hier in Aserbaidschan — und wirkt wie kein anderes Naturheilmittel der Balneologie.</div>
+        <span class="behand-more" data-i18n="th_more">Mehr erfahren →</span>
       </div>
 
       <div class="behand-card reveal reveal-delay-2" data-modal="ther2">
         <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
         </svg>
-        <div class="behand-title">Elektrotherapie</div>
-        <div class="behand-sub">Gezielte Impulse auf Zellebene</div>
-        <div class="behand-desc">Von Amplipuls bis Darsonvalisation: Elektrische Ströme, präzise dosiert, aktivieren Nerven, Muskulatur und Durchblutung — ohne Eingriff, ohne Schmerzen.</div>
-        <span class="behand-more">Mehr erfahren →</span>
+        <div class="behand-title" data-i18n="th2_title">Elektrotherapie</div>
+        <div class="behand-sub" data-i18n="th2_sub">Gezielte Impulse auf Zellebene</div>
+        <div class="behand-desc" data-i18n="th2_desc">Von Amplipuls bis Darsonvalisation: Elektrische Ströme, präzise dosiert, aktivieren Nerven, Muskulatur und Durchblutung — ohne Eingriff, ohne Schmerzen.</div>
+        <span class="behand-more" data-i18n="th_more">Mehr erfahren →</span>
       </div>
 
       <div class="behand-card reveal reveal-delay-3" data-modal="ther3">
         <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
-        <div class="behand-title">Magnettherapie &amp; Laser</div>
-        <div class="behand-sub">Sanfte Energie — tiefe Wirkung</div>
-        <div class="behand-desc">Gepulste Magnetfelder und Laserimpulse dringen tief ins Gewebe — sie reduzieren Entzündungen, beschleunigen Regeneration und brauchen dafür keinen einzigen Hautschnitt.</div>
-        <span class="behand-more">Mehr erfahren →</span>
+        <div class="behand-title" data-i18n="th3_title">Magnettherapie &amp; Laser</div>
+        <div class="behand-sub" data-i18n="th3_sub">Sanfte Energie — tiefe Wirkung</div>
+        <div class="behand-desc" data-i18n="th3_desc">Gepulste Magnetfelder und Laserimpulse dringen tief ins Gewebe — sie reduzieren Entzündungen, beschleunigen Regeneration und brauchen dafür keinen einzigen Hautschnitt.</div>
+        <span class="behand-more" data-i18n="th_more">Mehr erfahren →</span>
       </div>
 
       <div class="behand-card reveal reveal-delay-1" data-modal="ther4">
         <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/>
         </svg>
-        <div class="behand-title">Wärme- &amp; Schlammtherapie</div>
-        <div class="behand-sub">Bewährt seit Jahrhunderten</div>
-        <div class="behand-desc">Paraffin, Heilschlamm (Palçıq) und Lichttherapie geben Wärme langsam und gleichmäßig ab — bis tief in Gelenke und Muskeln, wo sie am meisten gebraucht wird.</div>
-        <span class="behand-more">Mehr erfahren →</span>
+        <div class="behand-title" data-i18n="th4_title">Wärme- &amp; Schlammtherapie</div>
+        <div class="behand-sub" data-i18n="th4_sub">Bewährt seit Jahrhunderten</div>
+        <div class="behand-desc" data-i18n="th4_desc">Paraffin, Heilschlamm (Palçıq) und Lichttherapie geben Wärme langsam und gleichmäßig ab — bis tief in Gelenke und Muskeln, wo sie am meisten gebraucht wird.</div>
+        <span class="behand-more" data-i18n="th_more">Mehr erfahren →</span>
       </div>
 
       <div class="behand-card reveal reveal-delay-2" data-modal="ther5">
         <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
         </svg>
-        <div class="behand-title">Massage &amp; Bewegungstherapie</div>
-        <div class="behand-sub">Mobilität zurückgewinnen</div>
-        <div class="behand-desc">Professionelle Massagetechniken lösen, was verkrampft ist. Gezielte Bewegungsübungen reaktivieren, was eingeschränkt war — nachhaltig, nicht nur kurzfristig.</div>
-        <span class="behand-more">Mehr erfahren →</span>
+        <div class="behand-title" data-i18n="th5_title">Massage &amp; Bewegungstherapie</div>
+        <div class="behand-sub" data-i18n="th5_sub">Mobilität zurückgewinnen</div>
+        <div class="behand-desc" data-i18n="th5_desc">Professionelle Massagetechniken lösen, was verkrampft ist. Gezielte Bewegungsübungen reaktivieren, was eingeschränkt war — nachhaltig, nicht nur kurzfristig.</div>
+        <span class="behand-more" data-i18n="th_more">Mehr erfahren →</span>
       </div>
 
       <div class="behand-card reveal reveal-delay-3" data-modal="ther6">
         <svg class="behand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/>
         </svg>
-        <div class="behand-title">Ergänzende Verfahren</div>
-        <div class="behand-sub">Das ganzheitliche Bild</div>
-        <div class="behand-desc">Inhalationen, Ultraschall, Jod-Brom-Bäder und Sauerstoff-Cocktails — ergänzende Therapien, die das Kurprogramm zu einem ganzheitlichen Erlebnis machen.</div>
-        <span class="behand-more">Mehr erfahren →</span>
+        <div class="behand-title" data-i18n="th6_title">Ergänzende Verfahren</div>
+        <div class="behand-sub" data-i18n="th6_sub">Das ganzheitliche Bild</div>
+        <div class="behand-desc" data-i18n="th6_desc">Inhalationen, Ultraschall, Jod-Brom-Bäder und Sauerstoff-Cocktails — ergänzende Therapien, die das Kurprogramm zu einem ganzheitlichen Erlebnis machen.</div>
+        <span class="behand-more" data-i18n="th_more">Mehr erfahren →</span>
       </div>
 
     </div>
@@ -696,30 +718,30 @@
 <section class="ablauf" id="ablauf">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Ihr Weg zur Heilung</span>
-      <h2 class="section-title">So einfach <em>funktioniert es</em></h2>
+      <span class="section-label" data-i18n="proc_label">Ihr Weg zur Heilung</span>
+      <h2 class="section-title" data-i18n="proc_title">So einfach <em>funktioniert es</em></h2>
       <div class="gold-divider center"></div>
     </div>
     <div class="process-grid">
       <div class="process-step reveal reveal-delay-1">
         <div class="step-num">01</div>
-        <h3>Erstgespräch</h3>
-        <p>Wir lernen Sie kennen, verstehen Ihre gesundheitliche Situation und finden das optimale Paket für Sie.</p>
+        <h3 data-i18n="step1_title">Erstgespräch</h3>
+        <p data-i18n="step1_desc">Wir lernen Sie kennen, verstehen Ihre gesundheitliche Situation und finden das optimale Paket für Sie.</p>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="step-num">02</div>
-        <h3>Reiseplanung</h3>
-        <p>Wir kümmern uns um alle Details: Flug, Transfer, Unterkunft und Behandlungsplan — Sie entspannen sich.</p>
+        <h3 data-i18n="step2_title">Reiseplanung</h3>
+        <p data-i18n="step2_desc">Wir kümmern uns um alle Details: Flug, Transfer, Unterkunft und Behandlungsplan — Sie entspannen sich.</p>
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="step-num">03</div>
-        <h3>Behandlung</h3>
-        <p>Erleben Sie die einzigartige Naftalan-Therapie unter medizinischer Aufsicht in Aserbaidschan.</p>
+        <h3 data-i18n="step3_title">Behandlung</h3>
+        <p data-i18n="step3_desc">Erleben Sie die einzigartige Naftalan-Therapie unter medizinischer Aufsicht in Aserbaidschan.</p>
       </div>
       <div class="process-step reveal reveal-delay-4">
         <div class="step-num">04</div>
-        <h3>Nachsorge</h3>
-        <p>Nach der Heimkehr bleiben wir an Ihrer Seite. Ein Nachsorge-Gespräch sichert Ihren Heilungserfolg.</p>
+        <h3 data-i18n="step4_title">Nachsorge</h3>
+        <p data-i18n="step4_desc">Nach der Heimkehr bleiben wir an Ihrer Seite. Ein Nachsorge-Gespräch sichert Ihren Heilungserfolg.</p>
       </div>
     </div>
   </div>
@@ -729,36 +751,36 @@
 <section class="erfahrungen section-sep" id="erfahrungen">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Stimmen unserer Gäste</span>
-      <h2 class="section-title">Was unsere Patienten <em>sagen</em></h2>
+      <span class="section-label" data-i18n="rev_label">Stimmen unserer Gäste</span>
+      <h2 class="section-title" data-i18n="rev_title">Was unsere Patienten <em>sagen</em></h2>
       <div class="gold-divider center"></div>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <span class="quote-icon">"</span>
-        <p class="testimonial-text">Nach nur 10 Tagen war meine Schmerzreduktion spürbar — ich bin absolut begeistert! Die Betreuung war auf höchstem Niveau. Ich werde definitiv wiederkommen.</p>
+        <p class="testimonial-text" data-i18n="t1_text">Nach nur 10 Tagen war meine Schmerzreduktion spürbar — ich bin absolut begeistert! Die Betreuung war auf höchstem Niveau. Ich werde definitiv wiederkommen.</p>
         <div class="testimonial-author">
           <div class="author-avatar">AM</div>
-          <div><div class="author-name">Anna Müller</div><div class="author-condition">Rheuma · Naftalan Behandlung</div></div>
+          <div><div class="author-name" data-i18n="t1_name">Anna Müller</div><div class="author-condition" data-i18n="t1_cond">Rheuma · Naftalan Behandlung</div></div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <span class="quote-icon">"</span>
-        <p class="testimonial-text">Professionelle Betreuung vom ersten bis zum letzten Tag. Das Team hat an alles gedacht. Ich habe mich vollkommen in guten Händen gefühlt. Absolut empfehlenswert.</p>
+        <p class="testimonial-text" data-i18n="t2_text">Professionelle Betreuung vom ersten bis zum letzten Tag. Das Team hat an alles gedacht. Ich habe mich vollkommen in guten Händen gefühlt. Absolut empfehlenswert.</p>
         <div class="testimonial-author">
           <div class="author-avatar">TK</div>
-          <div><div class="author-name">Thomas K.</div><div class="author-condition">Osteoporose · Komplextherapie</div></div>
+          <div><div class="author-name" data-i18n="t2_name">Thomas K.</div><div class="author-condition" data-i18n="t2_cond">Osteoporose · Komplextherapie</div></div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-3">
         <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <span class="quote-icon">"</span>
-        <p class="testimonial-text">Die Naftalan-Therapie hat meine Psoriasis endlich unter Kontrolle gebracht. Nach Jahren erfolgloser Behandlungen hat diese Reise mein Leben verändert.</p>
+        <p class="testimonial-text" data-i18n="t3_text">Die Naftalan-Therapie hat meine Psoriasis endlich unter Kontrolle gebracht. Nach Jahren erfolgloser Behandlungen hat diese Reise mein Leben verändert.</p>
         <div class="testimonial-author">
           <div class="author-avatar">MS</div>
-          <div><div class="author-name">Maria S.</div><div class="author-condition">Psoriasis · Heilende Öltherapie</div></div>
+          <div><div class="author-name" data-i18n="t3_name">Maria S.</div><div class="author-condition" data-i18n="t3_cond">Psoriasis · Heilende Öltherapie</div></div>
         </div>
       </div>
     </div>
@@ -769,10 +791,10 @@
 <section id="hotel-videos" class="video-section section-sep">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Bewegte Bilder</span>
-      <h2 class="section-title">Einblick ins Hotel <em>Kəpəz</em></h2>
+      <span class="section-label" data-i18n="vid_label">Bewegte Bilder</span>
+      <h2 class="section-title" data-i18n="vid_title">Einblick ins Hotel <em>Kəpəz</em></h2>
       <div class="gold-divider center"></div>
-      <p class="video-sub">Erleben Sie das Hotel und die Behandlungen in bewegten Bildern.</p>
+      <p class="video-sub" data-i18n="vid_sub">Erleben Sie das Hotel und die Behandlungen in bewegten Bildern.</p>
     </div>
     <div class="video-grid">
       <div class="vid-card reveal reveal-delay-1" data-src="media/video_2026-05-17_18-30-12.mp4">
@@ -782,7 +804,7 @@
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </button>
         </div>
-        <p class="vid-title">Hotel Kəpəz — Übersicht</p>
+        <p class="vid-title" data-i18n="vid1_title">Hotel Kəpəz — Übersicht</p>
       </div>
       <div class="vid-card reveal reveal-delay-2" data-src="media/video_2026-05-17_18-31-30.mp4">
         <div class="vid-thumb">
@@ -791,7 +813,7 @@
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </button>
         </div>
-        <p class="vid-title">Zimmervorstellung</p>
+        <p class="vid-title" data-i18n="vid2_title">Zimmervorstellung</p>
       </div>
       <div class="vid-card reveal reveal-delay-3" data-src="media/video_2026-05-17_18-32-33.mp4">
         <div class="vid-thumb">
@@ -800,7 +822,7 @@
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </button>
         </div>
-        <p class="vid-title">Ausstattung &amp; Komfort</p>
+        <p class="vid-title" data-i18n="vid3_title">Ausstattung &amp; Komfort</p>
       </div>
     </div>
   </div>
@@ -825,63 +847,63 @@
   <div class="container">
     <div class="kontakt-grid">
       <div class="reveal">
-        <span class="section-label">Kontakt &amp; Buchung</span>
-        <h2 class="kontakt-info" style="font-family:var(--ff-serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;color:var(--white);line-height:1.2;margin-bottom:18px;">Beginnen Sie Ihre <em style="font-style:italic;color:var(--gold-light);">Reise zur Heilung</em></h2>
+        <span class="section-label" data-i18n="contact_label">Kontakt &amp; Buchung</span>
+        <h2 class="kontakt-info" style="font-family:var(--ff-serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;color:var(--white);line-height:1.2;margin-bottom:18px;" data-i18n="contact_title">Beginnen Sie Ihre <em style="font-style:italic;color:var(--gold-light);">Reise zur Heilung</em></h2>
         <div class="gold-divider"></div>
-        <p style="color:var(--cream-muted);font-size:0.95rem;line-height:1.85;margin-bottom:36px;">Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Wir beraten Sie persönlich und finden gemeinsam das Programm, das perfekt zu Ihrer Situation passt.</p>
+        <p style="color:var(--cream-muted);font-size:0.95rem;line-height:1.85;margin-bottom:36px;" data-i18n="contact_desc">Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Wir beraten Sie persönlich und finden gemeinsam das Programm, das perfekt zu Ihrer Situation passt.</p>
         <div class="contact-items">
           <div class="contact-item">
             <div class="contact-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12 19.79 19.79 0 011.39 3.52 2 2 0 013.37 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.4a16 16 0 005.68 5.68l.81-.81a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             </div>
-            <div><div class="contact-label">Telefon</div><div class="contact-val">0174 813 56 34</div></div>
+            <div><div class="contact-label" data-i18n="contact_phone_label">Telefon</div><div class="contact-val">0174 813 56 34</div></div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <div><div class="contact-label">E-Mail</div><div class="contact-val"><a href="mailto:info@azecuratravel.com" style="color:inherit;">info@azecuratravel.com</a></div></div>
+            <div><div class="contact-label" data-i18n="contact_email_label">E-Mail</div><div class="contact-val"><a href="mailto:info@azecuratravel.com" style="color:inherit;">info@azecuratravel.com</a></div></div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <div><div class="contact-label">Erreichbarkeit</div><div class="contact-val">Mo–Fr: 9:00–18:00 Uhr</div></div>
+            <div><div class="contact-label" data-i18n="contact_hours_label">Erreichbarkeit</div><div class="contact-val" data-i18n="contact_hours_val">Mo–Fr: 9:00–18:00 Uhr</div></div>
           </div>
         </div>
       </div>
       <div class="booking-form reveal reveal-delay-2">
-        <div class="form-title">Kostenlose Erstberatung</div>
-        <div class="form-subtitle">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</div>
+        <div class="form-title" data-i18n="form_title">Kostenlose Erstberatung</div>
+        <div class="form-subtitle" data-i18n="form_subtitle">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</div>
         <form id="bookingForm">
-          <input type="hidden" name="_subject" value="Neue Buchungsanfrage — AzeCura Travel">
+          <input type="hidden" name="_subject" data-i18n-val="form_subject" value="Neue Buchungsanfrage — AzeCura Travel">
           <input type="hidden" name="_language" value="de">
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Vorname</label><input type="text" name="vorname" class="form-input" placeholder="Ihr Vorname" required></div>
-            <div class="form-group"><label class="form-label">Nachname</label><input type="text" name="nachname" class="form-input" placeholder="Ihr Nachname" required></div>
+            <div class="form-group"><label class="form-label" data-i18n="form_firstname">Vorname</label><input type="text" name="vorname" class="form-input" data-i18n-placeholder="ph_firstname" placeholder="Ihr Vorname" required></div>
+            <div class="form-group"><label class="form-label" data-i18n="form_lastname">Nachname</label><input type="text" name="nachname" class="form-input" data-i18n-placeholder="ph_lastname" placeholder="Ihr Nachname" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">E-Mail</label><input type="email" name="email" class="form-input" placeholder="ihre@email.de" required></div>
-            <div class="form-group"><label class="form-label">Telefon</label><input type="tel" name="telefon" class="form-input" placeholder="+49 ..."></div>
+            <div class="form-group"><label class="form-label" data-i18n="form_email">E-Mail</label><input type="email" name="email" class="form-input" data-i18n-placeholder="ph_email" placeholder="ihre@email.de" required></div>
+            <div class="form-group"><label class="form-label" data-i18n="form_phone">Telefon</label><input type="tel" name="telefon" class="form-input" placeholder="+49 ..."></div>
           </div>
           <div class="form-group">
-            <label class="form-label">Gewünschtes Paket</label>
+            <label class="form-label" data-i18n="form_package">Gewünschtes Paket</label>
             <select name="paket" class="form-select">
-              <option value="">Bitte wählen...</option>
-              <option>Ersteinschätzung (Kostenlos)</option>
-              <option>Heilende Öltherapie — € 1.990</option>
-              <option>Naftalan Behandlung — € 2.490</option>
-              <option>Komplextherapie — € 3.290</option>
+              <option value="" data-i18n="opt_default">Bitte wählen...</option>
+              <option data-i18n="opt_pkg1">Ersteinschätzung (Kostenlos)</option>
+              <option data-i18n="opt_pkg2">Heilende Öltherapie — € 1.990</option>
+              <option data-i18n="opt_pkg3">Naftalan Behandlung — € 2.490</option>
+              <option data-i18n="opt_pkg4">Komplextherapie — € 3.290</option>
             </select>
           </div>
-          <div class="form-group"><label class="form-label">Ihre Nachricht</label><textarea name="nachricht" class="form-textarea" placeholder="Beschreiben Sie kurz Ihre gesundheitliche Situation..."></textarea></div>
-          <div id="form-success" style="display:none;background:rgba(45,106,63,0.15);border:1px solid #2d6a3f;padding:16px 20px;margin-bottom:18px;font-size:0.9rem;color:#7ec89a;line-height:1.6;">
+          <div class="form-group"><label class="form-label" data-i18n="form_msg">Ihre Nachricht</label><textarea name="nachricht" class="form-textarea" data-i18n-placeholder="ph_msg" placeholder="Beschreiben Sie kurz Ihre gesundheitliche Situation..."></textarea></div>
+          <div id="form-success" style="display:none;background:rgba(45,106,63,0.15);border:1px solid #2d6a3f;padding:16px 20px;margin-bottom:18px;font-size:0.9rem;color:#7ec89a;line-height:1.6;" data-i18n="form_success_msg">
             ✓ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns innerhalb von 24 Stunden.
           </div>
-          <div id="form-error" style="display:none;background:rgba(180,50,50,0.12);border:1px solid rgba(180,50,50,0.4);padding:16px 20px;margin-bottom:18px;font-size:0.9rem;color:#e88;line-height:1.6;">
+          <div id="form-error" style="display:none;background:rgba(180,50,50,0.12);border:1px solid rgba(180,50,50,0.4);padding:16px 20px;margin-bottom:18px;font-size:0.9rem;color:#e88;line-height:1.6;" data-i18n="form_error_msg">
             ✗ Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an info@azecuratravel.com
           </div>
-          <button type="submit" class="form-submit">Anfrage senden</button>
+          <button type="submit" class="form-submit" data-i18n="form_submit">Anfrage senden</button>
         </form>
       </div>
     </div>
@@ -897,7 +919,7 @@
           <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1"/><path d="M18 7C14 11 9 15 9 21C9 26 13 29 18 29C23 29 27 26 27 21C27 15 22 11 18 7Z" fill="#C9A84C" opacity="0.85"/></svg>
           <span class="footer-logo-text">AzeCura <span>Travel</span></span>
         </div>
-        <p class="footer-tagline">Exklusive Heilreisen nach Aserbaidschan. Naftalan-Therapie auf höchstem Niveau — medizinisch begleitet, persönlich betreut.</p>
+        <p class="footer-tagline" data-i18n="footer_tagline">Exklusive Heilreisen nach Aserbaidschan. Naftalan-Therapie auf höchstem Niveau — medizinisch begleitet, persönlich betreut.</p>
         <div class="social-links">
           <a href="#" class="social-link" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
           <a href="#" class="social-link" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -905,27 +927,27 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4 data-i18n="footer_nav_title">Navigation</h4>
         <ul class="footer-links">
-          <li><a href="#ueber-uns">Über uns</a></li>
-          <li><a href="#leistungen">Leistungen</a></li>
-          <li><a href="#erfahrungen">Erfahrungen</a></li>
-          <li><a href="#ablauf">Ablauf</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#ueber-uns" data-i18n="nav_about">Über uns</a></li>
+          <li><a href="#leistungen" data-i18n="nav_services">Leistungen</a></li>
+          <li><a href="#erfahrungen" data-i18n="nav_reviews">Erfahrungen</a></li>
+          <li><a href="#ablauf" data-i18n="step4_title">Nachsorge</a></li>
+          <li><a href="#kontakt" data-i18n="nav_contact">Kontakt</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Pakete</h4>
+        <h4 data-i18n="footer_pkg_title">Pakete</h4>
         <ul class="footer-links">
-          <li><a href="#kontakt">Ersteinschätzung</a></li>
-          <li><a href="#kontakt">Heilende Öltherapie</a></li>
-          <li><a href="#kontakt">Naftalan Behandlung</a></li>
-          <li><a href="#kontakt">Komplextherapie</a></li>
+          <li><a href="#kontakt" data-i18n="pkg1_name">Ersteinschätzung</a></li>
+          <li><a href="#kontakt" data-i18n="pkg2_name">Heilende Öltherapie</a></li>
+          <li><a href="#kontakt" data-i18n="pkg3_name">Naftalan Behandlung</a></li>
+          <li><a href="#kontakt" data-i18n="pkg4_name">Komplextherapie</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 AzeCura Travel · Alle Rechte vorbehalten</div>
+      <div class="footer-copy" data-i18n="footer_copy">© 2025 AzeCura Travel · Alle Rechte vorbehalten</div>
       <div class="footer-legal">
         <a href="/datenschutz.html">Datenschutz</a>
         <a href="/impressum.html">Impressum</a>
@@ -939,28 +961,28 @@
 <div class="pkg-overlay" id="ther1">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Das Alleinstellungsmerkmal</div>
-    <div class="pkg-modal-ttl">Naftalan-Therapie</div>
-    <div class="pkg-modal-dur">Täglich · 8–10 Minuten pro Anwendung</div>
-    <div class="pkg-modal-desc">Naftalan-Öl ist in seiner therapeutischen Form weltweit nur in Aserbaidschan verfügbar. Seine einzigartige Zusammensetzung aus polyzyklischen Naphthensäuren macht es zu einem der wirksamsten natürlichen Entzündungshemmer der modernen Balneologie.</div>
-    <div class="pkg-modal-sh">Anwendungsformen</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="ther1_lbl">Das Alleinstellungsmerkmal</div>
+    <div class="pkg-modal-ttl" data-i18n="ther1_ttl">Naftalan-Therapie</div>
+    <div class="pkg-modal-dur" data-i18n="ther1_dur">Täglich · 8–10 Minuten pro Anwendung</div>
+    <div class="pkg-modal-desc" data-i18n="ther1_desc">Naftalan-Öl ist in seiner therapeutischen Form weltweit nur in Aserbaidschan verfügbar. Seine einzigartige Zusammensetzung aus polyzyklischen Naphthensäuren macht es zu einem der wirksamsten natürlichen Entzündungshemmer der modernen Balneologie.</div>
+    <div class="pkg-modal-sh" data-i18n="ther1_sh1">Anwendungsformen</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther1_ul1">
       <li><strong style="color:var(--white)">Naftalan-Vollbad</strong> — Der Klassiker: 8–10 Minuten im Ölbad, täglich. Wärme und Wirkstoffe durchdringen die Haut und wirken systemisch.</li>
       <li><strong style="color:var(--white)">Sitzbad</strong> — Gezielte Anwendung bei Becken-, Hüft- und Unterbauchbeschwerden.</li>
       <li><strong style="color:var(--white)">Kammerbad</strong> — Isolierte Behandlung einzelner Gliedmaßen (Arm oder Bein) für lokale Beschwerden.</li>
       <li><strong style="color:var(--white)">Lokale Einreibungen</strong> — Direkte Anwendung auf einzelne Gelenke oder Hautareale.</li>
     </ul>
-    <div class="pkg-modal-sh">Wirkungsbereiche</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="ther1_sh2">Wirkungsbereiche</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther1_ul2">
       <li>Arthritis, Arthrose, entzündliche Gelenkerkrankungen</li>
       <li>Psoriasis, Neurodermitis und chronische Hauterkrankungen</li>
       <li>Neuralgien und Neuritiden</li>
       <li>Durchblutungsförderung und Immunstimulation</li>
     </ul>
-    <div class="pkg-modal-note">Die Anwendung erfordert eine ärztliche Voruntersuchung. Nicht für jeden Patienten geeignet — Kontraindikationen werden vor Ort geprüft.</div>
+    <div class="pkg-modal-note" data-i18n="ther1_note">Die Anwendung erfordert eine ärztliche Voruntersuchung. Nicht für jeden Patienten geeignet — Kontraindikationen werden vor Ort geprüft.</div>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="modal_advise">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -968,27 +990,27 @@
 <div class="pkg-overlay" id="ther2">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Gezielte Impulse auf Zellebene</div>
-    <div class="pkg-modal-ttl">Elektrotherapie</div>
-    <div class="pkg-modal-dur">Schmerzfrei · Ohne Eingriff · Präzise dosiert</div>
-    <div class="pkg-modal-desc">Elektrische Ströme, richtig angewendet, können tief in Nerven, Muskeln und Gewebe einwirken — ohne Medikamente, ohne Eingriff. Im Hotel Kəpəz stehen mehrere Verfahren zur Verfügung, die je nach Diagnose kombiniert werden.</div>
-    <div class="pkg-modal-sh">Verfügbare Verfahren</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="ther2_lbl">Gezielte Impulse auf Zellebene</div>
+    <div class="pkg-modal-ttl" data-i18n="ther2_ttl">Elektrotherapie</div>
+    <div class="pkg-modal-dur" data-i18n="ther2_dur">Schmerzfrei · Ohne Eingriff · Präzise dosiert</div>
+    <div class="pkg-modal-desc" data-i18n="ther2_desc">Elektrische Ströme, richtig angewendet, können tief in Nerven, Muskeln und Gewebe einwirken — ohne Medikamente, ohne Eingriff. Im Hotel Kəpəz stehen mehrere Verfahren zur Verfügung, die je nach Diagnose kombiniert werden.</div>
+    <div class="pkg-modal-sh" data-i18n="ther2_sh1">Verfügbare Verfahren</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther2_ul1">
       <li><strong style="color:var(--white)">Amplipuls</strong> — Sinusoid-modulierte Ströme lindern Schmerzen und aktivieren geschwächte Muskulatur.</li>
       <li><strong style="color:var(--white)">Darsonvalisation</strong> — Hochfrequenzströme fördern die Durchblutung, stärken die Haut und lindern lokale Neuralgien.</li>
       <li><strong style="color:var(--white)">Elektrophorese</strong> — Wirkstoffe werden mithilfe elektrischer Felder gezielt durch die Haut ins Gewebe eingebracht.</li>
       <li><strong style="color:var(--white)">Kurzwellentherapie</strong> — Tiefenwärme für Gelenke und Muskulatur durch hochfrequente elektromagnetische Felder.</li>
       <li><strong style="color:var(--white)">Lasertherapie</strong> — Low-Level-Laser fördert Geweberegeneration und Wundheilung auf Zellebene.</li>
     </ul>
-    <div class="pkg-modal-sh">Typische Indikationen</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="ther2_sh2">Typische Indikationen</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther2_ul2">
       <li>Chronische Schmerzen des Bewegungsapparats</li>
       <li>Muskelschwäche und Rehabilitationsphasen</li>
       <li>Nervenentzündungen und funktionelle Beschwerden</li>
     </ul>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="modal_advise">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -996,26 +1018,26 @@
 <div class="pkg-overlay" id="ther3">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Sanfte Energie — Tiefe Wirkung</div>
-    <div class="pkg-modal-ttl">Magnettherapie &amp; Lasertherapie</div>
-    <div class="pkg-modal-dur">Berührungslos · Keine Nebenwirkungen · Schmerzfrei</div>
-    <div class="pkg-modal-desc">Zwei Verfahren, die ohne direkten Kontakt wirken: Magnetfelder und Laserimpulse dringen ins Gewebe, ohne es zu belasten. Ideal bei empfindlichen Patienten und chronischen Entzündungsprozessen.</div>
-    <div class="pkg-modal-sh">Magnettherapie</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="ther3_lbl">Sanfte Energie — Tiefe Wirkung</div>
+    <div class="pkg-modal-ttl" data-i18n="ther3_ttl">Magnettherapie &amp; Lasertherapie</div>
+    <div class="pkg-modal-dur" data-i18n="ther3_dur">Berührungslos · Keine Nebenwirkungen · Schmerzfrei</div>
+    <div class="pkg-modal-desc" data-i18n="ther3_desc">Zwei Verfahren, die ohne direkten Kontakt wirken: Magnetfelder und Laserimpulse dringen ins Gewebe, ohne es zu belasten. Ideal bei empfindlichen Patienten und chronischen Entzündungsprozessen.</div>
+    <div class="pkg-modal-sh" data-i18n="ther3_sh1">Magnettherapie</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther3_ul1">
       <li>Gepulste Magnetfelder aktivieren elektrochemische Prozesse auf Zellebene</li>
       <li>Reduktion von Entzündungsmarkern ohne medikamentöse Eingriffe</li>
       <li>Fördert Knorpel- und Knochenstoffwechsel bei degenerativen Erkrankungen</li>
       <li>Beruhigt überaktive Nervenbahnen bei Neuralgien</li>
     </ul>
-    <div class="pkg-modal-sh">Lasertherapie (Low-Level)</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="ther3_sh2">Lasertherapie (Low-Level)</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther3_ul2">
       <li>Gezielte Lichtimpulse stimulieren die Mitochondrien-Aktivität in Zellen</li>
       <li>Beschleunigt Gewebeheilung bei Sehnen-, Gelenk- und Hautbeschwerden</li>
       <li>Schmerzdämpfend durch Beeinflussung lokaler Nervenfasern</li>
     </ul>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="modal_advise">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1023,26 +1045,26 @@
 <div class="pkg-overlay" id="ther4">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Bewährt seit Jahrhunderten</div>
-    <div class="pkg-modal-ttl">Wärme- &amp; Schlammtherapie</div>
-    <div class="pkg-modal-dur">Paraffin · Palçıq-Schlamm · Lichttherapie</div>
-    <div class="pkg-modal-desc">Wärme ist eine der ältesten Formen der Heilmedizin — und eine der wirksamsten. Im Hotel Kəpəz wird sie auf mehrere Arten eingesetzt, je nach Beschwerdebild und individueller Verträglichkeit.</div>
-    <div class="pkg-modal-sh">Anwendungsformen</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="ther4_lbl">Bewährt seit Jahrhunderten</div>
+    <div class="pkg-modal-ttl" data-i18n="ther4_ttl">Wärme- &amp; Schlammtherapie</div>
+    <div class="pkg-modal-dur" data-i18n="ther4_dur">Paraffin · Palçıq-Schlamm · Lichttherapie</div>
+    <div class="pkg-modal-desc" data-i18n="ther4_desc">Wärme ist eine der ältesten Formen der Heilmedizin — und eine der wirksamsten. Im Hotel Kəpəz wird sie auf mehrere Arten eingesetzt, je nach Beschwerdebild und individueller Verträglichkeit.</div>
+    <div class="pkg-modal-sh" data-i18n="ther4_sh1">Anwendungsformen</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther4_ul1">
       <li><strong style="color:var(--white)">Paraffintherapie</strong> — Warmes Paraffin umhüllt Hände, Füße oder Gelenke und gibt Wärme langsam und gleichmäßig ab. Lockert Gelenkkapseln, lindert Steifigkeit.</li>
       <li><strong style="color:var(--white)">Schlammbäder (Palçıq)</strong> — Mineralreicher Heilschlamm wirkt entzündungshemmend, stimuliert Durchblutung und wärmt tief in die Muskulatur.</li>
       <li><strong style="color:var(--white)">Sollux-Lichttherapie</strong> — Infrarotlicht für gezielte Tiefenwärme an lokalisierten Beschwerderegionen.</li>
       <li><strong style="color:var(--white)">Lichtbäder</strong> — Ganzheitliche Wärmebehandlung zur Stoffwechselaktivierung und Entspannung.</li>
     </ul>
-    <div class="pkg-modal-sh">Wirkungsbereiche</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="ther4_sh2">Wirkungsbereiche</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther4_ul2">
       <li>Chronische Gelenksteifigkeit und Arthrose</li>
       <li>Muskelverspannungen und Rückenbeschwerden</li>
       <li>Durchblutungsstörungen der Extremitäten</li>
     </ul>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="modal_advise">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1050,25 +1072,25 @@
 <div class="pkg-overlay" id="ther5">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Mobilität zurückgewinnen</div>
-    <div class="pkg-modal-ttl">Massage &amp; Bewegungstherapie</div>
-    <div class="pkg-modal-dur">Klassisch · Therapeutisch · Nachhaltig</div>
-    <div class="pkg-modal-desc">Was Kälte und Inaktivität eingefroren haben, lösen erfahrene Hände und gezielte Bewegung wieder auf. Die manuelle Therapie im Hotel Kəpəz arbeitet nicht gegen Symptome — sie adressiert die Ursachen eingeschränkter Mobilität.</div>
-    <div class="pkg-modal-sh">Angebotene Verfahren</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="ther5_lbl">Mobilität zurückgewinnen</div>
+    <div class="pkg-modal-ttl" data-i18n="ther5_ttl">Massage &amp; Bewegungstherapie</div>
+    <div class="pkg-modal-dur" data-i18n="ther5_dur">Klassisch · Therapeutisch · Nachhaltig</div>
+    <div class="pkg-modal-desc" data-i18n="ther5_desc">Was Kälte und Inaktivität eingefroren haben, lösen erfahrene Hände und gezielte Bewegung wieder auf. Die manuelle Therapie im Hotel Kəpəz arbeitet nicht gegen Symptome — sie adressiert die Ursachen eingeschränkter Mobilität.</div>
+    <div class="pkg-modal-sh" data-i18n="ther5_sh1">Angebotene Verfahren</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther5_ul1">
       <li><strong style="color:var(--white)">Klassische Massage</strong> — Manuelle Techniken zur Muskelentspannung, Durchblutungsförderung und Schmerzlinderung. Angepasst an Beschwerdebild und Empfindlichkeit.</li>
       <li><strong style="color:var(--white)">Physiotherapie</strong> — Gezielte therapeutische Übungen zur Kräftigung, Dehnung und Stabilisierung betroffener Muskel- und Gelenksysteme.</li>
       <li><strong style="color:var(--white)">Bewegungstherapie</strong> — Strukturierte Bewegungsprogramme, die auf die Wiederherstellung alltäglicher Mobilität ausgerichtet sind — nicht auf kurzfristige Erleichterung.</li>
     </ul>
-    <div class="pkg-modal-sh">Wirkungsbereiche</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="ther5_sh2">Wirkungsbereiche</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther5_ul2">
       <li>Rücken- und Gelenkbeschwerden aller Schweregrade</li>
       <li>Post-operative Rehabilitation und Wiederherstellung</li>
       <li>Muskelschwäche und Haltungsschäden</li>
     </ul>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="modal_advise">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1076,22 +1098,22 @@
 <div class="pkg-overlay" id="ther6">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Das ganzheitliche Bild</div>
-    <div class="pkg-modal-ttl">Ergänzende Verfahren</div>
-    <div class="pkg-modal-dur">Inhalation · Ultraschall · Jod-Brom · Sauerstoff</div>
-    <div class="pkg-modal-desc">Ein vollständiges Kurprogramm schaut über das einzelne Symptom hinaus. Diese Verfahren ergänzen die Haupttherapien und adressieren Körpersysteme, die häufig übersehen werden — von den Atemwegen bis zum Nervensystem.</div>
-    <div class="pkg-modal-sh">Ergänzende Therapien</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="ther6_lbl">Das ganzheitliche Bild</div>
+    <div class="pkg-modal-ttl" data-i18n="ther6_ttl">Ergänzende Verfahren</div>
+    <div class="pkg-modal-dur" data-i18n="ther6_dur">Inhalation · Ultraschall · Jod-Brom · Sauerstoff</div>
+    <div class="pkg-modal-desc" data-i18n="ther6_desc">Ein vollständiges Kurprogramm schaut über das einzelne Symptom hinaus. Diese Verfahren ergänzen die Haupttherapien und adressieren Körpersysteme, die häufig übersehen werden — von den Atemwegen bis zum Nervensystem.</div>
+    <div class="pkg-modal-sh" data-i18n="ther6_sh1">Ergänzende Therapien</div>
+    <ul class="pkg-modal-ul" data-i18n-html="ther6_ul1">
       <li><strong style="color:var(--white)">Inhalationen</strong> — Befeuchtete Wirkstoffe erreichen tief in Atemwege und Schleimhäute — besonders wertvoll bei Begleitbeschwerden der oberen Atemwege.</li>
       <li><strong style="color:var(--white)">Ultraschalltherapie</strong> — Mechanische Mikromassage auf Zellebene. Fördert Stoffwechsel, löst Verklebungen und wirkt tief in Weichteile und Gelenke.</li>
       <li><strong style="color:var(--white)">Jod-Brom-Bäder</strong> — Mineralreiche Wannenbäder mit beruhigender Wirkung auf Nervensystem, Haut und Kreislauf.</li>
       <li><strong style="color:var(--white)">Sauerstoff-Cocktails</strong> — Angereicherte Getränke zur Zellversorgung und Unterstützung des Regenerationsprozesses von innen.</li>
       <li><strong style="color:var(--white)">Ozontherapie &amp; Akupunktur</strong> — Je nach Diagnose und ärztlicher Empfehlung als gezielte Ergänzung einsetzbar.</li>
     </ul>
-    <div class="pkg-modal-note">Die Auswahl der ergänzenden Verfahren erfolgt individuell nach ärztlicher Untersuchung und richtet sich nach Ihrem persönlichen Beschwerdebild.</div>
+    <div class="pkg-modal-note" data-i18n="ther6_note">Die Auswahl der ergänzenden Verfahren erfolgt individuell nach ärztlicher Untersuchung und richtet sich nach Ihrem persönlichen Beschwerdebild.</div>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Beratung anfragen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="modal_advise">Beratung anfragen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1100,13 +1122,13 @@
 <div class="pkg-overlay" id="pkg1">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Kostenlose Beratung</div>
-    <div class="pkg-modal-ttl">Ersteinschätzung</div>
-    <div class="pkg-modal-dur">Persönliche Beratung · ca. 60 Minuten · per Telefon oder Video-Call</div>
-    <div class="pkg-modal-prc">Kostenlos</div>
-    <div class="pkg-modal-desc">Das Beratungsgespräch ist der erste Schritt auf Ihrem Weg zur Heilung. Wir nehmen uns Zeit für Ihre individuelle Situation — unverbindlich und kostenfrei.</div>
-    <div class="pkg-modal-sh">Im Gespräch besprechen wir</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="m1_lbl">Kostenlose Beratung</div>
+    <div class="pkg-modal-ttl" data-i18n="pkg1_name">Ersteinschätzung</div>
+    <div class="pkg-modal-dur" data-i18n="m1_dur">Persönliche Beratung · ca. 60 Minuten · per Telefon oder Video-Call</div>
+    <div class="pkg-modal-prc" data-i18n="pkg1_price">Kostenlos</div>
+    <div class="pkg-modal-desc" data-i18n="m1_desc">Das Beratungsgespräch ist der erste Schritt auf Ihrem Weg zur Heilung. Wir nehmen uns Zeit für Ihre individuelle Situation — unverbindlich und kostenfrei.</div>
+    <div class="pkg-modal-sh" data-i18n="m1_sh1">Im Gespräch besprechen wir</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m1_ul1">
       <li>Ihre aktuellen Beschwerden und Erkrankungen</li>
       <li>Vorerkrankungen, Operationen und aktuelle Medikamente</li>
       <li>Wirkungsweise der Naftalan-Therapie &amp; was Sie erwartet</li>
@@ -1114,11 +1136,11 @@
       <li>Anreise, Hotel, Ablauf und organisatorische Fragen</li>
       <li>Kosten, Termine und nächste Schritte</li>
     </ul>
-    <div class="pkg-modal-sh">Hinweise</div>
-    <div class="pkg-modal-note">Sprachen: Englisch &amp; Russisch · Keine Verpflichtung — rein informativ</div>
+    <div class="pkg-modal-sh" data-i18n="m1_sh2">Hinweise</div>
+    <div class="pkg-modal-note" data-i18n="m1_note">Sprachen: Englisch &amp; Russisch · Keine Verpflichtung — rein informativ</div>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Termin vereinbaren</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="pkg1_btn">Termin vereinbaren</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1126,13 +1148,13 @@
 <div class="pkg-overlay" id="pkg2">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Einstiegspaket</div>
-    <div class="pkg-modal-ttl">Heilende Öltherapie</div>
-    <div class="pkg-modal-dur">7 Tage · inkl. Unterkunft · Doppelzimmer</div>
-    <div class="pkg-modal-prc">€ 1.990</div>
-    <div class="pkg-modal-desc">Ihr idealer Einstieg in die heilende Kraft des Naftalan-Öls. In 7 Tagen erleben Sie täglich ein Naftalan-Vollbad in einer entspannten, medizinisch begleiteten Atmosphäre.</div>
-    <div class="pkg-modal-sh">Leistungen</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="m2_lbl">Einstiegspaket</div>
+    <div class="pkg-modal-ttl" data-i18n="pkg2_name">Heilende Öltherapie</div>
+    <div class="pkg-modal-dur" data-i18n="m2_dur">7 Tage · inkl. Unterkunft · Doppelzimmer</div>
+    <div class="pkg-modal-prc" data-i18n="pkg2_price">€ 1.990</div>
+    <div class="pkg-modal-desc" data-i18n="m2_desc">Ihr idealer Einstieg in die heilende Kraft des Naftalan-Öls. In 7 Tagen erleben Sie täglich ein Naftalan-Vollbad in einer entspannten, medizinisch begleiteten Atmosphäre.</div>
+    <div class="pkg-modal-sh" data-i18n="m_sh_services">Leistungen</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m2_ul1">
       <li>7 Naftalan-Vollbäder (je ca. 8 Minuten, täglich)</li>
       <li>Medizinische Eingangsuntersuchung durch Facharzt</li>
       <li>Unterkunft im Doppelzimmer (Hotel Kəpəz, Naftalan)</li>
@@ -1140,17 +1162,17 @@
       <li>Flughafentransfer (Baku GYD) hin &amp; zurück</li>
       <li>Begleitung auf Englisch &amp; Russisch</li>
     </ul>
-    <div class="pkg-modal-sh">Ideal für</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="m_sh_ideal">Ideal für</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m2_ul2">
       <li>Erste Erfahrung mit der Naftalan-Therapie</li>
       <li>Leichte bis mittlere Gelenk- und Rückenbeschwerden</li>
       <li>Erholung und präventive Gesundheitspflege</li>
     </ul>
-    <div class="pkg-modal-sh">Nicht im Preis enthalten</div>
-    <div class="pkg-modal-note">Flüge · Mittagessen · Persönliche Ausgaben</div>
+    <div class="pkg-modal-sh" data-i18n="m_sh_excl">Nicht im Preis enthalten</div>
+    <div class="pkg-modal-note" data-i18n="m2_note">Flüge · Mittagessen · Persönliche Ausgaben</div>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Jetzt buchen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="pkg_book">Jetzt buchen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1158,13 +1180,13 @@
 <div class="pkg-overlay" id="pkg3">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Intensivtherapie</div>
-    <div class="pkg-modal-ttl">Naftalan Behandlung</div>
-    <div class="pkg-modal-dur">10 Tage · Intensivtherapie · Einzelzimmer</div>
-    <div class="pkg-modal-prc">€ 2.490</div>
-    <div class="pkg-modal-desc">Das Intensivprogramm für nachhaltige Beschwerdelinderung. 10 Tage strukturierte Therapie mit täglicher medizinischer Begleitung und einem einzigartigen Baku-Ausflug.</div>
-    <div class="pkg-modal-sh">Leistungen</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="m3_lbl">Intensivtherapie</div>
+    <div class="pkg-modal-ttl" data-i18n="pkg3_name">Naftalan Behandlung</div>
+    <div class="pkg-modal-dur" data-i18n="m3_dur">10 Tage · Intensivtherapie · Einzelzimmer</div>
+    <div class="pkg-modal-prc" data-i18n="pkg3_price">€ 2.490</div>
+    <div class="pkg-modal-desc" data-i18n="m3_desc">Das Intensivprogramm für nachhaltige Beschwerdelinderung. 10 Tage strukturierte Therapie mit täglicher medizinischer Begleitung und einem einzigartigen Baku-Ausflug.</div>
+    <div class="pkg-modal-sh" data-i18n="m_sh_services">Leistungen</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m3_ul1">
       <li>10 Naftalan-Vollbäder (täglich, je ca. 8 Minuten)</li>
       <li>Tägliche Massage oder Physiotherapie</li>
       <li>Medizinische Begleitung durch Facharzt während des gesamten Aufenthalts</li>
@@ -1174,17 +1196,17 @@
       <li>Halbtagesausflug in die Baku Altstadt (Icherisheher)</li>
       <li>Begleitung auf Englisch &amp; Russisch</li>
     </ul>
-    <div class="pkg-modal-sh">Ideal für</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="m_sh_ideal">Ideal für</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m3_ul2">
       <li>Arthritis, Arthrose, Psoriasis</li>
       <li>Chronische Rücken- und Gelenkbeschwerden</li>
       <li>Patienten mit Bedarf an intensiverer Therapie</li>
     </ul>
-    <div class="pkg-modal-sh">Nicht im Preis enthalten</div>
-    <div class="pkg-modal-note">Flüge · Persönliche Ausgaben</div>
+    <div class="pkg-modal-sh" data-i18n="m_sh_excl">Nicht im Preis enthalten</div>
+    <div class="pkg-modal-note" data-i18n="m3_note">Flüge · Persönliche Ausgaben</div>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Jetzt buchen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="pkg_book">Jetzt buchen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1192,13 +1214,13 @@
 <div class="pkg-overlay" id="pkg4">
   <div class="pkg-modal">
     <button class="pkg-close" aria-label="Schließen">&times;</button>
-    <div class="pkg-modal-lbl">Meistgewählt</div>
-    <div class="pkg-modal-ttl">Komplextherapie</div>
-    <div class="pkg-modal-dur">14 Tage · Rundum-Betreuung · Premium Einzelzimmer</div>
-    <div class="pkg-modal-prc">€ 3.290</div>
-    <div class="pkg-modal-desc">Das Rundum-Sorglos-Paket für maximale Regeneration. 14 Tage intensivste medizinische Betreuung kombiniert mit mehreren Therapieformen und exklusiven Erlebnissen.</div>
-    <div class="pkg-modal-sh">Leistungen</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-lbl" data-i18n="popular_badge">Meistgewählt</div>
+    <div class="pkg-modal-ttl" data-i18n="pkg4_name">Komplextherapie</div>
+    <div class="pkg-modal-dur" data-i18n="m4_dur">14 Tage · Rundum-Betreuung · Premium Einzelzimmer</div>
+    <div class="pkg-modal-prc" data-i18n="pkg4_price">€ 3.290</div>
+    <div class="pkg-modal-desc" data-i18n="m4_desc">Das Rundum-Sorglos-Paket für maximale Regeneration. 14 Tage intensivste medizinische Betreuung kombiniert mit mehreren Therapieformen und exklusiven Erlebnissen.</div>
+    <div class="pkg-modal-sh" data-i18n="m_sh_services">Leistungen</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m4_ul1">
       <li>14 Naftalan-Vollbäder (täglich, je ca. 8 Minuten)</li>
       <li>Komplettes Behandlungsprogramm: Massage, Physiotherapie, Phonophorese, Paraffintherapie, Lymphdrainage</li>
       <li>Premium Einzelzimmer im Hotel Kəpəz</li>
@@ -1209,17 +1231,17 @@
       <li>Nachsorge-Gespräch nach Rückkehr (per Video-Call)</li>
       <li>Begleitung auf Englisch &amp; Russisch</li>
     </ul>
-    <div class="pkg-modal-sh">Ideal für</div>
-    <ul class="pkg-modal-ul">
+    <div class="pkg-modal-sh" data-i18n="m_sh_ideal">Ideal für</div>
+    <ul class="pkg-modal-ul" data-i18n-html="m4_ul2">
       <li>Schwerwiegende chronische Erkrankungen</li>
       <li>Patienten die umfassende, persönliche Betreuung benötigen</li>
       <li>Maximale Regeneration und langfristige Beschwerdelinderung</li>
     </ul>
-    <div class="pkg-modal-sh">Nicht im Preis enthalten</div>
-    <div class="pkg-modal-note">Flüge · Persönliche Ausgaben</div>
+    <div class="pkg-modal-sh" data-i18n="m_sh_excl">Nicht im Preis enthalten</div>
+    <div class="pkg-modal-note" data-i18n="m4_note">Flüge · Persönliche Ausgaben</div>
     <div class="pkg-modal-actions">
-      <a href="#kontakt" class="btn btn-gold pkg-modal-book">Jetzt buchen</a>
-      <button class="btn btn-outline pkg-close-btn">Schließen</button>
+      <a href="#kontakt" class="btn btn-gold pkg-modal-book" data-i18n="pkg_book">Jetzt buchen</a>
+      <button class="btn btn-outline pkg-close-btn" data-i18n="modal_close">Schließen</button>
     </div>
   </div>
 </div>
@@ -1375,6 +1397,377 @@
     });
   })();
 
+  // ===== i18n =====
+  const T = {
+    de: {
+      nav_about:'Über uns', nav_services:'Leistungen', nav_reviews:'Erfahrungen', nav_gallery:'Galerie', nav_contact:'Kontakt', nav_blog:'Blog', nav_book:'Jetzt buchen',
+      hero_badge:'Exklusive Heilreisen · Aserbaidschan', hero_title1:'Heilung auf', hero_title2:'höchstem Niveau',
+      hero_subtitle:'Exklusive Gesundheitsreisen nach Aserbaidschan — die einzigartige Naftalan-Therapie für Rheuma, Psoriasis & Gelenkschmerzen. Medizinisch begleitet. Persönlich betreut.',
+      hero_cta1:'Jetzt buchen', hero_cta2:'Mehr erfahren',
+      about_label:'Unsere Mission', about_title:'Warum AzeCura Travel?',
+      about_intro:'Wir verbinden die Heilkraft des einzigartigen Naftalanöls mit modernster medizinischer Betreuung und exklusivem Reisekomfort. Unser Ziel ist Ihre vollständige Genesung — in einer Umgebung, die Würde, Komfort und persönliche Zuwendung in den Mittelpunkt stellt.',
+      f1_title:'Medizinische Expertise', f1_desc:'Jede Reise wird von erfahrenen Medizinern begleitet. Wir kooperieren eng mit dem renommierten Kəpəz Gesundheitszentrum in Naftalan.',
+      f2_title:'Persönliche Betreuung', f2_desc:'Ihr persönlicher Reisebegleiter steht Ihnen vom ersten Gespräch bis zur Heimkehr zur Seite — auf Deutsch, Russisch und Aserbaidschanisch.',
+      f3_title:'Exklusive Unterkunft', f3_desc:'Sie wohnen im eleganten Kəpəz Hotel — direkt verbunden mit dem Behandlungszentrum. Höchste Standards für Ihren Komfort.',
+      strip_cap1:'Doppelzimmer · Balkon', strip_cap2:'Suite · Wohnzimmer', strip_cap3:'Marmor-Bad', strip_btn:'Alle Fotos ansehen →',
+      naft_label:'Das Wundermittel', naft_title:'Die Kraft des Naftalanöls',
+      naft_desc1:'Naftalanöl ist ein weltweit einzigartiger Naturschatz — ein spezielles Erdöl, das ausschließlich in der Stadt Naftalan in Aserbaidschan vorkommt. Seine außergewöhnliche chemische Zusammensetzung macht es zu einem der kraftvollsten natürlichen Heilmittel der Welt.',
+      naft_desc2:'Seit dem 12. Jahrhundert nutzen Menschen aus aller Welt die heilende Wirkung des Naftalanöls bei entzündlichen Erkrankungen, Gelenkbeschwerden und Hautkrankheiten.',
+      naft_badge1:'Seit Jahrhunderten bewährt', naft_badge2:'Wissenschaftlich anerkannt', naft_badge3:'Nur in Naftalan verfügbar',
+      naft_century_sub:'Jahrhundert', naft_century_note:'Seit Jahrhunderten bewährt',
+      pkg_label:'Unsere Pakete', pkg_title:'Leistungen & Preise', pkg_desc:'Alle Pakete beinhalten medizinische Begleitung, Flughafentransfer sowie Unterkunft im Kəpəz Hotel.',
+      pkg1_name:'Ersteinschätzung', pkg1_dur:'Persönliche Beratung · 60 min', pkg1_price:'Kostenlos', pkg1_f1:'Individuelle Gesundheitsberatung', pkg1_f2:'Empfehlung des passenden Pakets', pkg1_f3:'Antworten auf alle Fragen', pkg1_f4:'Per Telefon oder Video-Call', pkg1_btn:'Termin vereinbaren',
+      pkg2_name:'Heilende Öltherapie', pkg2_dur:'7 Tage · inkl. Unterkunft', pkg2_price:'€ 1.990', pkg2_f1:'7 Naftalan-Vollbäder', pkg2_f2:'Medizinische Eingangsuntersuchung', pkg2_f3:'Unterkunft im Doppelzimmer', pkg2_f4:'Flughafentransfer hin & zurück', pkg2_f5:'Begleitung auf Englisch & Russisch',
+      pkg3_name:'Naftalan Behandlung', pkg3_dur:'10 Tage · Intensivtherapie', pkg3_price:'€ 2.490', pkg3_f1:'10 Naftalan-Vollbäder', pkg3_f2:'Massage & Physiotherapie', pkg3_f3:'Medizinische Tagesbegleitung', pkg3_f4:'Unterkunft im Einzelzimmer', pkg3_f5:'Flughafentransfer hin & zurück', pkg3_f6:'Ausflug in die Altstadt Baku',
+      pkg4_name:'Komplextherapie', pkg4_dur:'14 Tage · Rundum-Betreuung', pkg4_price:'€ 3.290', pkg4_f1:'14 Naftalan-Vollbäder', pkg4_f2:'Komplettes Behandlungsprogramm', pkg4_f3:'Premium Einzelzimmer', pkg4_f4:'Alle Mahlzeiten inklusive', pkg4_f5:'Persönliche Pflegerin täglich', pkg4_f6:'Exkursionen & Stadttouren', pkg4_f7:'Nachsorge-Gespräch nach Rückkehr',
+      pkg_book:'Jetzt buchen', popular_badge:'Meistgewählt',
+      treat_label:'Hotel Kəpəz · Naftalan', treat_title:'Unser Behandlungsspektrum', treat_desc:'Vor jeder Kur steht eine ärztliche Untersuchung — erst dann wird Ihr persönliches Programm aus dem folgenden Spektrum zusammengestellt.',
+      th1_title:'Naftalan-Therapie', th1_sub:'Das Herzstück der Kur', th1_desc:'Das einzigartige Naftalan-Öl existiert in therapeutischer Reinheit weltweit nur hier in Aserbaidschan — und wirkt wie kein anderes Naturheilmittel der Balneologie.',
+      th2_title:'Elektrotherapie', th2_sub:'Gezielte Impulse auf Zellebene', th2_desc:'Von Amplipuls bis Darsonvalisation: Elektrische Ströme, präzise dosiert, aktivieren Nerven, Muskulatur und Durchblutung — ohne Eingriff, ohne Schmerzen.',
+      th3_title:'Magnettherapie & Laser', th3_sub:'Sanfte Energie — tiefe Wirkung', th3_desc:'Gepulste Magnetfelder und Laserimpulse dringen tief ins Gewebe — sie reduzieren Entzündungen, beschleunigen Regeneration und brauchen dafür keinen einzigen Hautschnitt.',
+      th4_title:'Wärme- & Schlammtherapie', th4_sub:'Bewährt seit Jahrhunderten', th4_desc:'Paraffin, Heilschlamm (Palçıq) und Lichttherapie geben Wärme langsam und gleichmäßig ab — bis tief in Gelenke und Muskeln, wo sie am meisten gebraucht wird.',
+      th5_title:'Massage & Bewegungstherapie', th5_sub:'Mobilität zurückgewinnen', th5_desc:'Professionelle Massagetechniken lösen, was verkrampft ist. Gezielte Bewegungsübungen reaktivieren, was eingeschränkt war — nachhaltig, nicht nur kurzfristig.',
+      th6_title:'Ergänzende Verfahren', th6_sub:'Das ganzheitliche Bild', th6_desc:'Inhalationen, Ultraschall, Jod-Brom-Bäder und Sauerstoff-Cocktails — ergänzende Therapien, die das Kurprogramm zu einem ganzheitlichen Erlebnis machen.',
+      th_more:'Mehr erfahren →',
+      proc_label:'Ihr Weg zur Heilung', proc_title:'So einfach funktioniert es',
+      step1_title:'Erstgespräch', step1_desc:'Wir lernen Sie kennen, verstehen Ihre gesundheitliche Situation und finden das optimale Paket für Sie.',
+      step2_title:'Reiseplanung', step2_desc:'Wir kümmern uns um alle Details: Flug, Transfer, Unterkunft und Behandlungsplan — Sie entspannen sich.',
+      step3_title:'Behandlung', step3_desc:'Erleben Sie die einzigartige Naftalan-Therapie unter medizinischer Aufsicht in Aserbaidschan.',
+      step4_title:'Nachsorge', step4_desc:'Nach der Heimkehr bleiben wir an Ihrer Seite. Ein Nachsorge-Gespräch sichert Ihren Heilungserfolg.',
+      rev_label:'Stimmen unserer Gäste', rev_title:'Was unsere Patienten sagen',
+      t1_text:'Nach nur 10 Tagen war meine Schmerzreduktion spürbar — ich bin absolut begeistert! Die Betreuung war auf höchstem Niveau. Ich werde definitiv wiederkommen.', t1_name:'Anna Müller', t1_cond:'Rheuma · Naftalan Behandlung',
+      t2_text:'Professionelle Betreuung vom ersten bis zum letzten Tag. Das Team hat an alles gedacht. Ich habe mich vollkommen in guten Händen gefühlt. Absolut empfehlenswert.', t2_name:'Thomas K.', t2_cond:'Osteoporose · Komplextherapie',
+      t3_text:'Die Naftalan-Therapie hat meine Psoriasis endlich unter Kontrolle gebracht. Nach Jahren erfolgloser Behandlungen hat diese Reise mein Leben verändert.', t3_name:'Maria S.', t3_cond:'Psoriasis · Heilende Öltherapie',
+      vid_label:'Bewegte Bilder', vid_title:'Einblick ins Hotel Kəpəz', vid_sub:'Erleben Sie das Hotel und die Behandlungen in bewegten Bildern.',
+      vid1_title:'Hotel Kəpəz — Übersicht', vid2_title:'Zimmervorstellung', vid3_title:'Ausstattung & Komfort',
+      contact_label:'Kontakt & Buchung', contact_title:'Beginnen Sie Ihre Reise zur Heilung', contact_desc:'Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Wir beraten Sie persönlich und finden gemeinsam das Programm, das perfekt zu Ihrer Situation passt.',
+      contact_phone_label:'Telefon', contact_email_label:'E-Mail', contact_hours_label:'Erreichbarkeit', contact_hours_val:'Mo–Fr: 9:00–18:00 Uhr',
+      form_title:'Kostenlose Erstberatung', form_subtitle:'Wir melden uns innerhalb von 24 Stunden bei Ihnen.',
+      form_firstname:'Vorname', form_lastname:'Nachname', form_email:'E-Mail', form_phone:'Telefon', form_package:'Gewünschtes Paket', form_msg:'Ihre Nachricht',
+      ph_firstname:'Ihr Vorname', ph_lastname:'Ihr Nachname', ph_email:'ihre@email.de', ph_msg:'Beschreiben Sie kurz Ihre gesundheitliche Situation...',
+      opt_default:'Bitte wählen...', opt_pkg1:'Ersteinschätzung (Kostenlos)', opt_pkg2:'Heilende Öltherapie — € 1.990', opt_pkg3:'Naftalan Behandlung — € 2.490', opt_pkg4:'Komplextherapie — € 3.290',
+      form_submit:'Anfrage senden', form_subject:'Neue Buchungsanfrage — AzeCura Travel',
+      form_success_msg:'✓ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns innerhalb von 24 Stunden.',
+      form_error_msg:'✗ Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an info@azecuratravel.com',
+      footer_tagline:'Exklusive Heilreisen nach Aserbaidschan. Naftalan-Therapie auf höchstem Niveau — medizinisch begleitet, persönlich betreut.',
+      footer_nav_title:'Navigation', footer_pkg_title:'Pakete', footer_copy:'© 2025 AzeCura Travel · Alle Rechte vorbehalten',
+      modal_advise:'Beratung anfragen', modal_close:'Schließen',
+      ther1_lbl:'Das Alleinstellungsmerkmal', ther1_ttl:'Naftalan-Therapie', ther1_dur:'Täglich · 8–10 Minuten pro Anwendung',
+      ther1_desc:'Naftalan-Öl ist in seiner therapeutischen Form weltweit nur in Aserbaidschan verfügbar. Seine einzigartige Zusammensetzung aus polyzyklischen Naphthensäuren macht es zu einem der wirksamsten natürlichen Entzündungshemmer der modernen Balneologie.',
+      ther1_sh1:'Anwendungsformen', ther1_sh2:'Wirkungsbereiche',
+      ther1_ul1:'<li><strong style="color:var(--white)">Naftalan-Vollbad</strong> — Der Klassiker: 8–10 Minuten im Ölbad, täglich. Wärme und Wirkstoffe durchdringen die Haut und wirken systemisch.</li><li><strong style="color:var(--white)">Sitzbad</strong> — Gezielte Anwendung bei Becken-, Hüft- und Unterbauchbeschwerden.</li><li><strong style="color:var(--white)">Kammerbad</strong> — Isolierte Behandlung einzelner Gliedmaßen (Arm oder Bein) für lokale Beschwerden.</li><li><strong style="color:var(--white)">Lokale Einreibungen</strong> — Direkte Anwendung auf einzelne Gelenke oder Hautareale.</li>',
+      ther1_ul2:'<li>Arthritis, Arthrose, entzündliche Gelenkerkrankungen</li><li>Psoriasis, Neurodermitis und chronische Hauterkrankungen</li><li>Neuralgien und Neuritiden</li><li>Durchblutungsförderung und Immunstimulation</li>',
+      ther1_note:'Die Anwendung erfordert eine ärztliche Voruntersuchung. Nicht für jeden Patienten geeignet — Kontraindikationen werden vor Ort geprüft.',
+      ther2_lbl:'Gezielte Impulse auf Zellebene', ther2_ttl:'Elektrotherapie', ther2_dur:'Schmerzfrei · Ohne Eingriff · Präzise dosiert',
+      ther2_desc:'Elektrische Ströme, richtig angewendet, können tief in Nerven, Muskeln und Gewebe einwirken — ohne Medikamente, ohne Eingriff. Im Hotel Kəpəz stehen mehrere Verfahren zur Verfügung, die je nach Diagnose kombiniert werden.',
+      ther2_sh1:'Verfügbare Verfahren', ther2_sh2:'Typische Indikationen',
+      ther2_ul1:'<li><strong style="color:var(--white)">Amplipuls</strong> — Sinusoid-modulierte Ströme lindern Schmerzen und aktivieren geschwächte Muskulatur.</li><li><strong style="color:var(--white)">Darsonvalisation</strong> — Hochfrequenzströme fördern die Durchblutung, stärken die Haut und lindern lokale Neuralgien.</li><li><strong style="color:var(--white)">Elektrophorese</strong> — Wirkstoffe werden mithilfe elektrischer Felder gezielt durch die Haut ins Gewebe eingebracht.</li><li><strong style="color:var(--white)">Kurzwellentherapie</strong> — Tiefenwärme für Gelenke und Muskulatur durch hochfrequente elektromagnetische Felder.</li><li><strong style="color:var(--white)">Lasertherapie</strong> — Low-Level-Laser fördert Geweberegeneration und Wundheilung auf Zellebene.</li>',
+      ther2_ul2:'<li>Chronische Schmerzen des Bewegungsapparats</li><li>Muskelschwäche und Rehabilitationsphasen</li><li>Nervenentzündungen und funktionelle Beschwerden</li>',
+      ther3_lbl:'Sanfte Energie — Tiefe Wirkung', ther3_ttl:'Magnettherapie & Lasertherapie', ther3_dur:'Berührungslos · Keine Nebenwirkungen · Schmerzfrei',
+      ther3_desc:'Zwei Verfahren, die ohne direkten Kontakt wirken: Magnetfelder und Laserimpulse dringen ins Gewebe, ohne es zu belasten. Ideal bei empfindlichen Patienten und chronischen Entzündungsprozessen.',
+      ther3_sh1:'Magnettherapie', ther3_sh2:'Lasertherapie (Low-Level)',
+      ther3_ul1:'<li>Gepulste Magnetfelder aktivieren elektrochemische Prozesse auf Zellebene</li><li>Reduktion von Entzündungsmarkern ohne medikamentöse Eingriffe</li><li>Fördert Knorpel- und Knochenstoffwechsel bei degenerativen Erkrankungen</li><li>Beruhigt überaktive Nervenbahnen bei Neuralgien</li>',
+      ther3_ul2:'<li>Gezielte Lichtimpulse stimulieren die Mitochondrien-Aktivität in Zellen</li><li>Beschleunigt Gewebeheilung bei Sehnen-, Gelenk- und Hautbeschwerden</li><li>Schmerzdämpfend durch Beeinflussung lokaler Nervenfasern</li>',
+      ther4_lbl:'Bewährt seit Jahrhunderten', ther4_ttl:'Wärme- & Schlammtherapie', ther4_dur:'Paraffin · Palçıq-Schlamm · Lichttherapie',
+      ther4_desc:'Wärme ist eine der ältesten Formen der Heilmedizin — und eine der wirksamsten. Im Hotel Kəpəz wird sie auf mehrere Arten eingesetzt, je nach Beschwerdebild und individueller Verträglichkeit.',
+      ther4_sh1:'Anwendungsformen', ther4_sh2:'Wirkungsbereiche',
+      ther4_ul1:'<li><strong style="color:var(--white)">Paraffintherapie</strong> — Warmes Paraffin umhüllt Hände, Füße oder Gelenke und gibt Wärme langsam und gleichmäßig ab. Lockert Gelenkkapseln, lindert Steifigkeit.</li><li><strong style="color:var(--white)">Schlammbäder (Palçıq)</strong> — Mineralreicher Heilschlamm wirkt entzündungshemmend, stimuliert Durchblutung und wärmt tief in die Muskulatur.</li><li><strong style="color:var(--white)">Sollux-Lichttherapie</strong> — Infrarotlicht für gezielte Tiefenwärme an lokalisierten Beschwerderegionen.</li><li><strong style="color:var(--white)">Lichtbäder</strong> — Ganzheitliche Wärmebehandlung zur Stoffwechselaktivierung und Entspannung.</li>',
+      ther4_ul2:'<li>Chronische Gelenksteifigkeit und Arthrose</li><li>Muskelverspannungen und Rückenbeschwerden</li><li>Durchblutungsstörungen der Extremitäten</li>',
+      ther5_lbl:'Mobilität zurückgewinnen', ther5_ttl:'Massage & Bewegungstherapie', ther5_dur:'Klassisch · Therapeutisch · Nachhaltig',
+      ther5_desc:'Was Kälte und Inaktivität eingefroren haben, lösen erfahrene Hände und gezielte Bewegung wieder auf. Die manuelle Therapie im Hotel Kəpəz arbeitet nicht gegen Symptome — sie adressiert die Ursachen eingeschränkter Mobilität.',
+      ther5_sh1:'Angebotene Verfahren', ther5_sh2:'Wirkungsbereiche',
+      ther5_ul1:'<li><strong style="color:var(--white)">Klassische Massage</strong> — Manuelle Techniken zur Muskelentspannung, Durchblutungsförderung und Schmerzlinderung. Angepasst an Beschwerdebild und Empfindlichkeit.</li><li><strong style="color:var(--white)">Physiotherapie</strong> — Gezielte therapeutische Übungen zur Kräftigung, Dehnung und Stabilisierung betroffener Muskel- und Gelenksysteme.</li><li><strong style="color:var(--white)">Bewegungstherapie</strong> — Strukturierte Bewegungsprogramme, die auf die Wiederherstellung alltäglicher Mobilität ausgerichtet sind — nicht auf kurzfristige Erleichterung.</li>',
+      ther5_ul2:'<li>Rücken- und Gelenkbeschwerden aller Schweregrade</li><li>Post-operative Rehabilitation und Wiederherstellung</li><li>Muskelschwäche und Haltungsschäden</li>',
+      ther6_lbl:'Das ganzheitliche Bild', ther6_ttl:'Ergänzende Verfahren', ther6_dur:'Inhalation · Ultraschall · Jod-Brom · Sauerstoff',
+      ther6_desc:'Ein vollständiges Kurprogramm schaut über das einzelne Symptom hinaus. Diese Verfahren ergänzen die Haupttherapien und adressieren Körpersysteme, die häufig übersehen werden — von den Atemwegen bis zum Nervensystem.',
+      ther6_sh1:'Ergänzende Therapien',
+      ther6_ul1:'<li><strong style="color:var(--white)">Inhalationen</strong> — Befeuchtete Wirkstoffe erreichen tief in Atemwege und Schleimhäute — besonders wertvoll bei Begleitbeschwerden der oberen Atemwege.</li><li><strong style="color:var(--white)">Ultraschalltherapie</strong> — Mechanische Mikromassage auf Zellebene. Fördert Stoffwechsel, löst Verklebungen und wirkt tief in Weichteile und Gelenke.</li><li><strong style="color:var(--white)">Jod-Brom-Bäder</strong> — Mineralreiche Wannenbäder mit beruhigender Wirkung auf Nervensystem, Haut und Kreislauf.</li><li><strong style="color:var(--white)">Sauerstoff-Cocktails</strong> — Angereicherte Getränke zur Zellversorgung und Unterstützung des Regenerationsprozesses von innen.</li><li><strong style="color:var(--white)">Ozontherapie &amp; Akupunktur</strong> — Je nach Diagnose und ärztlicher Empfehlung als gezielte Ergänzung einsetzbar.</li>',
+      ther6_note:'Die Auswahl der ergänzenden Verfahren erfolgt individuell nach ärztlicher Untersuchung und richtet sich nach Ihrem persönlichen Beschwerdebild.',
+      m1_lbl:'Kostenlose Beratung', m1_dur:'Persönliche Beratung · ca. 60 Minuten · per Telefon oder Video-Call',
+      m1_desc:'Das Beratungsgespräch ist der erste Schritt auf Ihrem Weg zur Heilung. Wir nehmen uns Zeit für Ihre individuelle Situation — unverbindlich und kostenfrei.',
+      m1_sh1:'Im Gespräch besprechen wir', m1_sh2:'Hinweise',
+      m1_ul1:'<li>Ihre aktuellen Beschwerden und Erkrankungen</li><li>Vorerkrankungen, Operationen und aktuelle Medikamente</li><li>Wirkungsweise der Naftalan-Therapie &amp; was Sie erwartet</li><li>Welches Paket am besten zu Ihrer Situation passt</li><li>Anreise, Hotel, Ablauf und organisatorische Fragen</li><li>Kosten, Termine und nächste Schritte</li>',
+      m1_note:'Sprachen: Englisch &amp; Russisch · Keine Verpflichtung — rein informativ',
+      m2_lbl:'Einstiegspaket', m2_dur:'7 Tage · inkl. Unterkunft · Doppelzimmer',
+      m2_desc:'Ihr idealer Einstieg in die heilende Kraft des Naftalan-Öls. In 7 Tagen erleben Sie täglich ein Naftalan-Vollbad in einer entspannten, medizinisch begleiteten Atmosphäre.',
+      m2_ul1:'<li>7 Naftalan-Vollbäder (je ca. 8 Minuten, täglich)</li><li>Medizinische Eingangsuntersuchung durch Facharzt</li><li>Unterkunft im Doppelzimmer (Hotel Kəpəz, Naftalan)</li><li>Frühstück &amp; Abendessen täglich inklusive</li><li>Flughafentransfer (Baku GYD) hin &amp; zurück</li><li>Begleitung auf Englisch &amp; Russisch</li>',
+      m2_ul2:'<li>Erste Erfahrung mit der Naftalan-Therapie</li><li>Leichte bis mittlere Gelenk- und Rückenbeschwerden</li><li>Erholung und präventive Gesundheitspflege</li>',
+      m2_note:'Flüge · Mittagessen · Persönliche Ausgaben',
+      m3_lbl:'Intensivtherapie', m3_dur:'10 Tage · Intensivtherapie · Einzelzimmer',
+      m3_desc:'Das Intensivprogramm für nachhaltige Beschwerdelinderung. 10 Tage strukturierte Therapie mit täglicher medizinischer Begleitung und einem einzigartigen Baku-Ausflug.',
+      m3_ul1:'<li>10 Naftalan-Vollbäder (täglich, je ca. 8 Minuten)</li><li>Tägliche Massage oder Physiotherapie</li><li>Medizinische Begleitung durch Facharzt während des gesamten Aufenthalts</li><li>Unterkunft im Einzelzimmer mit eigenem Bad</li><li>Alle Mahlzeiten täglich inklusive (Frühstück, Mittag, Abend)</li><li>Flughafentransfer hin &amp; zurück</li><li>Halbtagesausflug in die Baku Altstadt (Icherisheher)</li><li>Begleitung auf Englisch &amp; Russisch</li>',
+      m3_ul2:'<li>Arthritis, Arthrose, Psoriasis</li><li>Chronische Rücken- und Gelenkbeschwerden</li><li>Patienten mit Bedarf an intensiverer Therapie</li>',
+      m3_note:'Flüge · Persönliche Ausgaben',
+      m4_dur:'14 Tage · Rundum-Betreuung · Premium Einzelzimmer',
+      m4_desc:'Das Rundum-Sorglos-Paket für maximale Regeneration. 14 Tage intensivste medizinische Betreuung kombiniert mit mehreren Therapieformen und exklusiven Erlebnissen.',
+      m4_ul1:'<li>14 Naftalan-Vollbäder (täglich, je ca. 8 Minuten)</li><li>Komplettes Behandlungsprogramm: Massage, Physiotherapie, Phonophorese, Paraffintherapie, Lymphdrainage</li><li>Premium Einzelzimmer im Hotel Kəpəz</li><li>Alle Mahlzeiten täglich inklusive (Frühstück, Mittag, Abend)</li><li>Persönliche Pflegerin täglich an Ihrer Seite</li><li>Mehrere Exkursionen: Baku Altstadt, Gobustan, lokale Märkte</li><li>Flughafentransfer hin &amp; zurück</li><li>Nachsorge-Gespräch nach Rückkehr (per Video-Call)</li><li>Begleitung auf Englisch &amp; Russisch</li>',
+      m4_ul2:'<li>Schwerwiegende chronische Erkrankungen</li><li>Patienten die umfassende, persönliche Betreuung benötigen</li><li>Maximale Regeneration und langfristige Beschwerdelinderung</li>',
+      m4_note:'Flüge · Persönliche Ausgaben',
+      m_sh_services:'Leistungen', m_sh_ideal:'Ideal für', m_sh_excl:'Nicht im Preis enthalten',
+      wa_title:'Haben Sie Fragen?', wa_text:'Schreiben Sie uns direkt auf WhatsApp — wir antworten schnell!',
+    },
+    en: {
+      nav_about:'About Us', nav_services:'Services', nav_reviews:'Reviews', nav_gallery:'Gallery', nav_contact:'Contact', nav_blog:'Blog', nav_book:'Book Now',
+      hero_badge:'Exclusive Health Journeys · Azerbaijan', hero_title1:'Healing at the', hero_title2:'highest level',
+      hero_subtitle:'Exclusive health journeys to Azerbaijan — the unique Naftalan therapy for rheumatism, psoriasis & joint pain. Medically supervised. Personally accompanied.',
+      hero_cta1:'Book Now', hero_cta2:'Learn More',
+      about_label:'Our Mission', about_title:'Why AzeCura Travel?',
+      about_intro:'We combine the healing power of unique Naftalan oil with state-of-the-art medical care and exclusive travel comfort. Our goal is your complete recovery — in an environment that puts dignity, comfort and personal attention at the forefront.',
+      f1_title:'Medical Expertise', f1_desc:'Every journey is accompanied by experienced physicians. We work closely with the renowned Kəpəz Health Centre in Naftalan.',
+      f2_title:'Personal Care', f2_desc:'Your personal travel companion will be by your side from the first consultation to your return home — in English, Russian and Azerbaijani.',
+      f3_title:'Exclusive Accommodation', f3_desc:'You stay at the elegant Kəpəz Hotel — directly connected to the treatment centre. The highest standards for your comfort.',
+      strip_cap1:'Double Room · Balcony', strip_cap2:'Suite · Living Room', strip_cap3:'Marble Bathroom', strip_btn:'View All Photos →',
+      naft_label:'The Wonder Remedy', naft_title:'The Power of Naftalan Oil',
+      naft_desc1:'Naftalan oil is a uniquely precious natural resource — a special crude oil found exclusively in the city of Naftalan in Azerbaijan. Its extraordinary chemical composition makes it one of the most powerful natural healing agents in the world.',
+      naft_desc2:'Since the 12th century, people from all over the world have used the healing properties of Naftalan oil for inflammatory conditions, joint problems and skin diseases.',
+      naft_badge1:'Proven for centuries', naft_badge2:'Scientifically recognised', naft_badge3:'Only available in Naftalan',
+      naft_century_sub:'Century', naft_century_note:'Proven for centuries',
+      pkg_label:'Our Packages', pkg_title:'Services & Prices', pkg_desc:'All packages include medical supervision, airport transfer and accommodation at the Kəpəz Hotel.',
+      pkg1_name:'Initial Consultation', pkg1_dur:'Personal consultation · 60 min', pkg1_price:'Free of charge', pkg1_f1:'Individual health consultation', pkg1_f2:'Recommendation of the right package', pkg1_f3:'Answers to all your questions', pkg1_f4:'By phone or video call', pkg1_btn:'Schedule Appointment',
+      pkg2_name:'Healing Oil Therapy', pkg2_dur:'7 Days · incl. accommodation', pkg2_price:'€ 1,990', pkg2_f1:'7 Naftalan full baths', pkg2_f2:'Medical initial examination', pkg2_f3:'Accommodation in double room', pkg2_f4:'Airport transfer (return)', pkg2_f5:'Assistance in English & Russian',
+      pkg3_name:'Naftalan Treatment', pkg3_dur:'10 Days · Intensive therapy', pkg3_price:'€ 2,490', pkg3_f1:'10 Naftalan full baths', pkg3_f2:'Massage & physiotherapy', pkg3_f3:'Daily medical supervision', pkg3_f4:'Accommodation in single room', pkg3_f5:'Airport transfer (return)', pkg3_f6:'Excursion to Baku Old City',
+      pkg4_name:'Complex Therapy', pkg4_dur:'14 Days · All-inclusive care', pkg4_price:'€ 3,290', pkg4_f1:'14 Naftalan full baths', pkg4_f2:'Complete treatment programme', pkg4_f3:'Premium single room', pkg4_f4:'All meals included', pkg4_f5:'Personal nurse daily', pkg4_f6:'Excursions & city tours', pkg4_f7:'Follow-up consultation after return',
+      pkg_book:'Book Now', popular_badge:'Most Popular',
+      treat_label:'Hotel Kəpəz · Naftalan', treat_title:'Our Treatment Spectrum', treat_desc:'Every spa stay begins with a medical examination — only then is your personal programme assembled from the following spectrum.',
+      th1_title:'Naftalan Therapy', th1_sub:'The heart of the cure', th1_desc:'The unique Naftalan oil exists in therapeutic purity only here in Azerbaijan — and works like no other natural remedy in balneology.',
+      th2_title:'Electrotherapy', th2_sub:'Targeted impulses at cell level', th2_desc:'From Amplipuls to Darsonvalisation: electric currents, precisely dosed, activate nerves, muscles and circulation — without intervention, without pain.',
+      th3_title:'Magnetic Therapy & Laser', th3_sub:'Gentle energy — deep effect', th3_desc:'Pulsed magnetic fields and laser impulses penetrate deep into tissue — they reduce inflammation, accelerate regeneration without a single incision.',
+      th4_title:'Heat & Mud Therapy', th4_sub:'Proven for centuries', th4_desc:'Paraffin, healing mud (Palçıq) and light therapy release heat slowly and evenly — deep into the joints and muscles where it is needed most.',
+      th5_title:'Massage & Movement Therapy', th5_sub:'Regaining mobility', th5_desc:'Professional massage techniques release what is cramped. Targeted exercises reactivate what was restricted — sustainably, not just temporarily.',
+      th6_title:'Complementary Procedures', th6_sub:'The holistic picture', th6_desc:'Inhalations, ultrasound, iodine-bromine baths and oxygen cocktails — complementary therapies that make the spa programme a holistic experience.',
+      th_more:'Learn more →',
+      proc_label:'Your Path to Healing', proc_title:'How it works',
+      step1_title:'Initial Consultation', step1_desc:'We get to know you, understand your health situation and find the optimal package for you.',
+      step2_title:'Travel Planning', step2_desc:'We take care of all the details: flights, transfers, accommodation and treatment plan — you just relax.',
+      step3_title:'Treatment', step3_desc:'Experience the unique Naftalan therapy under medical supervision in Azerbaijan.',
+      step4_title:'Follow-up Care', step4_desc:'After your return we remain by your side. A follow-up consultation ensures your healing success.',
+      rev_label:'Guest Testimonials', rev_title:'What our patients say',
+      t1_text:'After just 10 days my pain reduction was noticeable — I am absolutely thrilled! The care was at the highest level. I will definitely come back.', t1_name:'Anna M.', t1_cond:'Rheumatism · Naftalan Treatment',
+      t2_text:'Professional care from the first to the last day. The team thought of everything. I felt completely in good hands. Absolutely recommended.', t2_name:'Thomas K.', t2_cond:'Osteoporosis · Complex Therapy',
+      t3_text:'The Naftalan therapy finally brought my psoriasis under control. After years of unsuccessful treatments, this journey changed my life.', t3_name:'Maria S.', t3_cond:'Psoriasis · Healing Oil Therapy',
+      vid_label:'Moving Images', vid_title:'A Look Inside Hotel Kəpəz', vid_sub:'Experience the hotel and treatments in moving images.',
+      vid1_title:'Hotel Kəpəz — Overview', vid2_title:'Room Tour', vid3_title:'Facilities & Comfort',
+      contact_label:'Contact & Booking', contact_title:'Begin Your Journey to Healing', contact_desc:'Schedule your free initial consultation now. We will advise you personally and together find the programme that perfectly suits your situation.',
+      contact_phone_label:'Phone', contact_email_label:'Email', contact_hours_label:'Availability', contact_hours_val:'Mon–Fri: 9:00–18:00',
+      form_title:'Free Initial Consultation', form_subtitle:'We will get back to you within 24 hours.',
+      form_firstname:'First Name', form_lastname:'Last Name', form_email:'Email', form_phone:'Phone', form_package:'Desired Package', form_msg:'Your Message',
+      ph_firstname:'Your first name', ph_lastname:'Your last name', ph_email:'your@email.com', ph_msg:'Briefly describe your health situation...',
+      opt_default:'Please select...', opt_pkg1:'Initial Consultation (Free)', opt_pkg2:'Healing Oil Therapy — € 1,990', opt_pkg3:'Naftalan Treatment — € 2,490', opt_pkg4:'Complex Therapy — € 3,290',
+      form_submit:'Send Request', form_subject:'New Booking Inquiry — AzeCura Travel',
+      form_success_msg:'✓ Thank you! Your request has been sent. We will get back to you within 24 hours.',
+      form_error_msg:'✗ An error occurred. Please try again or write to us directly at info@azecuratravel.com',
+      footer_tagline:'Exclusive healing journeys to Azerbaijan. Naftalan therapy at the highest level — medically supervised, personally accompanied.',
+      footer_nav_title:'Navigation', footer_pkg_title:'Packages', footer_copy:'© 2025 AzeCura Travel · All rights reserved',
+      modal_advise:'Request Consultation', modal_close:'Close',
+      ther1_lbl:'Our Unique Selling Point', ther1_ttl:'Naftalan Therapy', ther1_dur:'Daily · 8–10 minutes per session',
+      ther1_desc:'Naftalan oil is available in therapeutic form only in Azerbaijan. Its unique composition of polycyclic naphthenic acids makes it one of the most effective natural anti-inflammatory agents in modern balneology.',
+      ther1_sh1:'Application forms', ther1_sh2:'Areas of effect',
+      ther1_ul1:'<li><strong style="color:var(--white)">Full Naftalan Bath</strong> — The classic: 8–10 minutes in the oil bath, daily. Heat and active substances penetrate the skin and act systemically.</li><li><strong style="color:var(--white)">Sitz Bath</strong> — Targeted application for pelvic, hip and lower abdominal complaints.</li><li><strong style="color:var(--white)">Chamber Bath</strong> — Isolated treatment of individual limbs (arm or leg) for local complaints.</li><li><strong style="color:var(--white)">Local Applications</strong> — Direct application to individual joints or skin areas.</li>',
+      ther1_ul2:'<li>Arthritis, arthrosis, inflammatory joint diseases</li><li>Psoriasis, neurodermatitis and chronic skin diseases</li><li>Neuralgias and neuritis</li><li>Improved circulation and immune stimulation</li>',
+      ther1_note:'The application requires a prior medical examination. Not suitable for every patient — contraindications are checked on site.',
+      ther2_lbl:'Targeted Impulses at Cell Level', ther2_ttl:'Electrotherapy', ther2_dur:'Pain-free · Non-invasive · Precisely dosed',
+      ther2_desc:'Electric currents, correctly applied, can penetrate deep into nerves, muscles and tissue — without medication, without surgery. Hotel Kəpəz offers several procedures that are combined depending on the diagnosis.',
+      ther2_sh1:'Available procedures', ther2_sh2:'Typical indications',
+      ther2_ul1:'<li><strong style="color:var(--white)">Amplipuls</strong> — Sinusoidally modulated currents relieve pain and activate weakened musculature.</li><li><strong style="color:var(--white)">Darsonvalisation</strong> — High-frequency currents promote circulation, strengthen skin and relieve local neuralgias.</li><li><strong style="color:var(--white)">Electrophoresis</strong> — Active substances are introduced through the skin into the tissue using electric fields.</li><li><strong style="color:var(--white)">Short-wave therapy</strong> — Deep heat for joints and musculature through high-frequency electromagnetic fields.</li><li><strong style="color:var(--white)">Laser therapy</strong> — Low-level laser promotes tissue regeneration and wound healing at cell level.</li>',
+      ther2_ul2:'<li>Chronic pain of the musculoskeletal system</li><li>Muscle weakness and rehabilitation phases</li><li>Nerve inflammation and functional complaints</li>',
+      ther3_lbl:'Gentle Energy — Deep Effect', ther3_ttl:'Magnetic Therapy & Laser Therapy', ther3_dur:'Non-contact · No side effects · Pain-free',
+      ther3_desc:'Two procedures that work without direct contact: magnetic fields and laser pulses penetrate the tissue without stressing it. Ideal for sensitive patients and chronic inflammatory processes.',
+      ther3_sh1:'Magnetic Therapy', ther3_sh2:'Laser Therapy (Low-Level)',
+      ther3_ul1:'<li>Pulsed magnetic fields activate electrochemical processes at cell level</li><li>Reduction of inflammatory markers without medicinal interventions</li><li>Promotes cartilage and bone metabolism in degenerative diseases</li><li>Calms overactive nerve pathways in neuralgias</li>',
+      ther3_ul2:'<li>Targeted light impulses stimulate mitochondrial activity in cells</li><li>Accelerates tissue healing for tendon, joint and skin complaints</li><li>Pain-dampening by influencing local nerve fibres</li>',
+      ther4_lbl:'Proven for Centuries', ther4_ttl:'Heat & Mud Therapy', ther4_dur:'Paraffin · Palçıq Mud · Light Therapy',
+      ther4_desc:'Heat is one of the oldest forms of healing medicine — and one of the most effective. At Hotel Kəpəz, it is used in several ways, depending on the complaint and individual tolerance.',
+      ther4_sh1:'Application forms', ther4_sh2:'Areas of effect',
+      ther4_ul1:'<li><strong style="color:var(--white)">Paraffin Therapy</strong> — Warm paraffin envelops hands, feet or joints and releases heat slowly and evenly. Loosens joint capsules, relieves stiffness.</li><li><strong style="color:var(--white)">Mud Baths (Palçıq)</strong> — Mineral-rich healing mud acts anti-inflammatorily, stimulates circulation and warms deep into the musculature.</li><li><strong style="color:var(--white)">Sollux Light Therapy</strong> — Infrared light for targeted deep heat at localised areas of complaint.</li><li><strong style="color:var(--white)">Light Baths</strong> — Comprehensive heat treatment for metabolic activation and relaxation.</li>',
+      ther4_ul2:'<li>Chronic joint stiffness and arthrosis</li><li>Muscle tension and back complaints</li><li>Circulatory disorders of the extremities</li>',
+      ther5_lbl:'Regaining Mobility', ther5_ttl:'Massage & Movement Therapy', ther5_dur:'Classic · Therapeutic · Sustainable',
+      ther5_desc:'What cold and inactivity have frozen, experienced hands and targeted movement release again. The manual therapy at Hotel Kəpəz does not work against symptoms — it addresses the causes of restricted mobility.',
+      ther5_sh1:'Offered procedures', ther5_sh2:'Areas of effect',
+      ther5_ul1:'<li><strong style="color:var(--white)">Classic Massage</strong> — Manual techniques for muscle relaxation, improved circulation and pain relief. Adapted to the complaint and sensitivity.</li><li><strong style="color:var(--white)">Physiotherapy</strong> — Targeted therapeutic exercises for strengthening, stretching and stabilising affected muscle and joint systems.</li><li><strong style="color:var(--white)">Movement Therapy</strong> — Structured movement programmes aimed at restoring everyday mobility — not just short-term relief.</li>',
+      ther5_ul2:'<li>Back and joint complaints of all severities</li><li>Post-operative rehabilitation and restoration</li><li>Muscle weakness and postural damage</li>',
+      ther6_lbl:'The Holistic Picture', ther6_ttl:'Complementary Procedures', ther6_dur:'Inhalation · Ultrasound · Iodine-Bromine · Oxygen',
+      ther6_desc:'A complete spa programme looks beyond the individual symptom. These procedures complement the main therapies and address body systems that are often overlooked — from the airways to the nervous system.',
+      ther6_sh1:'Complementary therapies',
+      ther6_ul1:'<li><strong style="color:var(--white)">Inhalations</strong> — Moistened active substances reach deep into the airways and mucous membranes — particularly valuable for accompanying complaints of the upper respiratory tract.</li><li><strong style="color:var(--white)">Ultrasound Therapy</strong> — Mechanical micro-massage at cell level. Promotes metabolism, dissolves adhesions and acts deep into soft tissue and joints.</li><li><strong style="color:var(--white)">Iodine-Bromine Baths</strong> — Mineral-rich tub baths with a calming effect on the nervous system, skin and circulation.</li><li><strong style="color:var(--white)">Oxygen Cocktails</strong> — Enriched drinks for cell supply and support of the regeneration process from within.</li><li><strong style="color:var(--white)">Ozone Therapy &amp; Acupuncture</strong> — Available as targeted supplements depending on diagnosis and medical recommendation.</li>',
+      ther6_note:'The selection of complementary procedures is made individually after medical examination and depends on your personal complaints.',
+      m1_lbl:'Free Consultation', m1_dur:'Personal consultation · approx. 60 minutes · by phone or video call',
+      m1_desc:'The consultation is the first step on your path to healing. We take time for your individual situation — without obligation and free of charge.',
+      m1_sh1:'What we discuss', m1_sh2:'Notes',
+      m1_ul1:'<li>Your current complaints and medical conditions</li><li>Pre-existing conditions, operations and current medications</li><li>How the Naftalan therapy works &amp; what to expect</li><li>Which package best suits your situation</li><li>Travel, hotel, schedule and organisational questions</li><li>Costs, dates and next steps</li>',
+      m1_note:'Languages: English &amp; Russian · No obligation — purely informational',
+      m2_lbl:'Entry Package', m2_dur:'7 Days · incl. accommodation · Double Room',
+      m2_desc:'Your ideal introduction to the healing power of Naftalan oil. Over 7 days you experience a daily Naftalan full bath in a relaxed, medically supervised atmosphere.',
+      m2_ul1:'<li>7 Naftalan full baths (approx. 8 minutes each, daily)</li><li>Medical initial examination by a specialist</li><li>Accommodation in double room (Hotel Kəpəz, Naftalan)</li><li>Breakfast &amp; dinner included daily</li><li>Airport transfer (Baku GYD) return</li><li>Assistance in English &amp; Russian</li>',
+      m2_ul2:'<li>First experience with Naftalan therapy</li><li>Mild to moderate joint and back complaints</li><li>Recovery and preventive health care</li>',
+      m2_note:'Flights · Lunch · Personal expenses',
+      m3_lbl:'Intensive Therapy', m3_dur:'10 Days · Intensive therapy · Single Room',
+      m3_desc:'The intensive programme for sustainable symptom relief. 10 days of structured therapy with daily medical supervision and a unique Baku excursion.',
+      m3_ul1:'<li>10 Naftalan full baths (daily, approx. 8 minutes each)</li><li>Daily massage or physiotherapy</li><li>Medical supervision by a specialist throughout the stay</li><li>Accommodation in single room with private bathroom</li><li>All meals included daily (breakfast, lunch, dinner)</li><li>Airport transfer (return)</li><li>Half-day excursion to Baku Old City (Icherisheher)</li><li>Assistance in English &amp; Russian</li>',
+      m3_ul2:'<li>Arthritis, arthrosis, psoriasis</li><li>Chronic back and joint complaints</li><li>Patients needing more intensive therapy</li>',
+      m3_note:'Flights · Personal expenses',
+      m4_dur:'14 Days · All-inclusive care · Premium Single Room',
+      m4_desc:'The all-inclusive package for maximum regeneration. 14 days of the most intensive medical care combined with multiple therapy forms and exclusive experiences.',
+      m4_ul1:'<li>14 Naftalan full baths (daily, approx. 8 minutes each)</li><li>Complete treatment programme: massage, physiotherapy, phonophoresis, paraffin therapy, lymphatic drainage</li><li>Premium single room at Hotel Kəpəz</li><li>All meals included daily (breakfast, lunch, dinner)</li><li>Personal nurse daily by your side</li><li>Multiple excursions: Baku Old City, Gobustan, local markets</li><li>Airport transfer (return)</li><li>Follow-up consultation after return (via video call)</li><li>Assistance in English &amp; Russian</li>',
+      m4_ul2:'<li>Severe chronic conditions</li><li>Patients requiring comprehensive, personal care</li><li>Maximum regeneration and long-term symptom relief</li>',
+      m4_note:'Flights · Personal expenses',
+      m_sh_services:'Services', m_sh_ideal:'Ideal for', m_sh_excl:'Not included in price',
+      wa_title:'Do you have questions?', wa_text:'Write to us directly on WhatsApp — we respond quickly!',
+    },
+    ru: {
+      nav_about:'О нас', nav_services:'Услуги', nav_reviews:'Отзывы', nav_gallery:'Галерея', nav_contact:'Контакт', nav_blog:'Блог', nav_book:'Забронировать',
+      hero_badge:'Эксклюзивные оздоровительные туры · Азербайджан', hero_title1:'Исцеление на', hero_title2:'высшем уровне',
+      hero_subtitle:'Эксклюзивные оздоровительные туры в Азербайджан — уникальная нафталановая терапия при ревматизме, псориазе и болях в суставах. Под медицинским наблюдением. С персональным сопровождением.',
+      hero_cta1:'Забронировать', hero_cta2:'Узнать больше',
+      about_label:'Наша миссия', about_title:'Почему AzeCura Travel?',
+      about_intro:'Мы сочетаем целебную силу уникального нафталанового масла с передовым медицинским уходом и эксклюзивным комфортом путешествия. Наша цель — ваше полное выздоровление в обстановке, где достоинство, комфорт и личное внимание на первом месте.',
+      f1_title:'Медицинская экспертиза', f1_desc:'Каждое путешествие сопровождают опытные врачи. Мы тесно сотрудничаем с известным санаторием Кяпяз в Нафталане.',
+      f2_title:'Персональный уход', f2_desc:'Ваш личный сопровождающий будет рядом с первой консультации до возвращения домой — на русском, английском и азербайджанском языках.',
+      f3_title:'Эксклюзивное размещение', f3_desc:'Вы остановитесь в элегантном отеле Кяпяз — непосредственно связанном с лечебным центром. Высочайшие стандарты для вашего комфорта.',
+      strip_cap1:'Двухместный номер · Балкон', strip_cap2:'Сюит · Гостиная', strip_cap3:'Мраморная ванная', strip_btn:'Все фотографии →',
+      naft_label:'Чудодейственное средство', naft_title:'Сила нафталанового масла',
+      naft_desc1:'Нафталановое масло — уникальное природное сокровище, особая нефть, добываемая исключительно в городе Нафталан в Азербайджане. Его исключительный химический состав делает его одним из самых мощных природных целебных средств в мире.',
+      naft_desc2:'Начиная с XII века люди со всего мира используют целебные свойства нафталанового масла при воспалительных заболеваниях, болях в суставах и кожных болезнях.',
+      naft_badge1:'Проверено веками', naft_badge2:'Научно признано', naft_badge3:'Только в Нафталане',
+      naft_century_sub:'Век', naft_century_note:'Проверено веками',
+      pkg_label:'Наши пакеты', pkg_title:'Услуги и цены', pkg_desc:'Все пакеты включают медицинское сопровождение, трансфер из аэропорта и проживание в отеле Кяпяз.',
+      pkg1_name:'Первичная консультация', pkg1_dur:'Персональная консультация · 60 мин', pkg1_price:'Бесплатно', pkg1_f1:'Индивидуальная консультация по здоровью', pkg1_f2:'Рекомендация подходящего пакета', pkg1_f3:'Ответы на все вопросы', pkg1_f4:'По телефону или видеозвонку', pkg1_btn:'Записаться',
+      pkg2_name:'Целебная нафталанотерапия', pkg2_dur:'7 дней · с проживанием', pkg2_price:'€ 1.990', pkg2_f1:'7 нафталановых ванн', pkg2_f2:'Первичный медосмотр', pkg2_f3:'Проживание в двухместном номере', pkg2_f4:'Трансфер из/в аэропорт', pkg2_f5:'Сопровождение на английском и русском',
+      pkg3_name:'Нафталановое лечение', pkg3_dur:'10 дней · Интенсивная терапия', pkg3_price:'€ 2.490', pkg3_f1:'10 нафталановых ванн', pkg3_f2:'Массаж и физиотерапия', pkg3_f3:'Ежедневное медицинское сопровождение', pkg3_f4:'Проживание в одноместном номере', pkg3_f5:'Трансфер из/в аэропорт', pkg3_f6:'Экскурсия в старый город Баку',
+      pkg4_name:'Комплексная терапия', pkg4_dur:'14 дней · Полное сопровождение', pkg4_price:'€ 3.290', pkg4_f1:'14 нафталановых ванн', pkg4_f2:'Полная программа лечения', pkg4_f3:'Премиум одноместный номер', pkg4_f4:'Все питание включено', pkg4_f5:'Персональная медсестра ежедневно', pkg4_f6:'Экскурсии и городские туры', pkg4_f7:'Консультация после возвращения',
+      pkg_book:'Забронировать', popular_badge:'Самый популярный',
+      treat_label:'Отель Кяпяз · Нафталан', treat_title:'Наш спектр лечения', treat_desc:'Каждый курс начинается с медицинского обследования — только после этого составляется ваша личная программа из следующего спектра.',
+      th1_title:'Нафталановая терапия', th1_sub:'Сердце курса лечения', th1_desc:'Уникальное нафталановое масло в терапевтической чистоте существует только здесь в Азербайджане — и действует как никакое другое натуральное средство в бальнеологии.',
+      th2_title:'Электротерапия', th2_sub:'Точечные импульсы на клеточном уровне', th2_desc:'От амплипульса до дарсонвализации: электрические токи, точно дозированные, активируют нервы, мышцы и кровообращение — без вмешательства, без боли.',
+      th3_title:'Магнитотерапия и лазер', th3_sub:'Мягкая энергия — глубокое действие', th3_desc:'Импульсные магнитные поля и лазерные импульсы проникают глубоко в ткани — уменьшают воспаление, ускоряют регенерацию без единого разреза кожи.',
+      th4_title:'Тепловая и грязевая терапия', th4_sub:'Проверено веками', th4_desc:'Парафин, целебная грязь (Палчыг) и светотерапия медленно и равномерно отдают тепло — проникая в суставы и мышцы, где оно нужнее всего.',
+      th5_title:'Массаж и двигательная терапия', th5_sub:'Возвращение подвижности', th5_desc:'Профессиональные массажные техники снимают напряжение. Целенаправленные упражнения восстанавливают то, что было ограничено — устойчиво, не только временно.',
+      th6_title:'Дополнительные процедуры', th6_sub:'Целостная картина', th6_desc:'Ингаляции, ультразвук, йодобромные ванны и кислородные коктейли — дополнительные терапии, делающие программу лечения целостным оздоровительным опытом.',
+      th_more:'Узнать больше →',
+      proc_label:'Ваш путь к исцелению', proc_title:'Как это работает',
+      step1_title:'Первичная консультация', step1_desc:'Мы знакомимся с вами, понимаем вашу ситуацию со здоровьем и находим оптимальный пакет для вас.',
+      step2_title:'Планирование поездки', step2_desc:'Мы берём на себя все детали: перелёт, трансфер, проживание и план лечения — вы просто отдыхаете.',
+      step3_title:'Лечение', step3_desc:'Пройдите уникальную нафталановую терапию под медицинским наблюдением в Азербайджане.',
+      step4_title:'Послелечебный уход', step4_desc:'После возвращения мы остаёмся рядом. Консультация после лечения обеспечивает ваш успех в выздоровлении.',
+      rev_label:'Отзывы наших гостей', rev_title:'Что говорят наши пациенты',
+      t1_text:'Уже через 10 дней я почувствовала значительное снижение боли — я в полном восторге! Уход был на высочайшем уровне. Я обязательно вернусь.', t1_name:'Анна М.', t1_cond:'Ревматизм · Нафталановое лечение',
+      t2_text:'Профессиональный уход с первого до последнего дня. Команда обо всём позаботилась. Я чувствовал себя в надёжных руках. Однозначно рекомендую.', t2_name:'Томас К.', t2_cond:'Остеопороз · Комплексная терапия',
+      t3_text:'Нафталановая терапия наконец взяла мой псориаз под контроль. После многих лет безуспешного лечения эта поездка изменила мою жизнь.', t3_name:'Мария С.', t3_cond:'Псориаз · Целебная нафталанотерапия',
+      vid_label:'Видео', vid_title:'Взгляд изнутри — Отель Кяпяз', vid_sub:'Познакомьтесь с отелем и процедурами через видео.',
+      vid1_title:'Отель Кяпяз — Обзор', vid2_title:'Обзор номеров', vid3_title:'Удобства и комфорт',
+      contact_label:'Контакт и бронирование', contact_title:'Начните своё путешествие к исцелению', contact_desc:'Запишитесь на бесплатную первичную консультацию. Мы проконсультируем вас лично и вместе найдём программу, идеально подходящую для вашей ситуации.',
+      contact_phone_label:'Телефон', contact_email_label:'Эл. почта', contact_hours_label:'Доступность', contact_hours_val:'Пн–Пт: 9:00–18:00',
+      form_title:'Бесплатная первичная консультация', form_subtitle:'Мы ответим вам в течение 24 часов.',
+      form_firstname:'Имя', form_lastname:'Фамилия', form_email:'Эл. почта', form_phone:'Телефон', form_package:'Желаемый пакет', form_msg:'Ваше сообщение',
+      ph_firstname:'Ваше имя', ph_lastname:'Ваша фамилия', ph_email:'ваш@email.ru', ph_msg:'Кратко опишите вашу ситуацию со здоровьем...',
+      opt_default:'Пожалуйста, выберите...', opt_pkg1:'Первичная консультация (Бесплатно)', opt_pkg2:'Целебная нафталанотерапия — € 1.990', opt_pkg3:'Нафталановое лечение — € 2.490', opt_pkg4:'Комплексная терапия — € 3.290',
+      form_submit:'Отправить запрос', form_subject:'Новый запрос на бронирование — AzeCura Travel',
+      form_success_msg:'✓ Спасибо! Ваш запрос отправлен. Мы свяжемся с вами в течение 24 часов.',
+      form_error_msg:'✗ Произошла ошибка. Пожалуйста, попробуйте снова или напишите нам на info@azecuratravel.com',
+      footer_tagline:'Эксклюзивные оздоровительные туры в Азербайджан. Нафталановая терапия высочайшего уровня — под медицинским наблюдением, с персональным сопровождением.',
+      footer_nav_title:'Навигация', footer_pkg_title:'Пакеты', footer_copy:'© 2025 AzeCura Travel · Все права защищены',
+      modal_advise:'Запросить консультацию', modal_close:'Закрыть',
+      ther1_lbl:'Наше уникальное преимущество', ther1_ttl:'Нафталановая терапия', ther1_dur:'Ежедневно · 8–10 минут на процедуру',
+      ther1_desc:'Нафталановое масло в терапевтической форме доступно только в Азербайджане. Его уникальный состав из полициклических нафтеновых кислот делает его одним из самых эффективных натуральных противовоспалительных средств современной бальнеологии.',
+      ther1_sh1:'Формы применения', ther1_sh2:'Области воздействия',
+      ther1_ul1:'<li><strong style="color:var(--white)">Полная нафталановая ванна</strong> — Классика: 8–10 минут в масляной ванне, ежедневно. Тепло и активные вещества проникают сквозь кожу и действуют системно.</li><li><strong style="color:var(--white)">Сидячая ванна</strong> — Целенаправленное применение при жалобах на таз, бёдра и низ живота.</li><li><strong style="color:var(--white)">Камерная ванна</strong> — Изолированное лечение отдельных конечностей (руки или ноги) при местных жалобах.</li><li><strong style="color:var(--white)">Местные втирания</strong> — Прямое применение на отдельные суставы или участки кожи.</li>',
+      ther1_ul2:'<li>Артрит, артроз, воспалительные заболевания суставов</li><li>Псориаз, нейродермит и хронические кожные заболевания</li><li>Невралгии и невриты</li><li>Улучшение кровообращения и иммуностимуляция</li>',
+      ther1_note:'Применение требует предварительного медицинского обследования. Подходит не каждому пациенту — противопоказания проверяются на месте.',
+      ther2_lbl:'Точечные импульсы на клеточном уровне', ther2_ttl:'Электротерапия', ther2_dur:'Безболезненно · Без вмешательства · Точное дозирование',
+      ther2_desc:'Электрические токи, правильно применяемые, могут глубоко воздействовать на нервы, мышцы и ткани — без лекарств, без операции. В отеле Кяпяз доступно несколько процедур, комбинируемых в зависимости от диагноза.',
+      ther2_sh1:'Доступные процедуры', ther2_sh2:'Типичные показания',
+      ther2_ul1:'<li><strong style="color:var(--white)">Амплипульс</strong> — Синусоидально-модулированные токи снимают боль и активизируют ослабленную мускулатуру.</li><li><strong style="color:var(--white)">Дарсонвализация</strong> — Высокочастотные токи улучшают кровообращение, укрепляют кожу и снимают местные невралгии.</li><li><strong style="color:var(--white)">Электрофорез</strong> — Активные вещества вводятся через кожу в ткани с помощью электрических полей.</li><li><strong style="color:var(--white)">Коротковолновая терапия</strong> — Глубокое тепло для суставов и мускулатуры через высокочастотные электромагнитные поля.</li><li><strong style="color:var(--white)">Лазеротерапия</strong> — Лазер низкого уровня способствует регенерации тканей и заживлению ран на клеточном уровне.</li>',
+      ther2_ul2:'<li>Хронические боли опорно-двигательного аппарата</li><li>Мышечная слабость и реабилитация</li><li>Воспаление нервов и функциональные нарушения</li>',
+      ther3_lbl:'Мягкая энергия — Глубокое действие', ther3_ttl:'Магнитотерапия и лазеротерапия', ther3_dur:'Бесконтактно · Без побочных эффектов · Безболезненно',
+      ther3_desc:'Два метода, действующих без прямого контакта: магнитные поля и лазерные импульсы проникают в ткани, не нагружая их. Идеально для чувствительных пациентов и хронических воспалительных процессов.',
+      ther3_sh1:'Магнитотерапия', ther3_sh2:'Лазеротерапия (низкого уровня)',
+      ther3_ul1:'<li>Импульсные магнитные поля активируют электрохимические процессы на клеточном уровне</li><li>Снижение воспалительных маркеров без медикаментозного вмешательства</li><li>Улучшает метаболизм хряща и кости при дегенеративных заболеваниях</li><li>Успокаивает гиперактивные нервные пути при невралгиях</li>',
+      ther3_ul2:'<li>Точечные световые импульсы стимулируют митохондриальную активность в клетках</li><li>Ускоряет заживление тканей при жалобах на сухожилия, суставы и кожу</li><li>Обезболивание путём воздействия на местные нервные волокна</li>',
+      ther4_lbl:'Проверено веками', ther4_ttl:'Тепловая и грязевая терапия', ther4_dur:'Парафин · Грязь Палчыг · Светотерапия',
+      ther4_desc:'Тепло — одна из старейших форм лечебной медицины и одна из самых эффективных. В отеле Кяпяз оно применяется несколькими способами в зависимости от жалобы и индивидуальной переносимости.',
+      ther4_sh1:'Формы применения', ther4_sh2:'Области воздействия',
+      ther4_ul1:'<li><strong style="color:var(--white)">Парафинотерапия</strong> — Тёплый парафин обволакивает руки, стопы или суставы и медленно и равномерно отдаёт тепло. Расслабляет суставные капсулы, снимает скованность.</li><li><strong style="color:var(--white)">Грязевые ванны (Палчыг)</strong> — Богатая минералами целебная грязь оказывает противовоспалительное действие, стимулирует кровообращение и глубоко прогревает мускулатуру.</li><li><strong style="color:var(--white)">Светолечение Соллюкс</strong> — Инфракрасный свет для целенаправленного глубокого прогрева местных очагов жалоб.</li><li><strong style="color:var(--white)">Световые ванны</strong> — Комплексное тепловое лечение для активизации обмена веществ и расслабления.</li>',
+      ther4_ul2:'<li>Хроническая скованность суставов и артроз</li><li>Мышечное напряжение и боли в спине</li><li>Нарушения кровообращения конечностей</li>',
+      ther5_lbl:'Возвращение подвижности', ther5_ttl:'Массаж и двигательная терапия', ther5_dur:'Классический · Терапевтический · Устойчивый',
+      ther5_desc:'То, что заморозили холод и неподвижность, опытные руки и целенаправленное движение снова освобождают. Мануальная терапия в отеле Кяпяз работает не против симптомов — она устраняет причины ограниченной подвижности.',
+      ther5_sh1:'Предлагаемые процедуры', ther5_sh2:'Области воздействия',
+      ther5_ul1:'<li><strong style="color:var(--white)">Классический массаж</strong> — Мануальные техники для расслабления мышц, улучшения кровообращения и снятия боли. Адаптированы к жалобе и чувствительности.</li><li><strong style="color:var(--white)">Физиотерапия</strong> — Целенаправленные терапевтические упражнения для укрепления, растяжки и стабилизации поражённых мышечных и суставных систем.</li><li><strong style="color:var(--white)">Двигательная терапия</strong> — Структурированные двигательные программы, направленные на восстановление повседневной подвижности — не только кратковременное облегчение.</li>',
+      ther5_ul2:'<li>Боли в спине и суставах любой степени тяжести</li><li>Послеоперационная реабилитация и восстановление</li><li>Мышечная слабость и нарушения осанки</li>',
+      ther6_lbl:'Целостная картина', ther6_ttl:'Дополнительные процедуры', ther6_dur:'Ингаляции · Ультразвук · Йодобромные ванны · Кислород',
+      ther6_desc:'Полноценная программа лечения смотрит дальше отдельного симптома. Эти процедуры дополняют основные терапии и воздействуют на системы организма, которые часто упускают из виду — от дыхательных путей до нервной системы.',
+      ther6_sh1:'Дополнительные терапии',
+      ther6_ul1:'<li><strong style="color:var(--white)">Ингаляции</strong> — Увлажнённые активные вещества достигают глубоко в дыхательные пути и слизистые оболочки — особенно ценны при сопутствующих жалобах на верхние дыхательные пути.</li><li><strong style="color:var(--white)">Ультразвуковая терапия</strong> — Механический микромассаж на клеточном уровне. Улучшает обмен веществ, снимает спайки и действует глубоко на мягкие ткани и суставы.</li><li><strong style="color:var(--white)">Йодобромные ванны</strong> — Богатые минералами ванны с успокаивающим воздействием на нервную систему, кожу и кровообращение.</li><li><strong style="color:var(--white)">Кислородные коктейли</strong> — Обогащённые напитки для питания клеток и поддержки процесса регенерации изнутри.</li><li><strong style="color:var(--white)">Озонотерапия &amp; Акупунктура</strong> — Доступны как целенаправленные дополнения в зависимости от диагноза и медицинской рекомендации.</li>',
+      ther6_note:'Выбор дополнительных процедур осуществляется индивидуально после медицинского обследования и зависит от ваших личных жалоб.',
+      m1_lbl:'Бесплатная консультация', m1_dur:'Персональная консультация · ок. 60 минут · по телефону или видеозвонку',
+      m1_desc:'Консультация — первый шаг на вашем пути к исцелению. Мы уделяем время вашей индивидуальной ситуации — без обязательств и бесплатно.',
+      m1_sh1:'Что мы обсуждаем', m1_sh2:'Примечания',
+      m1_ul1:'<li>Ваши текущие жалобы и заболевания</li><li>Хронические болезни, операции и текущие лекарства</li><li>Как работает нафталановая терапия &amp; чего ожидать</li><li>Какой пакет лучше всего подходит для вашей ситуации</li><li>Поездка, отель, программа и организационные вопросы</li><li>Стоимость, даты и следующие шаги</li>',
+      m1_note:'Языки: английский &amp; русский · Без обязательств — только информационно',
+      m2_lbl:'Стартовый пакет', m2_dur:'7 дней · с проживанием · Двухместный номер',
+      m2_desc:'Ваш идеальный вход в целебную силу нафталанового масла. За 7 дней вы ежедневно принимаете нафталановую ванну в расслабленной, медицински сопровождаемой атмосфере.',
+      m2_ul1:'<li>7 нафталановых ванн (по ок. 8 минут, ежедневно)</li><li>Первичный медосмотр у специалиста</li><li>Проживание в двухместном номере (Отель Кяпяз, Нафталан)</li><li>Завтрак &amp; ужин ежедневно включены</li><li>Трансфер в аэропорт Баку (GYD) туда и обратно</li><li>Сопровождение на английском &amp; русском языках</li>',
+      m2_ul2:'<li>Первый опыт нафталановой терапии</li><li>Лёгкие и средние боли в суставах и спине</li><li>Восстановление и профилактическое оздоровление</li>',
+      m2_note:'Авиабилеты · Обеды · Личные расходы',
+      m3_lbl:'Интенсивная терапия', m3_dur:'10 дней · Интенсивная терапия · Одноместный номер',
+      m3_desc:'Интенсивная программа для устойчивого облегчения симптомов. 10 дней структурированной терапии с ежедневным медицинским сопровождением и уникальной экскурсией в Баку.',
+      m3_ul1:'<li>10 нафталановых ванн (ежедневно, по ок. 8 минут)</li><li>Ежедневный массаж или физиотерапия</li><li>Медицинское сопровождение специалистом на протяжении всего пребывания</li><li>Проживание в одноместном номере с ванной</li><li>Все приёмы пищи ежедневно включены (завтрак, обед, ужин)</li><li>Трансфер из/в аэропорт</li><li>Полдня экскурсии в старый город Баку (Ичеришехер)</li><li>Сопровождение на английском &amp; русском языках</li>',
+      m3_ul2:'<li>Артрит, артроз, псориаз</li><li>Хронические боли в спине и суставах</li><li>Пациенты, нуждающиеся в более интенсивной терапии</li>',
+      m3_note:'Авиабилеты · Личные расходы',
+      m4_dur:'14 дней · Полное сопровождение · Премиум одноместный номер',
+      m4_desc:'Пакет всё включено для максимальной регенерации. 14 дней интенсивнейшей медицинской помощи в сочетании с несколькими видами терапии и эксклюзивными впечатлениями.',
+      m4_ul1:'<li>14 нафталановых ванн (ежедневно, по ок. 8 минут)</li><li>Полная программа лечения: массаж, физиотерапия, фонофорез, парафинотерапия, лимфодренаж</li><li>Премиум одноместный номер в отеле Кяпяз</li><li>Все приёмы пищи ежедневно включены (завтрак, обед, ужин)</li><li>Персональная медсестра ежедневно рядом с вами</li><li>Несколько экскурсий: старый город Баку, Гобустан, местные рынки</li><li>Трансфер из/в аэропорт</li><li>Консультация после возвращения (по видеозвонку)</li><li>Сопровождение на английском &amp; русском языках</li>',
+      m4_ul2:'<li>Тяжёлые хронические заболевания</li><li>Пациенты, нуждающиеся в комплексном персональном уходе</li><li>Максимальная регенерация и долгосрочное облегчение симптомов</li>',
+      m4_note:'Авиабилеты · Личные расходы',
+      m_sh_services:'Услуги', m_sh_ideal:'Идеально для', m_sh_excl:'Не включено в цену',
+      wa_title:'Есть вопросы?', wa_text:'Напишите нам напрямую в WhatsApp — мы отвечаем быстро!',
+    }
+  };
+
+  function setLang(lang) {
+    if (!T[lang]) return;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (T[lang][key] !== undefined) el.placeholder = T[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-val]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-val');
+      if (T[lang][key] !== undefined) el.value = T[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    var waUrls = {
+      de:'https://wa.me/491748135634?text=Hallo%20AzeCura%20Travel%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Heilreise%20nach%20Naftalan.',
+      en:'https://wa.me/491748135634?text=Hello%20AzeCura%20Travel%2C%20I%20am%20interested%20in%20a%20healing%20journey%20to%20Naftalan.',
+      ru:'https://wa.me/491748135634?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BE%20%D0%BB%D0%B5%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%BC%20%D1%82%D1%83%D1%80%D0%B5%20%D0%B2%20%D0%9D%D0%B0%D1%84%D1%82%D0%B0%D0%BB%D0%B0%D0%BD.'
+    };
+    var waBtn = document.querySelector('.wa-btn');
+    if (waBtn) waBtn.href = waUrls[lang] || waUrls.de;
+    var langInput = document.querySelector('input[name="_language"]');
+    if (langInput) langInput.value = lang;
+  }
+
+  var savedLang = localStorage.getItem('lang');
+  if (!savedLang) {
+    var bl = (navigator.language || navigator.userLanguage || 'de').toLowerCase();
+    savedLang = bl.startsWith('ru') ? 'ru' : bl.startsWith('de') ? 'de' : 'en';
+  }
+  setLang(savedLang);
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+  });
+  // ===== /i18n =====
+
   // Form — Formspree AJAX
   document.getElementById('bookingForm').addEventListener('submit',async function(e){
     e.preventDefault();
@@ -1411,8 +1804,8 @@
 <div class="wa-float" id="waFloat">
   <div class="wa-bubble" id="waBubble">
     <button class="close-bubble" onclick="closeBubble()" aria-label="Schließen">&times;</button>
-    <strong>Haben Sie Fragen?</strong>
-    Schreiben Sie uns direkt auf WhatsApp — wir antworten schnell!
+    <strong data-i18n="wa_title">Haben Sie Fragen?</strong>
+    <span data-i18n="wa_text">Schreiben Sie uns direkt auf WhatsApp — wir antworten schnell!</span>
   </div>
   <div style="position:relative">
     <div class="wa-pulse"></div>
