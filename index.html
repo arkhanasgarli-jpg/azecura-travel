@@ -87,7 +87,8 @@
     .mobile-menu a:hover { color:var(--gold); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center top; }
+    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('images/hotel/photo_2026-05-17_18-29-51.jpg'); background-size:cover; background-position:center; }
+    .hero-video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0; pointer-events:none; }
     .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,12,24,0.8) 0%, rgba(6,12,24,0.55) 45%, rgba(6,12,24,0.85) 100%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.07) 0%,transparent 60%); }
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px); background-size:60px 60px; }
     .hero-particles { position:absolute; inset:0; overflow:hidden; }
@@ -196,6 +197,53 @@
     .author-name { font-weight:600; color:var(--white); font-size:0.93rem; }
     .author-condition { font-size:0.76rem; color:var(--cream-muted); margin-top:2px; }
 
+    /* GALLERY */
+    .gallery-section { background:var(--bg-deep); padding:100px 0; }
+    .gallery-sub { text-align:center; color:var(--cream-muted); max-width:500px; margin:0 auto 3rem; font-family:var(--ff-sans); font-size:1rem; line-height:1.7; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; max-width:1200px; margin:0 auto; }
+    .gal-item { overflow:hidden; height:260px; position:relative; cursor:pointer; }
+    .gal-item.gal-tall { grid-row:span 2; height:auto; }
+    .gal-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; display:block; }
+    .gal-item:hover img { transform:scale(1.04); }
+    .gal-item::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.3s; pointer-events:none; }
+    .gal-item:hover::after { background:rgba(0,0,0,0.45); }
+    .gal-label { position:absolute; bottom:0; left:0; right:0; padding:0.8rem 1rem; color:#fff; font-family:var(--ff-sans); font-size:0.82rem; letter-spacing:0.5px; background:linear-gradient(0deg,rgba(27,77,62,0.9) 0%,transparent 100%); opacity:0; transform:translateY(6px); transition:opacity 0.3s,transform 0.3s; z-index:1; pointer-events:none; }
+    .gal-item:hover .gal-label { opacity:1; transform:translateY(0); }
+
+    /* VIDEO SECTION */
+    .video-section { background:var(--bg-dark); padding:100px 0; }
+    .video-sub { text-align:center; color:var(--cream-muted); max-width:500px; margin:0 auto 3rem; font-family:var(--ff-sans); }
+    .video-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1100px; margin:0 auto; padding:0 24px; }
+    .vid-card { cursor:pointer; }
+    .vid-thumb { position:relative; border:1px solid var(--border); overflow:hidden; height:200px; transition:border-color var(--transition); }
+    .vid-card:hover .vid-thumb { border-color:var(--gold); }
+    .vid-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+    .vid-card:hover .vid-thumb img { transform:scale(1.04); }
+    .vid-thumb::after { content:''; position:absolute; inset:0; background:rgba(6,12,24,0.4); transition:background 0.3s; }
+    .vid-card:hover .vid-thumb::after { background:rgba(6,12,24,0.25); }
+    .vid-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:56px; height:56px; background:rgba(201,168,76,0.9); border-radius:50%; display:flex; align-items:center; justify-content:center; z-index:2; transition:transform 0.2s,background 0.2s; }
+    .vid-card:hover .vid-play { background:var(--gold); transform:translate(-50%,-50%) scale(1.1); }
+    .vid-play svg { width:20px; height:20px; fill:#060C18; margin-left:3px; }
+    .vid-title { font-family:var(--ff-sans); font-size:0.9rem; color:var(--cream-muted); margin-top:14px; text-align:center; letter-spacing:0.5px; }
+
+    /* LIGHTBOX */
+    #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:10000; align-items:center; justify-content:center; }
+    #lightbox.open { display:flex; }
+    #lb-img { max-height:90vh; max-width:90vw; object-fit:contain; display:block; user-select:none; }
+    #lb-close { position:absolute; top:20px; right:24px; color:#fff; font-size:2.2rem; line-height:1; background:none; border:none; cursor:pointer; padding:4px 8px; opacity:0.8; transition:opacity 0.2s; z-index:1; }
+    #lb-close:hover { opacity:1; }
+    #lb-prev, #lb-next { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:3rem; line-height:1; background:rgba(0,0,0,0.3); border:none; cursor:pointer; padding:14px 20px; opacity:0.7; transition:opacity 0.2s,background 0.2s; }
+    #lb-prev:hover, #lb-next:hover { opacity:1; background:rgba(0,0,0,0.6); }
+    #lb-prev { left:0; }
+    #lb-next { right:0; }
+
+    /* VIDEO MODAL */
+    #video-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:10001; align-items:center; justify-content:center; }
+    #video-modal.open { display:flex; }
+    #modal-video { max-width:90vw; max-height:80vh; width:900px; display:block; outline:none; }
+    #vm-close { position:absolute; top:20px; right:24px; color:#fff; font-size:2.2rem; line-height:1; background:none; border:none; cursor:pointer; padding:4px 8px; opacity:0.8; transition:opacity 0.2s; z-index:1; }
+    #vm-close:hover { opacity:1; }
+
     /* KONTAKT */
     .kontakt { padding:120px 0; background:var(--bg-deep); }
     .kontakt-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:80px; align-items:start; }
@@ -267,11 +315,19 @@
       .form-row{grid-template-columns:1fr;}
       .footer-main{grid-template-columns:1fr;gap:32px;}
       .footer-bottom{flex-direction:column;text-align:center;}
-      .ueber-uns,.naftalan,.leistungen,.ablauf,.erfahrungen,.kontakt{padding:80px 0;}
+      .ueber-uns,.naftalan,.leistungen,.ablauf,.erfahrungen,.kontakt,.gallery-section,.video-section{padding:80px 0;}
+      .gallery-grid{grid-template-columns:repeat(2,1fr);}
+      .gal-item.gal-tall{grid-row:span 1;height:260px;}
+      .video-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
+    }
+    @media(max-width:600px){
+      .gallery-grid{grid-template-columns:1fr;gap:4px;}
+      .gal-item{height:240px;}
     }
     @media(max-width:480px){
       .hero-ctas{flex-direction:column;align-items:center;}
       .btn{width:100%;justify-content:center;}
+      .hero-video{display:none;}
     }
 
     /* WhatsApp Floating Button */
@@ -305,6 +361,7 @@
         <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#erfahrungen">Erfahrungen</a></li>
+        <li><a href="#galerie">Galerie</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#kontakt" class="nav-cta">Jetzt buchen</a></li>
@@ -321,6 +378,7 @@
   <a href="#ueber-uns" class="mob-link">Über uns</a>
   <a href="#leistungen" class="mob-link">Leistungen</a>
   <a href="#erfahrungen" class="mob-link">Erfahrungen</a>
+  <a href="#galerie" class="mob-link">Galerie</a>
   <a href="#kontakt" class="mob-link">Kontakt</a>
   <a href="blog.html" class="mob-link">Blog</a>
   <a href="#kontakt" class="btn btn-gold">Jetzt buchen</a>
@@ -328,6 +386,9 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="media/video_2026-05-17_18-33-45.mp4" type="video/mp4">
+  </video>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-particles" id="particles"></div>
@@ -396,16 +457,16 @@
 <!-- PHOTO STRIP -->
 <div class="photo-strip">
   <div class="photo-strip-item">
-    <img src="https://images.unsplash.com/photo-1744704015980-9842c2314c43?auto=format&fit=crop&w=800&q=80" alt="Baku — Aserbaidschan" loading="lazy">
-    <span class="photo-strip-caption">Baku, Aserbaidschan</span>
+    <img src="images/hotel/photo_2026-05-17_18-29-51.jpg" alt="Hotelzimmer Kəpəz Naftalan — Doppelzimmer mit Balkon" loading="lazy">
+    <span class="photo-strip-caption">Doppelzimmer · Balkon</span>
   </div>
   <div class="photo-strip-item">
-    <img src="https://images.unsplash.com/photo-1621856291734-ed7e47df4f9e?auto=format&fit=crop&w=800&q=80" alt="Natur — Aserbaidschan" loading="lazy">
-    <span class="photo-strip-caption">Natur & Landschaft</span>
+    <img src="images/hotel/photo_2026-05-17_18-29-47.jpg" alt="Hotel Kəpəz — Suite mit Wohnzimmer und Balkon" loading="lazy">
+    <span class="photo-strip-caption">Suite · Wohnzimmer</span>
   </div>
   <div class="photo-strip-item">
-    <img src="https://images.unsplash.com/photo-1644413638617-02369c89c156?auto=format&fit=crop&w=800&q=80" alt="Thermal Spa" loading="lazy">
-    <span class="photo-strip-caption">Heiltherapie</span>
+    <img src="images/hotel/photo_2026-05-17_18-29-44.jpg" alt="Hotel Kəpəz — Modernes Marmor-Badezimmer" loading="lazy">
+    <span class="photo-strip-caption">Marmor-Bad</span>
   </div>
 </div>
 
@@ -596,6 +657,115 @@
   </div>
 </section>
 
+<!-- GALERIE -->
+<section id="galerie" class="gallery-section section-sep">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Einblicke</span>
+      <h2 class="section-title">Das Hotel <em>Kəpəz</em></h2>
+      <div class="gold-divider center"></div>
+      <p class="gallery-sub">Atmosphäre und Komfort in Naftalan — erleben Sie es selbst.</p>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gal-item gal-tall" data-idx="0">
+      <img src="images/hotel/photo_2026-05-17_18-29-31.jpg" alt="Hotel Kəpəz — Zweibettzimmer im Sonnenlicht" loading="lazy">
+      <span class="gal-label">Zweibettzimmer · Sonnenlicht</span>
+    </div>
+    <div class="gal-item" data-idx="1">
+      <img src="images/hotel/photo_2026-05-17_18-29-38.jpg" alt="Hotel Kəpəz — Doppelzimmer mit Schreibtisch" loading="lazy">
+      <span class="gal-label">Doppelzimmer · Schreibtisch</span>
+    </div>
+    <div class="gal-item" data-idx="2">
+      <img src="images/hotel/photo_2026-05-17_18-29-41.jpg" alt="Hotel Kəpəz — Hotelzimmer mit TV" loading="lazy">
+      <span class="gal-label">Hotelzimmer · TV &amp; Kronleuchter</span>
+    </div>
+    <div class="gal-item gal-tall" data-idx="3">
+      <img src="images/hotel/photo_2026-05-17_18-29-44.jpg" alt="Hotel Kəpəz — Marmor-Badezimmer mit Glasdusche" loading="lazy">
+      <span class="gal-label">Marmor-Bad · Glasdusche</span>
+    </div>
+    <div class="gal-item" data-idx="4">
+      <img src="images/hotel/photo_2026-05-17_18-29-47.jpg" alt="Hotel Kəpəz — Suite mit Wohnbereich und Balkon" loading="lazy">
+      <span class="gal-label">Suite · Wohnzimmer · Balkon</span>
+    </div>
+    <div class="gal-item" data-idx="5">
+      <img src="images/hotel/photo_2026-05-17_18-29-51.jpg" alt="Hotel Kəpəz — Doppelzimmer mit Balkontür" loading="lazy">
+      <span class="gal-label">Doppelzimmer · Balkon · Tageslicht</span>
+    </div>
+    <div class="gal-item gal-tall" data-idx="6">
+      <img src="images/hotel/photo_2026-05-17_18-29-54.jpg" alt="Hotel Kəpəz — Badezimmer mit Badewanne" loading="lazy">
+      <span class="gal-label">Badezimmer · Badewanne</span>
+    </div>
+    <div class="gal-item" data-idx="7">
+      <img src="images/hotel/photo_2026-05-17_18-29-56.jpg" alt="Hotel Kəpəz — Zweibettzimmer mit natürlichem Licht" loading="lazy">
+      <span class="gal-label">Zweibettzimmer · Natürliches Licht</span>
+    </div>
+    <div class="gal-item" data-idx="8">
+      <img src="images/hotel/photo_2026-05-17_18-30-00.jpg" alt="Hotel Kəpəz — Zimmer mit TV und Schreibtisch" loading="lazy">
+      <span class="gal-label">Zimmer · TV &amp; Schreibtisch</span>
+    </div>
+    <div class="gal-item" data-idx="9">
+      <img src="images/hotel/photo_2026-05-17_18-30-03.jpg" alt="Hotel Kəpəz — Eingangsbereich mit eleganten Türen" loading="lazy">
+      <span class="gal-label">Hoteleingang · Elegante Türen</span>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO-SEKTION -->
+<section id="hotel-videos" class="video-section section-sep">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Bewegte Bilder</span>
+      <h2 class="section-title">Einblick ins Hotel <em>Kəpəz</em></h2>
+      <div class="gold-divider center"></div>
+      <p class="video-sub">Erleben Sie das Hotel und die Behandlungen in bewegten Bildern.</p>
+    </div>
+    <div class="video-grid">
+      <div class="vid-card reveal reveal-delay-1" data-src="media/video_2026-05-17_18-30-12.mp4">
+        <div class="vid-thumb">
+          <img src="images/hotel/photo_2026-05-17_18-29-51.jpg" alt="Hotel Kəpəz — Video Übersicht" loading="lazy">
+          <button class="vid-play" aria-label="Video abspielen">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </button>
+        </div>
+        <p class="vid-title">Hotel Kəpəz — Übersicht</p>
+      </div>
+      <div class="vid-card reveal reveal-delay-2" data-src="media/video_2026-05-17_18-31-30.mp4">
+        <div class="vid-thumb">
+          <img src="images/hotel/photo_2026-05-17_18-29-38.jpg" alt="Zimmervorstellung Hotel Kəpəz" loading="lazy">
+          <button class="vid-play" aria-label="Video abspielen">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </button>
+        </div>
+        <p class="vid-title">Zimmervorstellung</p>
+      </div>
+      <div class="vid-card reveal reveal-delay-3" data-src="media/video_2026-05-17_18-32-33.mp4">
+        <div class="vid-thumb">
+          <img src="images/hotel/photo_2026-05-17_18-29-47.jpg" alt="Hotel Kəpəz — Ausstattung &amp; Komfort" loading="lazy">
+          <button class="vid-play" aria-label="Video abspielen">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </button>
+        </div>
+        <p class="vid-title">Ausstattung &amp; Komfort</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Bildansicht">
+  <button id="lb-close" aria-label="Schließen">×</button>
+  <button id="lb-prev" aria-label="Vorheriges Bild">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next" aria-label="Nächstes Bild">›</button>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="video-modal" role="dialog" aria-modal="true" aria-label="Video">
+  <button id="vm-close" aria-label="Schließen">×</button>
+  <video id="modal-video" controls playsinline></video>
+</div>
+
 <!-- KONTAKT -->
 <section class="kontakt" id="kontakt">
   <div class="container">
@@ -770,6 +940,46 @@
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
   },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Foto-Lightbox
+  (function(){
+    const photos=['images/hotel/photo_2026-05-17_18-29-31.jpg','images/hotel/photo_2026-05-17_18-29-38.jpg','images/hotel/photo_2026-05-17_18-29-41.jpg','images/hotel/photo_2026-05-17_18-29-44.jpg','images/hotel/photo_2026-05-17_18-29-47.jpg','images/hotel/photo_2026-05-17_18-29-51.jpg','images/hotel/photo_2026-05-17_18-29-54.jpg','images/hotel/photo_2026-05-17_18-29-56.jpg','images/hotel/photo_2026-05-17_18-30-00.jpg','images/hotel/photo_2026-05-17_18-30-03.jpg'];
+    const alts=['Hotel Kəpəz — Zweibettzimmer im Sonnenlicht','Hotel Kəpəz — Doppelzimmer mit Schreibtisch','Hotel Kəpəz — Hotelzimmer mit TV','Hotel Kəpəz — Marmor-Badezimmer mit Glasdusche','Hotel Kəpəz — Suite mit Wohnbereich','Hotel Kəpəz — Doppelzimmer mit Balkontür','Hotel Kəpəz — Badezimmer mit Badewanne','Hotel Kəpəz — Zweibettzimmer mit natürlichem Licht','Hotel Kəpəz — Zimmer mit TV und Schreibtisch','Hotel Kəpəz — Eingangsbereich'];
+    let cur=0;
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lb-img');
+    function open(idx){cur=idx;lbImg.src=photos[cur];lbImg.alt=alts[cur];lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    function next(){cur=(cur+1)%photos.length;lbImg.src=photos[cur];lbImg.alt=alts[cur];}
+    function prev(){cur=(cur-1+photos.length)%photos.length;lbImg.src=photos[cur];lbImg.alt=alts[cur];}
+    document.querySelectorAll('.gal-item').forEach(el=>el.addEventListener('click',()=>open(parseInt(el.dataset.idx))));
+    document.getElementById('lb-close').addEventListener('click',close);
+    document.getElementById('lb-prev').addEventListener('click',e=>{e.stopPropagation();prev();});
+    document.getElementById('lb-next').addEventListener('click',e=>{e.stopPropagation();next();});
+    lb.addEventListener('click',e=>{if(e.target===lb)close();});
+    document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')prev();else if(e.key==='ArrowRight')next();else if(e.key==='Escape')close();});
+    let tx=0;
+    lb.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?next():prev();}});
+  })();
+
+  // Video-Modal
+  (function(){
+    const vttMap={'media/video_2026-05-17_18-30-12.mp4':'media/subtitles/video1-en.vtt','media/video_2026-05-17_18-31-30.mp4':'media/subtitles/video2-en.vtt','media/video_2026-05-17_18-32-33.mp4':'media/subtitles/video3-en.vtt'};
+    const modal=document.getElementById('video-modal');
+    const mv=document.getElementById('modal-video');
+    function open(src){
+      mv.innerHTML='';
+      const s=document.createElement('source');s.src=src;s.type='video/mp4';mv.appendChild(s);
+      if(vttMap[src]){const t=document.createElement('track');t.kind='subtitles';t.src=vttMap[src];t.srclang='en';t.label='English';t.default=true;mv.appendChild(t);}
+      mv.load();modal.classList.add('open');document.body.style.overflow='hidden';mv.play();
+    }
+    function close(){modal.classList.remove('open');mv.pause();mv.innerHTML='';document.body.style.overflow='';}
+    document.querySelectorAll('.vid-card').forEach(c=>c.addEventListener('click',()=>open(c.dataset.src)));
+    document.getElementById('vm-close').addEventListener('click',close);
+    modal.addEventListener('click',e=>{if(e.target===modal)close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close();});
+  })();
 
   // Form — Formspree AJAX
   document.getElementById('bookingForm').addEventListener('submit',async function(e){
