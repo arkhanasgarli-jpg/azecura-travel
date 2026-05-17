@@ -87,11 +87,17 @@
     .mobile-menu a:hover { color:var(--gold); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-size:110%; background-position:center 70%; animation:heroZoom 25s ease-out forwards; }
-    @keyframes heroZoom { 0%{background-size:110%;background-position:center 70%;} 100%{background-size:100%;background-position:center 65%;} }
-    .hero-shimmer { position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(105deg, transparent 30%, rgba(201,168,76,0.08) 50%, transparent 70%); animation:heroSweep 10s ease-in-out infinite; }
+    .hero { position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#060C18; }
+    @keyframes heroSlide { 0%{opacity:0;transform:scale(1.05);} 5%{opacity:1;transform:scale(1.05);} 80%{opacity:1;transform:scale(1);} 90%{opacity:0;transform:scale(1);} 100%{opacity:0;} }
+    .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; animation:heroSlide 20s ease-in-out infinite; opacity:0; will-change:opacity,transform; -webkit-backface-visibility:hidden; }
+    .hero-slide:nth-child(1) { background-image:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1920&q=80'); background-position:center 70%; animation-delay:0s; }
+    .hero-slide:nth-child(2) { background-image:url('images/aserbaidschan/4.-Gobustan-mud-volcano-near-Baku-Azerbaijan.jpg'); animation-delay:4s; }
+    .hero-slide:nth-child(3) { background-image:url('images/aserbaidschan/Khinaliq Village.jpg'); animation-delay:8s; }
+    .hero-slide:nth-child(4) { background-image:url('images/aserbaidschan/rtikbtppv3e1v0pnug2f.webp'); animation-delay:12s; }
+    .hero-slide:nth-child(5) { background-image:url('images/aserbaidschan/vpvteciscuvax0qmnrd6.jpg'); animation-delay:16s; }
+    .hero-shimmer { position:absolute; inset:0; z-index:3; pointer-events:none; background:linear-gradient(105deg, transparent 30%, rgba(201,168,76,0.07) 50%, transparent 70%); animation:heroSweep 10s ease-in-out infinite; }
     @keyframes heroSweep { 0%,100%{transform:translateX(-150%);} 50%{transform:translateX(150%);} }
-    .hero-vline { position:absolute; right:80px; top:15%; width:1px; height:0; background:linear-gradient(to bottom, var(--gold), transparent); animation:heroVLine 2.5s ease 1.5s forwards; z-index:2; pointer-events:none; }
+    .hero-vline { position:absolute; right:80px; top:15%; width:1px; height:0; background:linear-gradient(to bottom, var(--gold), transparent); animation:heroVLine 2.5s ease 1.5s forwards; z-index:3; pointer-events:none; }
     @keyframes heroVLine { to{height:55%;} }
     @media(max-width:768px){ .hero-vline{display:none;} }
     .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,12,24,0.8) 0%, rgba(6,12,24,0.55) 45%, rgba(6,12,24,0.85) 100%), radial-gradient(ellipse 50% 60% at 80% 30%, rgba(201,168,76,0.07) 0%,transparent 60%); }
@@ -375,6 +381,11 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
   <div class="hero-shimmer"></div>
   <div class="hero-vline"></div>
   <div class="hero-bg"></div>
